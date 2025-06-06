@@ -2,42 +2,68 @@
 import { Image } from 'astro:assets';
 import H1 from "../components/h1.astro";
 import InfoLayout from "../layouts/InfoLayout.astro";
-import ACGenerator from "../assets/ac-generator.jpg";
-import FluidPropulsion from "../assets/fluid-propulsion.jpg";
-import ElectricMotor from "../assets/electro-magnetic-motor.jpg";
+import ProjectList from "../components/ProjectList";
+import kmileshowcover from "../assets/kmileshowcover.png";
+import n8ncover from "../assets/n8ncover.png";
+import ragcover from "../assets/ragcover.png";
+import weather_horoscopecover from "../assets/weather_horoscopecover.png";
+import metaversecover from "../assets/metaversecover.png";
+import eatbugscover from "../assets/eatbugscover.png";
+
+
 
 const projects = [
      {
-          title: "AC Generator",
-          description: "Transform mechanical energy into alternating current, powering the modern electric grid",
-          image: ACGenerator
+          title: "邁爾斯的影響世界",
+          description: "專注於 SEO、UI/UX 與數據分析，讓旅遊部落格年流量成長 66%。",
+          image: kmileshowcover,
+          link: "/projects/kmileshow",
+          category: "網站經營"
      },
      {
-          title: "Fluid Propulsion",
-          description: "Bladeless turbine using fluid dynamics for efficient, low-friction propulsion.",
-          image: FluidPropulsion
+          title: "n8n 自動化行銷報表",
+          description: "運用 n8n 無程式碼自動化，串接多平台 API，快速產出行銷報表並優化工作流程。",
+          image: n8ncover,
+          link: "/projects/n8n",
+          category: "網站經營"
      },
      {
-          title: "Electro-Magnetic Motor",
-          description: "Harness alternating current to produce smooth, efficient rotary motion.",
-          image: ElectricMotor
-     }];
+          title: "部落格 RAG 系統",
+          description: "結合 RAG 技術，實現部落格內容即時搜尋與智能問答，優化知識管理",
+          image: ragcover,
+          link: "/projects/rag",
+          category: "網站經營"
+     },
+     {
+          title: "天氣星晴 AI 生活助理",
+          description: "打造 LINE Bot 一站式提供星座運勢、穿搭建議與天氣視覺化互動體驗。",
+          image: weather_horoscopecover,
+          link: "/projects/weather_horoscope",
+          category: "程式開發"
+     },
+     {
+          title: "元宇宙產品研究",
+          description: "聚焦元宇宙平台 UGC 與跨國用戶研究，分析創作者行為、回饋與產品優化建議。",
+          image: metaversecover,
+          link: "/projects/metaverse",
+          category: "學術/產品研究"
+     },
+
+     {
+          title: "食用昆蟲：蟲蟲探險隊",
+          description: "產品設計與數位行銷推廣昆蟲飲食，結合市場調研與健康理念，探索永續新可能。",
+          image: eatbugscover,
+          link: "/projects/eatbugs",
+          category: "行銷/商業企劃"
+     },
+
+     ];
 ---
 
 <InfoLayout>
-     <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
-          <H1> Projects </H1>
-
-          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
-               {projects.map((project) => (
-                    <li>
-                         <Image src={project.image} alt={project.title} class="aspect-[1/1.33] object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
-                         <div class="p-1 sm:p-2">
-                              <h2 class="text-base text-zinc-100">{project.title}</h2>
-                              <p class="text-sm text-zinc-400 text-balance">{project.description}</p>
-                         </div>
-                    </li>
-               ))}
-          </ul>
-     </div>
+  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
+    <H1> Projects </H1>
+    {/* @ts-expect-error React component in Astro */}
+    <ProjectList client:load projects={projects} />
+  </div>
 </InfoLayout>

@@ -1,0 +1,25 @@
+---
+import InfoLayout from "../../layouts/InfoLayout.astro";
+import ragpic from "../../assets/ragpic.png";
+---
+<InfoLayout>
+  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
+    <h1 class="text-3xl font-bold mb-4 text-white">n8n 自動化行銷報表</h1>
+    <div class="mb-6 flex flex-wrap gap-2">
+      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">AI 工作流</span>
+      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">LLM 應用</span>
+      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">智慧檢索</span>
+    </div>
+    <p class="text-zinc-200 mb-4">
+      為優化部落格內部知識搜尋與歷史文章內容重用，我設計並實作一套 Retrieval-Augmented Generation（RAG）智慧知識庫系統，結合語意檢索與大語言模型（LLM）生成摘要，支援內部快速查找、內容整合與資料重組，預計將顯著提升編輯與內容決策效率。
+    </p>
+    <p class="text-zinc-200 mb-4">
+      系統基於 LangChain 串接 FAISS 向量資料庫與 E5 Embedding 模型進行向量化處理，搭配 Groq API 提供的 LLaMA-3-70B 進行自然語言回應。透過文章段落斷句、語意向量建立與語義相似度搜尋，可實現「問答式內容檢索」與「多篇內容聚合摘要」，進一步支援內容策略評估與主題整理。
+    </p>
+    <p class="text-zinc-200 mb-4">
+      例如，當使輸入「釜山有哪些旅遊景點時？」，系統會即時從網站中抽取相關資料並生成回應，像是：「釜山是一個充滿活力和魅力的城市，以下是我們根據資料整理出的一些旅遊景點：海雲台、SPA LAND、釜山塔、松島海上纜車、釜山煙火節、西面市場、釜山 X the SKY 觀景台……」等具體建議。這類智慧化應用不僅大幅減少人工搜尋與彙整時間，也強化了部落格內容的知識重組能力與互動性延展性。
+    </p>
+    <img src={ragpic.src} alt="n8n 自動化行銷報表" class="w-full max-w-md rounded-lg shadow mb-6" />
+    <a href="/projects" class="text-blue-400 underline">← Back to Projects</a>
+  </div>
+</InfoLayout>

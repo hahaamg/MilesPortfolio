@@ -1,0 +1,77 @@
+---
+import InfoLayout from "../../layouts/InfoLayout.astro";
+import weather_horoscopepic from "../../assets/weather_horoscopepic.png";
+---
+<InfoLayout>
+  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
+    <h1 class="text-3xl font-bold mb-4 text-white">天氣星晴 LINE Bot</h1>
+    <div class="mb-6 flex flex-wrap gap-2">
+      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">LINE Bot</span>
+      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">API 整合</span>
+      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">多模態</span>
+    </div>
+    <p class="text-zinc-200 mb-4">
+      「天氣星晴」是一款結合即時資料與多種生成式 AI 技術的 LINE 聊天機器人，提供使用者星座運勢查詢、穿搭建議與天氣視覺化三合一的互動體驗，專為「重視生活風格與趣味體驗」的年輕用戶打造，讓原本零散的每日資訊（如：穿什麼、會下雨嗎、今天運勢好嗎？）變得一站式、智慧化、可視化。
+    </p>
+
+    <h2 class="text-xl font-bold mt-10 mb-2 text-white">市場觀察與痛點洞察</h2>
+    <p class="text-zinc-200 mb-2">
+      調查市面上主流天氣與星座查詢服務，如中央氣象局、Yahoo 天氣、DailyHoroscope、LINE Weather 等，普遍存在以下痛點：
+    </p>
+    <ul class="list-disc ml-6 text-zinc-200 mb-4">
+      <li>缺乏整合體驗</b>：天氣、運勢、穿搭多由不同 App 提供，切換不便</li>
+      <li>資訊缺乏趣味與互動性</b>：多為靜態圖文、缺乏個人化</li>
+      <li>缺乏視覺化設計</b>：天氣或運勢資訊多為列表式呈現，閱讀負擔大</li>
+    </ul>
+    <p class="text-zinc-200 mb-4">
+      我們觀察到近年使用者對 AI 聊天機器人的接受度持續上升，但<b>真正能提供「即時資訊」與「個人化互動」的產品仍相對稀少</b>。
+      因此，我們嘗試結合多項工具與技術模組，包括：
+      即時網頁爬蟲、影像分析 API、視覺資訊生成系統，打造一個具備整合性、趣味性與高互動性的生活資訊型聊天機器人，讓使用者在與機器人對話的過程中，獲得實用、個人化且具視覺吸引力的資訊回應。
+    </p>
+
+    <h2 class="text-xl font-bold mt-10 mb-2 text-white">產品設計與技術落地</h2>
+    <p class="text-zinc-200 mb-2">
+      本專案聚焦於「使用者日常會問，但未被整合解決」的問題，設計出以下三大核心功能：
+    </p>
+    <ul class="list-decimal ml-6 text-zinc-200 mb-4">
+      <li>
+        星座運勢查詢（資訊即時 + 自動抓取）
+        <ul class="list-disc ml-6">
+          <li>使用者點選星座後，系統透過自動化網頁爬蟲爬取當日運勢，回傳整合後摘要</li>
+          <li>解決傳統 App 不即時、需手動查找的問題</li>
+        </ul>
+      </li>
+      <li>
+        穿搭建議（影像分析 + LLM 生成）
+        <ul class="list-disc ml-6">
+          <li>使用者上傳穿搭照，YOLO 模型辨識衣物類型與色彩主調</li>
+          <li>結合星座運勢與穿搭語料，LLM 生成個性化建議（如：「今日建議選擇更亮眼的配件來強化自信運勢」）</li>
+        </ul>
+      </li>
+      <li>
+        天氣視覺化資訊（API + 圖文生成）
+        <ul class="list-disc ml-6">
+          <li>用戶輸入地點，透過 OpenWeatherMap API 抓取天氣資訊</li>
+          <li>系統判斷白天/夜晚與天氣情況，自動套用畫風模板 + 文字渲染（地點、溫度、天氣簡述），生成平面風格天氣圖並回傳</li>
+        </ul>
+      </li>
+    </ul>
+    
+    <img src={weather_horoscopepic.src} alt="天氣星晴 Line bot" class="w-full max-w-md rounded-lg shadow mb-6" />
+    <div class="mb-6">
+      <a href="https://www.canva.com/design/DAGYxjACYpA/FY_OYnX4JcU44Vpq0HyVyA/view?utm_content=DAGYxjACYpA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3c9bc2a57c" target="_blank" rel="noopener" class="inline-block text-base font-semibold text-blue-400 underline hover:text-blue-300 transition">前往產品簡報 ↗</a>
+    </div>
+
+
+    <h2 class="text-xl font-bold mt-10 mb-2 text-white">技術架構總覽</h2>
+    <ul class="list-disc ml-6 text-zinc-200 mb-8">
+      <li>YOLOv11 + OpenCV</b>：衣物辨識、圖片分析</li>
+      <li>ngrok</b>：LINE webhook server 建置</li>
+      <li>Gemini API</b>：穿搭語句生成</li>
+      <li>OpenWeatherMap API</b>：天氣即時查詢</li>
+      <li>Pillow + 自製模板圖庫</b>：動態圖像生成</li>
+    </ul>
+
+    <a href="/projects" class="text-blue-400 underline">← Back to Projects</a>
+  </div>
+</InfoLayout>
