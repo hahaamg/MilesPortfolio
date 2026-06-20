@@ -2,30 +2,33 @@
 import H1 from "../components/h1.astro";
 import InfoLayout from "../layouts/InfoLayout.astro";
 import ExternalLink from "../components/external-link.astro";
-
 ---
 
 <InfoLayout>
      <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh flex flex-col justify-between gap-32">
-          <div class="space-y-4 sm:space-y-12">
+          <div class="space-y-8 sm:space-y-12">
                <H1> About </H1>
 
-               <p class="text-xl xl:text-2xl text-zinc-500 text-balance">
-                    
-                    我是<span class="text-white">孫睦桓（Miles）</b></span>，目前就讀於國立臺灣師範大學圖文傳播學系碩士班，研究主題聚焦於 AI 與色彩生成模型。
-                    
-                    我的背景橫跨內容行銷、使用者研究與數位產品設計，熱愛觀察市場變化、理解使用者需求，並用技術與設計打造具影響力的解方。
-               </p>
+               <div class="space-y-6 text-xl xl:text-2xl text-zinc-500 leading-relaxed">
+                    <p>
+                         我是<span class="text-white">孫睦桓</span>，具備產品專案管理與 AI 技術背景，擅長在技術可行性、使用者需求與商業目標之間取得平衡，將想法轉化為可執行的方案，並推動專案落地。
+                    </p>
+                    <p>
+                         從研究到產品實務，我累積了多項跨領域專案經驗，曾獨立開發 iOS App 與 AI 自動化工具，也在企業端參與電動車充電平台的產品規劃與產業研究。碩士期間，我以生成式 AI 與表徵學習為研究主題，相關成果曾於 ICAIIC 2026 國際研討會口頭發表。
+                    </p>
+                    <p>
+                         這些經歷讓我同時具備<span class="text-white">技術實作能力</span>、<span class="text-white">產品思維</span>與<span class="text-white">專案推動能力</span>。面對陌生領域時，我能透過系統性研究快速建立判斷；面對複雜問題時，我能評估技術可行性、辨識適合導入 AI 的場景，並整合利害關係人的需求，將想法轉化為具體的產品規劃與執行方案。
+                    </p>
+               </div>
+
                <ExternalLink href="https://milessun.my.canva.site/resume">Resume</ExternalLink>
-
           </div>
-
-
 
           <div class="space-y-2 text-base sm:text-lg">
                <h2 class="px-4 text-zinc-400 underline underline-offset-4 decoration-zinc-500">經歷</h2>
-
                <ul class="px-4 text-zinc-400 list-disc list-outside">
+                    <li>電電數位 產品管理實習生</li>
+                    <li>五倍紅寶石軟體開發 專案管理實習生</li>
                     <li>Gogolook 內容行銷實習生</li>
                     <li>NISSAN 校園大使</li>
                     <li>MSI 校園大使</li>

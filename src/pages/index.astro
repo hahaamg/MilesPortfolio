@@ -5,6 +5,7 @@ import Navigation from "../components/navigation";
 import RootLayout from "../layouts/RootLayout.astro";
 import WarpBackground from "../components/warp-background";
 import AvailableForWork from "../components/available.astro";
+import TypewriterText from "../components/TypewriterText";
 ---
 
 <RootLayout>
@@ -27,7 +28,7 @@ import AvailableForWork from "../components/available.astro";
 				<div class="flex flex-col justify-center items-start h-full gap-6">
 					<div class="flex flex-col gap-6">
 						<H1 size="large" class="text-left"> SUN, <br /> MU HUAN </H1>
-						<p class="text-zinc-400 text-sm sm:text-base text-left leading-relaxed max-w-sm lg:max-w-[650px]">I'm Miles. I build things across AI, products, and a few categories that don't really have a name — including, yes, a plate of fried bugs. The common thread: I see a problem, I want to make something. Looks messy. It's all on purpose.</p>
+						<TypewriterText client:load />
 					</div>
 				</div>
 
