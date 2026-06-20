@@ -1,0 +1,37 @@
+---
+import InfoLayout from "./InfoLayout.astro";
+
+const { title, tags } = Astro.props;
+---
+
+<InfoLayout>
+  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
+    <a href="/projects" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors duration-200 text-sm mb-10">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m15 18-6-6 6-6"/>
+      </svg>
+      Back to Projects
+    </a>
+
+    <h1 class="text-3xl font-bold text-white mb-4">{title}</h1>
+
+    {tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mb-12">
+        {tags.map((tag: string) => (
+          <span class="w-fit px-3 py-0.5 border border-zinc-700 rounded-full text-zinc-400 text-xs tracking-widest uppercase">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <div class="flex flex-col lg:flex-row gap-12">
+      <aside class="w-full lg:w-2/5 shrink-0 space-y-6">
+        <slot name="aside" />
+      </aside>
+      <div class="flex-1 space-y-6 text-zinc-400 text-base leading-relaxed">
+        <slot />
+      </div>
+    </div>
+  </div>
+</InfoLayout>

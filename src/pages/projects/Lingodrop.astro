@@ -1,35 +1,32 @@
 ---
-import InfoLayout from "../../layouts/InfoLayout.astro";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../components/project/ImageSlider";
+import ProjectExternalLink from "../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../components/project/HighlightCard.astro";
 import LingoDrop from "../../assets/Lingodrop_mockup.png";
-
-
 ---
-<InfoLayout>
-  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
-    <a href="/projects" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors duration-200 text-sm mb-8">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      Back to Projects
-    </a>
-    <h1 class="text-3xl font-bold mb-4 text-white">LingoDrop：將日常語言輸入轉化為個人學習素材庫</h1>
-    <div class="mb-6 flex flex-wrap gap-2">
-      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">語言學習</span>
-      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">產品設計</span>
-      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">Mobile App</span>
+
+<ProjectLayout
+  title="LingoDrop｜個人化字典"
+  tags={["語言學習", "產品設計", "Mobile App"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: LingoDrop.src, alt: "LingoDrop" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="個人化" label="情境字典系統" />
+      <HighlightCard value="主動式" label="語言學習設計" />
+      <HighlightCard value="生活" label="輸入即素材庫" />
     </div>
-
-    <p class="text-zinc-200 mb-4">
-      現有的語言學習 App 多採「被動接收」模式，使用者只能學習官方預設的罐頭單字或簡單語句，這些內容缺乏生活感，難以與真實情境產生共鳴，學習動機難以維持。
-    </p>
-    <p class="text-zinc-200 mb-4">
-      LingoDrop 的誕生源於一個核心理念：「最好的教材，源自你自己的生活。」在追美劇、聽 Podcast 或瀏覽社群媒體時，常遇到「這個字好實用」的瞬間的瞬間，才是學習動機最強烈的時刻，卻因缺乏便捷的記錄方式而讓這些素材白白流失。LingoDrop 讓使用者從被動的接收者轉變為主動的建構者，透過建立屬於自己的「情境字典」，將零散的語言輸入凝聚成高價值的個人化學習資產。
- 
-    </p>
-
-    <div class="mb-6">
-      <a href="https://lingodropapp.zeabur.app/" target="_blank" rel="noopener" class="inline-block text-base font-semibold text-blue-400 underline hover:text-blue-300 transition">前往LingoDrop ↗</a>
-    </div>
-    <img src={LingoDrop.src} alt="LingoDrop" class="w-full max-w-md rounded-lg shadow mb-6" />
-    
-
+    <ProjectExternalLink href="https://lingodropapp.zeabur.app/" label="前往 LingoDrop" />
   </div>
-</InfoLayout>
+
+  <p>
+    現有的語言學習 App 多採「被動接收」模式，使用者只能學習官方預設的罐頭單字或簡單語句，這些內容缺乏生活感，難以與真實情境產生共鳴，學習動機難以維持。
+  </p>
+  <p>
+    LingoDrop 的誕生源於一個核心理念：「最好的教材，源自你自己的生活。」在追美劇、聽 Podcast 或瀏覽社群媒體時，常遇到「這個字好實用」的瞬間，才是學習動機最強烈的時刻，卻因缺乏便捷的記錄方式而讓這些素材白白流失。LingoDrop 讓使用者從被動的接收者轉變為主動的建構者，透過建立屬於自己的「情境字典」，將零散的語言輸入凝聚成高價值的個人化學習資產。
+  </p>
+</ProjectLayout>

@@ -1,25 +1,30 @@
 ---
-import InfoLayout from "../../layouts/InfoLayout.astro";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../components/project/ImageSlider";
+import HighlightCard from "../../components/project/HighlightCard.astro";
 import n8npic from "../../assets/n8npic.png";
 ---
-<InfoLayout>
-  <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
-    <a href="/projects" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors duration-200 text-sm mb-8">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      Back to Projects
-    </a>
-    <h1 class="text-3xl font-bold mb-4 text-white">n8n 自動化行銷報表</h1>
-    <div class="mb-6 flex flex-wrap gap-2">
-      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">自動化</span>
-      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">API 整合</span>
-      <span class="px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out text-yellow-200 border border-yellow-300 hover:bg-yellow-300 hover:text-zinc-900 font-semibold">GA + GSC</span>
+
+<ProjectLayout
+  title="n8n 自動化行銷報表"
+  tags={["自動化", "API 整合", "GA + GSC"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: n8npic.src, alt: "n8n 自動化行銷報表" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="80%" label="人工時間節省" />
+      <HighlightCard value="3+" label="串接平台 API" />
+      <HighlightCard value="LLM" label="自動摘要報表" />
     </div>
-    <p class="text-zinc-200 mb-4">
-      為提升部落格的數據追蹤效率，我設計並實作一套以 n8n 為核心的自動化報表流程，解決需頻繁登入 Google Search Console 手動抓取流量數據的痛點，避免資料遺漏並優化行銷決策效率。此專案整合多個平台 API，包括 Google Analytics 與 Search Console，透過 OAuth2 認證、Webhook 排程與 Google Sheets 儲存機制，自動生成每週流量與關鍵字排名報表。
-    </p>
-    <p class="text-zinc-200 mb-4">
-      我更進一步導入 LLM 分析摘要結果，協助判讀每週 SEO 表現，並定時歸檔至 Google Drive。這不僅大幅節省 80% 的人工作業時間，也讓我在實作過程中熟悉 以數據驅動產品優化的日常營運節奏與工具鏈整合。此系統目前仍持續運行，作為我評估內容策略與廣告轉換成效的重要依據。
-    </p>
-    <img src={n8npic.src} alt="n8n 自動化行銷報表" class="w-full max-w-md rounded-lg shadow mb-6" />
   </div>
-</InfoLayout>
+
+  <p>
+    為提升部落格的數據追蹤效率，我設計並實作一套以 n8n 為核心的自動化報表流程，解決需頻繁登入 Google Search Console 手動抓取流量數據的痛點，避免資料遺漏並優化行銷決策效率。此專案整合多個平台 API，包括 Google Analytics 與 Search Console，透過 OAuth2 認證、Webhook 排程與 Google Sheets 儲存機制，自動生成每週流量與關鍵字排名報表。
+  </p>
+  <p>
+    我更進一步導入 LLM 分析摘要結果，協助判讀每週 SEO 表現，並定時歸檔至 Google Drive。這不僅大幅節省 80% 的人工作業時間，也讓我在實作過程中熟悉以數據驅動產品優化的日常營運節奏與工具鏈整合。此系統目前仍持續運行，作為我評估內容策略與廣告轉換成效的重要依據。
+  </p>
+</ProjectLayout>
