@@ -2,6 +2,7 @@
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
 import ImageSlider from "../../components/project/ImageSlider";
 import HighlightCard from "../../components/project/HighlightCard.astro";
+import SectionTitle from "../../components/project/SectionTitle.astro";
 import n8npic from "../../assets/n8npic.png";
 ---
 
@@ -21,9 +22,12 @@ import n8npic from "../../assets/n8npic.png";
     </div>
   </div>
 
+  <SectionTitle title="專案背景" />
   <p>
     為提升部落格的數據追蹤效率，我設計並實作一套以 n8n 為核心的自動化報表流程，解決需頻繁登入 Google Search Console 手動抓取流量數據的痛點，避免資料遺漏並優化行銷決策效率。此專案整合多個平台 API，包括 Google Analytics 與 Search Console，透過 OAuth2 認證、Webhook 排程與 Google Sheets 儲存機制，自動生成每週流量與關鍵字排名報表。
   </p>
+
+  <SectionTitle title="LLM 整合與成效" />
   <p>
     我更進一步導入 LLM 分析摘要結果，協助判讀每週 SEO 表現，並定時歸檔至 Google Drive。這不僅大幅節省 80% 的人工作業時間，也讓我在實作過程中熟悉以數據驅動產品優化的日常營運節奏與工具鏈整合。此系統目前仍持續運行，作為我評估內容策略與廣告轉換成效的重要依據。
   </p>
