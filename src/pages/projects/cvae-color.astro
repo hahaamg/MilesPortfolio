@@ -1,0 +1,46 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../components/project/ImageSlider";
+import ProjectExternalLink from "../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../components/project/HighlightCard.astro";
+import SectionTitle from "../../components/project/SectionTitle.astro";
+import cover from "../../assets/masterthesis.png";
+---
+
+<ProjectLayout
+  title="基於條件先驗 β-CVAE 的情緒導向色彩組合生成研究"
+  tags={["生成式 AI", "色彩設計", "表徵學習", "ICAIIC 2026"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: cover.src, alt: "β-CVAE 色彩生成研究" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="53,698" label="色彩組合訓練資料" />
+      <HighlightCard value="β-CVAE" label="2 個潛在子空間" />
+      <HighlightCard value="ICAIIC" label="口頭發表（2026）" />
+    </div>
+    <ProjectExternalLink href="https://ieeexplore.ieee.org/abstract/document/11454419" label="查看 IEEE 會議論文集" />
+  </div>
+
+  <SectionTitle title="研究動機" />
+  <p>
+    情緒導向的色彩組合設計長期依賴設計者的主觀判斷，現有生成方法多以離散語意標籤作為控制條件，難以支援連續情緒空間中的精確操作，也不易在維持既有風格的前提下進行情緒調整。本研究針對這個缺口，提出一種以連續情緒維度為條件的色彩配色生成架構，使情緒成為可操作的參數，並同時保留風格變異能力。
+  </p>
+
+  <SectionTitle title="研究方法" />
+  <p>
+    本研究將潛在表示劃分為情緒子空間與殘差風格子空間，以實現情緒控制與風格變化的解耦。情緒結構依據色彩意象尺度建構，以「暖—冷」與「軟—硬」兩個維度刻劃，並利用 XGBoost 對 53,698 組線上取得的色彩組合進行情緒座標估計，最終結合條件變分自編碼器（β-CVAE）建構生成模型。
+  </p>
+
+  <SectionTitle title="實驗結果" />
+  <p>
+    情緒子空間與目標情緒的 Spearman 相關係數達 0.92 與 0.95，移除對齊機制後降至 0.11；風格子空間與情緒條件的相關低於 0.06，支持兩者在表示上的有效分離。模型可隨連續情緒條件產生具方向性的配色變化，並支援在固定風格下進行情緒調整；潛在空間插值呈現平滑過渡，顯示情緒控制可沿連續路徑操作。
+  </p>
+
+  <SectionTitle title="研究貢獻" />
+  <p>
+    本研究建立一種可進行情緒連續控制的生成機制，為情緒導向色彩設計提供具可操作性的計算框架。相關成果於 ICAIIC 2026 國際研討會口頭發表。
+  </p>
+</ProjectLayout>
