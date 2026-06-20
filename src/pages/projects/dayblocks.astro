@@ -1,0 +1,38 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../components/project/ImageSlider";
+import ProjectExternalLink from "../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../components/project/HighlightCard.astro";
+import dayblocksCover from "../../assets/DayBlocks cover.png";
+---
+
+<ProjectLayout
+  title="DayBlocks｜模組化卡片日記"
+  tags={["iOS App", "生活記錄", "輕社交"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: dayblocksCover.src, alt: "DayBlocks" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="7+" label="功能卡片類型" />
+      <HighlightCard value="iOS" label="獨立開發上架" />
+      <HighlightCard value="App Store" label="正式發布" />
+    </div>
+    <ProjectExternalLink href="https://apps.apple.com/tw/app/dayblocks/id6761128709" label="前往 App Store" />
+  </div>
+
+  <p>
+    DayBlocks 是一款以「模組化卡片」為核心概念的生活記錄 App，讓使用者透過可自由拖曳、調整大小的卡片元件，打造屬於自己的每日儀表板。不同於傳統日記 App 的固定格式，DayBlocks 強調彈性與個人化，你可以根據當天的生活重心，隨時調整版面配置，讓記錄這件事真正融入日常節奏。
+  </p>
+  <p>
+    App 內建 7 種以上的功能卡片，涵蓋天氣、心情、日記、相片、晨間打卡、待辦清單與習慣追蹤，使用者可以依需求自由組合。透過視覺化熱力圖，可以一眼看出習慣養成的軌跡；心情趨勢日曆則幫助你回顧情緒變化，逐漸建立對自己生活節奏的覺察。
+  </p>
+  <p>
+    除了個人記錄，DayBlocks 也加入輕社交元素，使用者可以在動態牆上分享日常成就與里程碑，讓生活記錄不只是自我留存，也能成為與朋友連結的方式。這個設計的出發點是：好的習慣與生活感，值得被看見，也值得被鼓勵。
+  </p>
+  <p>
+    DayBlocks 從構想、設計到開發、上架，由我獨立完成，目前已於 App Store 正式發布，支援 iOS 15.0 以上裝置，並提供繁體中文與英文介面。
+  </p>
+</ProjectLayout>
