@@ -25,7 +25,7 @@ export default function ProjectList({ projects }: { projects: any[] }) {
           </button>
         ))}
       </div>
-      <div className="mt-4 sm:mt-12 grid [grid-template-columns:repeat(auto-fit,minmax(200px,1fr))] gap-8">
+      <div className="mt-4 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-12">
         {filtered.map((project) => (
           <ProjectCard key={project.title} {...project} />
         ))}
