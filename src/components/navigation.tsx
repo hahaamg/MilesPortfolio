@@ -6,17 +6,17 @@ export default function Navigation({ children }: { children: React.ReactNode; })
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="flex items-center justify-center gap-12">
+        <div className="flex items-center justify-center">
 
             <AnimatePresence>
                 {isOpen &&
                     <>
                         <motion.div
-                            initial={{ filter: "blur(20px)", opacity: 0 }}
-                            transition={{ ease: "easeInOut", duration: 0.5 }}
-                            animate={{ filter: "blur(0px)", opacity: 1 }}
-                            exit={{ filter: "blur(20px)", opacity: 0 }}
-                            className="hidden lg:flex gap-4">
+                            initial={{ filter: "blur(20px)", opacity: 0, maxWidth: 0 }}
+                            animate={{ filter: "blur(0px)", opacity: 1, maxWidth: 400 }}
+                            exit={{ filter: "blur(20px)", opacity: 0, maxWidth: 0 }}
+                            transition={{ ease: [0.25, 0.1, 0.25, 1], duration: 0.8 }}
+                            className="hidden lg:flex gap-4 overflow-hidden">
                             {children}
                         </motion.div>
 
@@ -70,15 +70,22 @@ export default function Navigation({ children }: { children: React.ReactNode; })
                 }
             </AnimatePresence>
 
-            <button type="button" onClick={() => setIsOpen(prev => !prev)} className="h-fit flex items-center gap-2 text-zinc-100 cursor-pointer bg-transparent hover:text-white hover:bg-zinc-100/20 hover:outline-2 outline-offset-2 outline-zinc-100/20 transition-all duration-300 ease-in-out rounded-full px-5 py-2">
+            <motion.button
+                type="button"
+                onClick={() => setIsOpen(prev => !prev)}
+                whileTap={{ scale: 0.94 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-fit flex items-center gap-2 text-zinc-100 cursor-pointer bg-transparent hover:text-white hover:bg-zinc-100/20 hover:outline-2 outline-offset-2 outline-zinc-100/20 rounded-full px-5 py-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                     <title>Menu Icon</title>
                     <line x1="3" y1="6" x2="21" y2="6" className={clsx("transition-all duration-300 origin-center", isOpen ? "opacity-0" : "opacity-100")} />
                     <line x1="3" y1="12" x2="21" y2="12" />
                     <line x1="3" y1="18" x2="21" y2="18" className={clsx("transition-all duration-300 origin-center", isOpen ? "opacity-0" : "opacity-100")} />
                 </svg>
-                <span className="text-zinc-100 text-base sm:text-2xl">{isOpen ? "Close" : "Menu"}</span>
-            </button>
+                <span className="text-zinc-100 text-base sm:text-2xl">
+                    {isOpen ? "Close" : "Menu"}
+                </span>
+            </motion.button>
         </div>
     );
 }
