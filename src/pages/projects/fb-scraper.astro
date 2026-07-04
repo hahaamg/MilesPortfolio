@@ -1,0 +1,49 @@
+---
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../components/project/ImageSlider";
+import HighlightCard from "../../components/project/HighlightCard.astro";
+import SectionTitle from "../../components/project/SectionTitle.astro";
+import fbAutomation from "../../assets/FB automation.png";
+---
+
+<ProjectLayout
+  title="Facebook 粉絲團爬蟲"
+  tags={["agent-browser", "CDP", "automation"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: fbAutomation.src, alt: "Facebook 粉絲團爬蟲" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="CDP" label="繞過 FB 反爬偵測" />
+      <HighlightCard value="Gemini" label="自動結構化貼文" />
+      <HighlightCard value="Sheets" label="即時同步報表" />
+    </div>
+  </div>
+
+  <SectionTitle title="問題與動機" />
+  <p>
+    在電動車產業實習期間，社群營運部門需要每天人工瀏覽各充電營運商的 Facebook 粉絲團，逐一記錄最新的費率調整、站點公告與活動資訊。這些資訊一方面要即時提供給客服人員作為回覆依據，另一方面也需同步維護至 App 內的相關資訊頁面。人工作業不僅每天耗費大量時間，也容易因疏漏導致客服與 App 資訊落後於實際狀況。
+  </p>
+
+  <SectionTitle title="解決方案" />
+  <p>
+    我設計並實作一套全自動的情報蒐集流程：每日定時從多個粉絲團爬取貼文，透過 Gemini AI 自動解析出貼文類型、電價區間、生效日期等關鍵資訊，最終同步至 Google Sheets，讓團隊不需登入 Facebook 就能即時掌握市場動態。
+  </p>
+
+  <SectionTitle title="技術選型" />
+  <p>
+    Facebook 無官方 API 且對自動化工具有防禦機制，傳統爬蟲方案容易被偵測攔截。因此選用 Chrome DevTools Protocol（CDP）直接控制真實瀏覽器，模擬人類的滾動手勢與操作行為，並保留登入 session 避免每次重新驗證。爬取的原始貼文文字再交由 Gemini API 進行結構化解析，將非結構化的自然語言轉為可查詢的欄位資料，最終透過 Google Sheets API 增量同步，避免重複寫入。
+  </p>
+
+  <SectionTitle title="成果與價值" />
+  <p>
+    整套流程從資料蒐集、AI 解析到報表更新全程無需人工介入，節省社群營運部門每日 1–1.5 小時的重複性手動追蹤作業，客服與 App 資訊也能保持即時更新。累積的結構化資料也成為分析各品牌電價策略與公告頻率的基礎素材，直接支援產品規劃與競品研究的決策需求。
+  </p>
+
+  <SectionTitle title="應用延伸" />
+  <p>
+    這套「社群爬取 + AI 結構化 + 自動同步報表」的架構並不限於電動車產業。同樣的流程可以套用在零售業監控競品促銷動態、餐飲品牌追蹤口碑與活動公告、新創公司蒐集市場輿情，或是媒體監測特定議題的社群聲量。只要有需要從社群平台持續蒐集資訊、並轉化為可分析資料的場景，這個架構都能快速複製與調整。
+  </p>
+</ProjectLayout>
