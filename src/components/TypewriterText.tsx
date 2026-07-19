@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const text = "I'm Miles. I build things across AI, products, and a few categories that don't really have a name — including, yes, a plate of fried bugs. The common thread: I see a problem, I want to make something. Looks messy. It's all on purpose.";
+const text = "I build things across AI, products, and a few categories that don't really have a name — including, yes, a plate of fried bugs. The common thread: I see a problem, I want to make something. Looks messy. It's all on purpose.";
 
 export default function TypewriterText() {
     const [displayed, setDisplayed] = useState("");
@@ -21,9 +21,13 @@ export default function TypewriterText() {
     }, []);
 
     return (
-        <p className="text-zinc-400 text-sm sm:text-base text-left leading-relaxed max-w-sm lg:max-w-[650px]">
-            {displayed}
-            {!done && <span className="inline-block w-0.5 h-4 bg-zinc-400 ml-0.5 animate-pulse align-middle" />}
+        <p className="relative text-zinc-400 text-sm sm:text-base text-left leading-relaxed max-w-sm lg:max-w-[650px]">
+            {/* invisible full text reserves the final layout size so nothing shifts while typing */}
+            <span className="invisible" aria-hidden="true">{text}</span>
+            <span className="absolute inset-0">
+                {displayed}
+                {!done && <span className="inline-block w-0.5 h-4 bg-zinc-400 ml-0.5 animate-pulse align-middle" />}
+            </span>
         </p>
     );
 }
