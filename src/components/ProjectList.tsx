@@ -25,7 +25,7 @@ export default function ProjectList({ projects }: { projects: any[] }) {
           </button>
         ))}
       </div>
-      <div className="mt-4 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-12">
+      <div className="mt-4 sm:mt-12 grid grid-cols-1 sm:max-md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-12">
         {filtered.map((project) => (
           <ProjectCard key={project.title} {...project} />
         ))}
