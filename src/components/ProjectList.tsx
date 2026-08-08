@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 
 const categories = [
-  "全部", "網站經營", "程式開發", "學術/產品研究", "行銷/商業企劃"
+  "全部", "產品設計", "技術開發", "數據驅動成長", "使用者研究"
 ];
 
 export default function ProjectList({ projects }: { projects: any[] }) {
