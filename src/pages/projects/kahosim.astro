@@ -46,29 +46,29 @@ import linebot from "../../assets/kahosim/linebot.png";
     更關鍵的是退件原因——多數民眾不知道如何在自家銀行的 App 或網銀中找到符合公家規範的扣款紀錄與截圖，導致上傳文件格式不符或缺漏。問題並非民眾不願配合，而是在於既有的申請流程從未清楚告訴他們該怎麼做。
   </p>
   <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
-    「這個發現徹底改變了我們的解題方向：與其做一個單純加速審核的後台，不如從源頭減少退件。」
+    「這個發現徹底改變了我們的解題方向：審核加速固然重要，但若只做後端優化，源頭不斷送進錯誤文件，只會讓承辦人更快地退件。我們必須雙管齊下——在申請端從源頭減少退件，同時在審查端透過自動化標記與知識庫大幅加速審核，真正把 3 個人的產能放大。」
   </p>
 
   <SectionTitle title="雙邊解決方案架構" />
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. 申請端：讓民眾一次就交對</h3>
+  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. 申請端：源頭防呆，讓民眾一次就交對</h3>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">引導式申請流程</strong>：重新梳理申請旅程，在每個步驟明確標註所需文件與有效佐證標準，杜絕資訊盲區，大幅降低缺件機率。</li>
     <li><strong class="text-zinc-200">對話機器人扣款指引</strong>：建置互動式對話指引，手把手協助民眾查找各家主流銀行（如國泰 Cube、玉山 Wallet 等）App 中的消費明細路徑，精準打擊佔比最高的退件原因。</li>
     <li><strong class="text-zinc-200">前端本機端隱私 OCR（PCI DSS 合規）</strong>：採用純前端 Tesseract.js 辨識卡面與明細，敏感個資在離開使用者瀏覽器前即於本地完成自動遮罩，並以 Luhn 演算法校驗卡號格式，設計符合 PCI DSS v4.0 Requirement 3.4.1 安全規範。</li>
   </ul>
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. 審查端：讓 3 個人的產能有效放大</h3>
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. 審查端：智能輔助審核加速，放大 3 人產能</h3>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">自學習 AI 軟體名單知識庫</strong>：當民眾申請未收錄於白名單的 AI 工具時，承辦人員僅需在系統中裁定一次，結果便會自動回補寫入全域知識庫，讓系統隨使用時間自主成長。</li>
-    <li><strong class="text-zinc-200">畫布式文件展現與智能螢光筆</strong>：整合上傳的多頁收據與帳單，自動比對並螢光標示扣款金額、工具名稱與申請人等查核重點，省去承辦人逐頁人工肉眼對照的負擔。</li>
+    <li><strong class="text-zinc-200">畫布式整合與智能螢光筆加速</strong>：整合上傳的多頁收據與帳單至單一審核畫布，自動辨識並以螢光筆標記扣款金額、工具名稱與申請人等查核重點，承辦人一眼即可完成比對，大幅縮減逐頁翻找核對的時間。</li>
+    <li><strong class="text-zinc-200">自學習 AI 軟體名單知識庫</strong>：當民眾申請未收錄於白名單的 AI 工具時，承辦人員僅需在系統中裁定一次，結果便會自動回補寫入全域知識庫，後續同類案件即可自動判斷，避免重複行政查詢。</li>
     <li><strong class="text-zinc-200">官方 LINE Bot 智慧聯網</strong>：串接新竹青年官方帳號（@youthhsinchu），主動推播案件進度、步驟化補件說明與進度查詢，徹底阻斷重複性進線電話。</li>
   </ul>
 
   <SectionTitle title="我的角色與個人貢獻" />
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">利害關係人訪談與痛點發掘</strong>：主動聯繫青年發展中心承辦人員張小姐，透過實地訪談獲取每日 100 件、退件率 72% 等關鍵量化數據與第一手作業瓶頸。</li>
-    <li><strong class="text-zinc-200">問題定義與產品範疇界定</strong>：推動團隊從「審核加速」轉向「源頭防呆」的策略轉向，完成雙邊旅程規劃並定錨黑客松 MVP 開發範疇。</li>
+    <li><strong class="text-zinc-200">產品策略與 MVP 範疇界定</strong>：推動團隊確立「源頭防呆 + 後端加速」的雙軌策略，完成雙邊旅程規劃並界定黑客松 MVP 開發範疇。</li>
     <li><strong class="text-zinc-200">前端介面開發與 OCR 隱私防護實作</strong>：主導申請端前端互動介面刻劃，並實作瀏覽器端 Tesseract.js 本機文字識別、Luhn 校驗與個資遮蔽邏輯。</li>
   </ul>
 
