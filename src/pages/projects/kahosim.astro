@@ -14,7 +14,7 @@ import linebot from "../../assets/kahosim/linebot.png";
 
 <ProjectLayout
   title="卡好審｜青年補助智慧申請與審核系統"
-  tags={["2026 梅竹黑客松第二名", "GovTech", "產品規劃", "隱私 OCR", "端到端服務設計"]}
+  tags={["2026 梅竹黑客松第二名", "政府數位服務", "產品規劃", "使用者研究", "隱私 OCR"]}
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
@@ -31,60 +31,60 @@ import linebot from "../../assets/kahosim/linebot.png";
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="第二名" label="梅竹黑客松創客組" />
       <HighlightCard value="72%" label="訪談揭露的既有退件率" />
-      <HighlightCard value="端到端" label="前端合規 OCR + LINE" />
+      <HighlightCard value="三端" label="申請、審查、通知同步改善" />
     </div>
   </div>
 
-  <SectionTitle title="專案起源與田野洞察" />
+  <SectionTitle title="先問承辦人員，再開始解題" />
   <p>
-    本專案源於 2026 梅竹黑客松（創客組），題目為新竹市「AI 領航青年數位工具補助計畫」。在著手解題前，我主動聯繫了補助計畫的實際承辦人員進行深度訪談，想知道題目說明背後未被寫出的真實痛點。
+    題目來自 2026 梅竹黑客松創客組，要解的是新竹市「AI 領航青年數位工具補助計畫」的行政負擔。動手之前，我先打電話給這個計畫的承辦人員，想知道題目沒有寫出來的部分。
   </p>
   <p>
-    訪談結果遠超出預期：整個計畫只有 3 位承辦人員，所有案件皆為人工逐件審核；高峰期每日約 100 件申請中，將近 72 件因文件不合格被退回。
+    問到的狀況比題目描述的嚴重：整個計畫只有 3 位承辦人員，每一件都靠人工逐件看過；最忙的時候一天進來約 100 件，其中將近 72 件因為文件不合格被退回。
   </p>
   <p>
-    更關鍵的是退件原因：多數民眾不知道如何在自家銀行的 App 或網銀中找到符合公家規範的扣款紀錄與截圖，導致上傳文件格式不符或缺漏。問題並非民眾不願配合，而是在於既有的申請流程從未清楚告訴他們該怎麼做。
+    更關鍵的是退件的理由：多數人根本不知道要去哪裡找扣款紀錄。每家銀行的 App 介面都不一樣，消費明細藏的位置也不同，民眾只能自己摸索，交出來的截圖常常不符規定。這不是民眾不配合，而是申請流程從頭到尾沒告訴過他們該怎麼做。
   </p>
   <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
-    「這個發現改變了我們的解題方向。審核加速固然重要，但若源頭持續湧入不合格文件，只會讓承辦人更快地退件。真正該做的是同時處理兩端：讓民眾一次就交對，也讓 3 個人的審核產能被放大。」
+    「這件事改變了我們的解題方向。把審核做快當然有用，但如果不合格的文件一直進來，加速的結果只是讓承辦人退件退得更快。要解的其實是兩件事：讓民眾第一次就交對，也讓這 3 個人看得更快。」
   </p>
 
-  <SectionTitle title="三位一體解決方案架構" />
+  <SectionTitle title="三個環節一起改" />
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. 申請端（Web）：引導式流程改善 ＋ 前端本機隱私 OCR</h3>
+  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">一、申請端：把規則講清楚，個資不外流</h3>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">引導式申請流程</strong>：重新梳理申請旅程，在每個步驟標明所需文件格式與佐證標準，讓民眾在送出前就知道什麼算合格。</li>
-    <li><strong class="text-zinc-200">前端本機端隱私 OCR（PCI DSS 合規）</strong>：採用純前端 Tesseract.js 辨識卡面與憑證，敏感個資在離開使用者瀏覽器前即於本地完成自動遮罩，並以 Luhn 演算法校驗卡號格式，設計符合 PCI DSS v4.0 Requirement 3.4.1 安全規範。</li>
+    <li><strong class="text-zinc-200">一步一步告訴你要交什麼</strong>：重新安排申請步驟，每一步都標明需要哪些文件、什麼格式才算數，讓人在按下送出之前就知道自己交得對不對。</li>
+    <li><strong class="text-zinc-200">個資在自己的電腦上就先遮掉</strong>：用 Tesseract.js 在瀏覽器裡直接辨識卡號與憑證，遮罩完才上傳，原始文件不會離開使用者的裝置；卡號格式以 Luhn 演算法檢查，整體設計對應 PCI DSS v4.0 Requirement 3.4.1。</li>
   </ul>
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. 審查端（Console）：畫布整合 ＋ 智能螢光筆高亮加速</h3>
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">二、審查端：讓 3 個人看得更快</h3>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">畫布式整合與智能螢光筆加速</strong>：整合上傳的多頁收據與帳單至單一審核畫布，自動辨識並標記扣款金額、工具名稱與申請人等查核重點，讓承辦人不必逐頁翻找比對。</li>
-    <li><strong class="text-zinc-200">自學習 AI 軟體名單知識庫</strong>：當民眾申請未收錄於白名單的 AI 工具時，承辦人員僅需在系統中裁定一次，結果便會自動回補寫入全域知識庫，後續同類案件即可自動判斷，避免重複行政查詢。</li>
+    <li><strong class="text-zinc-200">把該看的地方標出來</strong>：民眾上傳的收據和帳單常常好幾頁，系統把它們整合在同一個畫面上，自動圈出扣款金額、工具名稱、申請人這些要核對的欄位，承辦人不用再一頁一頁翻。</li>
+    <li><strong class="text-zinc-200">判斷過的軟體會被記下來</strong>：遇到名單上沒有的 AI 工具，承辦人只要判定一次，結果就會寫回系統，之後別人再申請同一套軟體就不必重查。名單會隨著使用愈來愈完整。</li>
   </ul>
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">3. 溝通端（LINE Bot）：對話式扣款指引 ＋ 案件動態即時推播</h3>
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">三、LINE Bot：教民眾找到那張截圖</h3>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">網銀操作對話式指引</strong>：建置互動式對話教學，協助民眾查找各家主流銀行（如國泰 Cube、玉山 Wallet 等）App 中的消費明細截圖路徑，直接對應佔比最高的退件原因。</li>
-    <li><strong class="text-zinc-200">官方 LINE 智慧聯網與電話降載</strong>：串接新竹青年官方帳號（@youthhsinchu），主動推播案件審核進度與步驟化補件說明，減少重複性的電話進線查詢。</li>
+    <li><strong class="text-zinc-200">一步步帶你找到扣款紀錄</strong>：做成對話式的教學，依使用者的銀行（國泰 Cube、玉山 Wallet 等）帶他一步步點到消費明細、截到正確的畫面。這正是退件原因裡佔比最高的一項。</li>
+    <li><strong class="text-zinc-200">進度直接推給你，不用打電話問</strong>：串接新竹青年官方帳號（@youthhsinchu），主動通知審核進度；需要補件時直接說明缺什麼、怎麼補，減少打電話來問的次數。</li>
   </ul>
 
-  <SectionTitle title="我的角色與個人貢獻" />
+  <SectionTitle title="我負責的部分" />
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">利害關係人訪談與痛點發掘</strong>：主動聯繫青年發展中心承辦人員張小姐，透過實地訪談獲取每日 100 件、退件率 72% 等關鍵量化數據與第一手作業瓶頸。</li>
-    <li><strong class="text-zinc-200">產品策略與 MVP 範疇界定</strong>：推動團隊確立「申請端隱私 OCR ＋ 審查端高亮加速 ＋ LINE Bot 雙向溝通」的三位一體架構，完成跨端服務旅程規劃並界定黑客松 MVP 開發範疇。</li>
-    <li><strong class="text-zinc-200">前端介面開發與 OCR 隱私防護實作</strong>：主導申請端前端互動介面刻劃，並實作瀏覽器端 Tesseract.js 本機文字識別、Luhn 校驗與個資遮蔽邏輯。</li>
+    <li><strong class="text-zinc-200">找到承辦人員問出真正的問題</strong>：主動聯繫青年發展中心的張小姐，問出每日 100 件、退件 72 件這些題目上看不到的數字，也才知道退件的主因是民眾找不到扣款紀錄。</li>
+    <li><strong class="text-zinc-200">定義問題、決定這次要做到哪裡</strong>：和團隊一起確立申請端、審查端、LINE Bot 三個環節一起改的方向，畫出跨端的服務流程，並界定比賽期間實際能完成的範圍。</li>
+    <li><strong class="text-zinc-200">做出申請端介面與 OCR 遮蔽</strong>：負責申請端的前端介面，並實作瀏覽器端的 Tesseract.js 文字辨識、Luhn 卡號檢查與個資遮蔽。</li>
   </ul>
 
-  <SectionTitle title="為什麼這次先做訪談" />
+  <SectionTitle title="上一場沒得獎，這次先做了訪談" />
   <p>
-    這是我參加的第二場黑客松。第一場是生成式 AI 應用黑客松，我們沒有事前討論，當天才開始消化題目，面對龐大的功能模組難以聚焦，最後只完成部分功能，沒有獲獎。
+    這是我第二次參加黑客松。第一場是生成式 AI 應用黑客松，我們賽前完全沒討論，當天到現場才開始讀題目。那題要做的模組很多，等我們搞懂題目要什麼，時間已經去掉一大半，最後只做完幾個功能，沒有得獎。
   </p>
   <p>
-    所以這次我在賽前就先聯繫承辦人員、完成使用者旅程地圖，帶著對問題的理解進場。差別不在於做了更多功能，而在於整個團隊能專注在同一個方向上：先確認哪一個問題最值得解，再決定要做什麼。
+    所以這次我在賽前就先去問承辦人員、把使用者旅程畫出來，帶著結論進場。差別不在做得比較多，而在於一開始就知道要往哪裡做：先確定哪個問題最值得解，才決定動手做什麼。
   </p>
 
-  <SectionTitle title="競賽成效" />
+  <SectionTitle title="結果" />
   <p>
     本專案獲 <strong>2026 梅竹黑客松創客組第二名</strong>（共 12 隊）。
   </p>
