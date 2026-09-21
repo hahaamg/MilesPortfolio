@@ -108,8 +108,8 @@ export const zhProjects: ProjectItem[] = [
 
 export const enProjects: ProjectItem[] = [
   {
-    title: "Ka-Ho-Sim | GovTech Subsidy Smart Review System",
-    description: "2nd Place at 2026 Meichu Hackathon (Maker Track). Field-researched a 72% rejection bottleneck, building client-side privacy OCR and LINE Bot guidance to fix GovTech subsidies at the source.",
+    title: "Ka-Ho-Sim | Redesigning Youth Subsidy Applications at the Source",
+    description: "2nd Place at the 2026 Meichu Hackathon. Discovered a 72% rejection bottleneck through field interviews, redesigning subsidy applications with on-device OCR and smart banking guides to fix errors at the source.",
     image: kahosimCover,
     link: "/en/projects/kahosim",
     category: "Product Design"
