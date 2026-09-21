@@ -1,0 +1,54 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+---
+
+<ProjectLayout
+  title="EatBugs: Rebranding Edible Insects with Data & Creativity"
+  tags={["Sustainable Diet", "Product Design", "Digital Marketing"]}
+>
+  <div slot="aside" class="space-y-6">
+    <iframe
+      class="w-full rounded-lg aspect-video"
+      src="https://www.youtube.com/embed/KaObC65bCPc?si=wr-w_9Usew7qZth2&autoplay=1&mute=1"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="5K+" label="Organic Reach" />
+      <HighlightCard value="Social" label="Content Strategy" />
+      <HighlightCard value="Live" label="Experiential Tasting" />
+    </div>
+    <ProjectExternalLink href="https://www.instagram.com/eatbugs_/" label="Visit Brand Instagram" />
+  </div>
+
+  <SectionTitle title="Project Background" />
+  <p>
+    To explore sustainable protein alternatives in response to impending global food security challenges, we launched EatBugs—an integrated product design and digital marketing campaign. Our objective was to dismantle cultural stigmas surrounding edible insects through playful, health-conscious branding and evaluate their commercial adoption potential.
+  </p>
+  <p>
+    During the discovery phase, we combined structured surveys with street intercept interviews to map demographic sentiment. While young consumers exhibited strong interest in clean nutrition, psychological disgust and lack of exposure remained major obstacles. To ensure scientific rigor, we collaborated with researchers from the National Taiwan University (NTU) Experimental Forest as advisors, utilizing nutritional and environmental data to steer our product formulation.
+  </p>
+
+  <SectionTitle title="Execution & Strategy" />
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Product Concept Formulation</strong>: Tapping into the booming fitness meal prep market, we developed a concept line of insect-based seasoning powders emphasizing "Clean Flavor × High Protein"—eliminating visual insect anatomy to lower the barrier to trial.</li>
+    <li><strong class="text-zinc-200">Dual-Track Digital Marketing</strong>: Executed an educational yet entertaining social media campaign highlighting "Nutrition × Sustainability × Novelty." Using short-form video reels, interactive story polls, and visual infographics, we stimulated organic discussions and viral sharing.</li>
+    <li><strong class="text-zinc-200">Feedback Loop & Metrics</strong>: Surpassed 5,000 organic account impressions within three months, systematically analyzing audience sentiment and comments to adjust brand voice and messaging.</li>
+  </ul>
+
+  <SectionTitle title="Experiential Marketing: Live Tasting" />
+  <p>
+    At our exhibition demo day, we organized an immersive live testing activation: freshly cooking silkworm pupae on-site for audience tasting. This bold activation drew large crowds and enthusiastic discussion, providing firsthand behavioral evidence that combining transparent education with direct sensory experience effectively neutralizes psychological hesitation.
+  </p>
+
+  <SectionTitle title="Key Learnings" />
+  <p>
+    Leading this initiative provided end-to-end ownership spanning market research, consumer insight synthesis, creative product branding, and empirical impact analysis. It solidified my capabilities in cross-functional stakeholder collaboration and bringing unconventional concepts to life.
+  </p>
+</ProjectLayout>

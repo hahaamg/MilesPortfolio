@@ -1,0 +1,57 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import fbAutomation from "../../../assets/FB automation.png";
+---
+
+<ProjectLayout
+  title="Automated Facebook Intelligence Scraper"
+  tags={["agent-browser", "CDP", "automation"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: fbAutomation.src, alt: "Automated Facebook Intelligence Scraper" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="1.5 hrs" label="Daily Time Saved" />
+      <HighlightCard value="Gemini" label="LLM Structuring" />
+      <HighlightCard value="Sheets" label="Cloud Sheet Sync" />
+    </div>
+  </div>
+
+  <SectionTitle title="Problem & Motivation" />
+  <p>
+    While managing product initiatives in the EV sector at DenDen, our community operations team had to manually review competing charging network operators' Facebook pages every day to track tariff adjustments, station updates, and seasonal campaigns. This intelligence directly fueled customer service inquiries and in-app charging station guides. Manual monitoring was tedious and error-prone, occasionally causing app information to lag behind market reality.
+  </p>
+
+  <SectionTitle title="The Solution" />
+  <p>
+    I architected and deployed an end-to-end automated market intelligence pipeline: scheduled agents scrape target social feeds, send raw posts to Gemini AI for schema-constrained extraction (e.g., post category, electricity tariff ranges, effective dates), and incrementally update a shared Google Sheet. Teams now maintain real-time market clarity without needing to manually browse Facebook.
+  </p>
+
+  <SectionTitle title="Technical Stack & Anti-Detection" />
+  <p>
+    Given the lack of official Facebook feed APIs and strict bot detection mechanisms, traditional scraping libraries were routinely throttled. I utilized the Chrome DevTools Protocol (CDP) to programmatically direct a genuine Chrome instance, simulating organic human scroll velocities and retaining authenticated cookies to avoid challenge triggers. Raw post copy is processed via the Gemini API to turn messy unstructured text into validated tabular data, which is incrementally upserted into Google Sheets.
+  </p>
+
+  <SectionTitle title="AI-Assisted Development Workflow" />
+  <p>
+    This project was built leveraging AI pair-programming and browser agent tooling. CDP lower-level controls, behavioral randomization, and Google Sheets differential write logic were accelerated with AI-assisted prototyping.
+  </p>
+  <p>
+    This collaboration enabled me to focus on high-leverage product decisions: defining operational pain points, choosing fields that produce actionable business value, and engineering resilient extraction prompts. While AI minimized implementation friction, problem definition, systems architecture, and output validation remained strictly human-driven.
+  </p>
+
+  <SectionTitle title="Business Impact" />
+  <p>
+    The pipeline runs unattended end-to-end, saving 1 to 1.5 hours of repetitive manual tracking daily. Support personnel and app station listings now stay perpetually in sync with operator announcements. The historical dataset has also become an invaluable strategic asset for analyzing competitor tariff strategies and promotional frequency.
+  </p>
+
+  <SectionTitle title="Modular Extensibility" />
+  <p>
+    The "Headless CDP + LLM Structuring + Cloud Sync" architecture is sector-agnostic. It can be effortlessly repurposed for retail discount tracking, dining reputation analysis, startup competitor research, or media brand monitoring.
+  </p>
+</ProjectLayout>

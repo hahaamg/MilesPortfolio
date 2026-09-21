@@ -1,0 +1,40 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import metaversepic from "../../../assets/metaversepic.webp";
+---
+
+<ProjectLayout
+  title="Metaverse UX Research × Global Creator Interviews"
+  tags={["UGC Research", "User Experience", "Cross-Cultural Research"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: metaversepic.src, alt: "Metaverse Product Research" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="NSTC" label="Undergraduate Grant" />
+      <HighlightCard value="Global" label="In-Depth Interviews" />
+      <HighlightCard value="UGC" label="Product Optimization" />
+    </div>
+  </div>
+
+  <SectionTitle title="NSTC Research Project | UGC Creation and Interaction Design in Metaverse Platforms" />
+  <p>
+    Amid the rapid rise of virtual collaborative environments, I secured a competitive National Science and Technology Council (NSTC) undergraduate research grant to evaluate User-Generated Content (UGC) authoring workflows and platform design strategies. The study examined how 3D virtual environments support creative production, comparing interaction behaviors and experiential friction to deliver empirical recommendations for metaverse platform design.
+  </p>
+  <p>
+    Approaching the inquiry through dual perspectives of product strategy and user experience research, I led three key phases:
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Platform Analysis & Usability Survey</strong>: Deconstructed spatial interface architectures, 3D asset handling, and collaboration modules on Spatial. Distributed structured quantitative surveys to evaluate user satisfaction and feature adoption.</li>
+    <li><strong class="text-zinc-200">International In-Depth Interviews</strong>: Conducted qualitative user interviews with digital creators across Taiwan and abroad using Butter, exploring creative motivations, workflow workarounds, and perceived platform limitations.</li>
+    <li><strong class="text-zinc-200">Mixed-Methods Product Roadmap</strong>: Triangulated quantitative survey benchmarks with qualitative thematic codes, formulating concrete product enhancements around asset interoperability, real-time multiplayer co-creation, and contextual UX feedback mechanisms.</li>
+  </ul>
+  <p>
+    This project filled an empirical gap in early metaverse interaction literature while giving me extensive experience leading end-to-end user research. It sharpened my ability to conduct cross-cultural user interviews, synthesize mixed-method data, and translate user pain points into actionable product feature definitions.
+  </p>
+</ProjectLayout>

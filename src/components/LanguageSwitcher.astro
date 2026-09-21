@@ -1,0 +1,41 @@
+---
+import { getLocaleFromPath, getLocalizedPath } from "../lib/i18n";
+
+const { class: className = "" } = Astro.props;
+const pathname = Astro.url.pathname;
+const currentLocale = getLocaleFromPath(pathname);
+const zhPath = getLocalizedPath(pathname, 'zh');
+const enPath = getLocalizedPath(pathname, 'en');
+---
+
+<div class={`inline-flex items-center gap-1 p-1 rounded-full bg-zinc-900/80 backdrop-blur-md border border-zinc-700/80 shadow-lg text-xs font-mono transition-all duration-200 hover:border-zinc-500 select-none ${className}`}>
+  <div class="pl-2 pr-0.5 text-zinc-400 flex items-center justify-center" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+      <path d="M2 12h20"/>
+    </svg>
+  </div>
+  <a
+    href={zhPath}
+    class={`px-2.5 py-1 rounded-full transition-all duration-200 ${
+      currentLocale === 'zh'
+        ? 'bg-zinc-100 text-zinc-900 font-semibold shadow-xs'
+        : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800'
+    }`}
+    aria-label="切換為繁體中文"
+  >
+    中
+  </a>
+  <a
+    href={enPath}
+    class={`px-2.5 py-1 rounded-full transition-all duration-200 ${
+      currentLocale === 'en'
+        ? 'bg-zinc-100 text-zinc-900 font-semibold shadow-xs'
+        : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800'
+    }`}
+    aria-label="Switch to English"
+  >
+    EN
+  </a>
+</div>

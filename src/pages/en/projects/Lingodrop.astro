@@ -1,0 +1,45 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import LingoDrop from "../../../assets/Lingodrop_mockup.png";
+---
+
+<ProjectLayout
+  title="LingoDrop | Personalized Contextual Dictionary"
+  tags={["Language Learning", "Product Design", "Web & Mobile App"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: LingoDrop.src, alt: "LingoDrop" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="Context" label="Personal Dictionary" />
+      <HighlightCard value="Active" label="Learning Paradigm" />
+      <HighlightCard value="Daily" label="Input as Repository" />
+    </div>
+    <ProjectExternalLink href="https://lingodropapp.zeabur.app/" label="Visit LingoDrop" />
+  </div>
+
+  <SectionTitle title="Problem Insight" />
+  <p>
+    Most conventional language learning apps rely on passive reception—forcing learners through predefined vocabulary lists and canned sentences. These lack authentic context, rarely resonate with real-world experiences, and inevitably cause learning motivation to wane over time.
+  </p>
+
+  <SectionTitle title="Product Philosophy" />
+  <p>
+    LingoDrop was born from a fundamental belief: "The best learning material comes from your own life." When watching a TV show, listening to a podcast, or scrolling social media, encountering a phrase that makes you think "that's so useful!" is when motivation peaks. Without frictionless capture, these moments slip away. LingoDrop transforms learners from passive recipients into active curators—building a personalized "contextual dictionary" that turns spontaneous linguistic input into high-value knowledge assets.
+  </p>
+
+  <SectionTitle title="Core Features" />
+  <ul class="list-disc pl-5 space-y-2">
+    <li>Secure authentication via Email/Password and Google OAuth, with strict user-level data isolation for cards, folders, and AI dialogue histories.</li>
+    <li>Seamless vocabulary and phrase capture: combines real-time dictionary lookups with AI analysis to automatically extract definitions, phonetic transcriptions, audio pronunciations, contextual example sentences, and tags.</li>
+    <li>Folder organization, instant search, batch editing, and tagging for streamlined vocabulary management.</li>
+    <li>Spaced repetition mechanics: random flashcard reviews, daily addition targets, and streak tracking to reinforce memory retention.</li>
+    <li>Contextual AI dialogue generation: creates authentic English conversational scenarios based on your saved words, grounding vocabulary in practical application.</li>
+  </ul>
+</ProjectLayout>

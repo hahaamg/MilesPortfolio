@@ -1,0 +1,44 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import kmileshowcompic from "../../../assets/kmileshowcompic.webp";
+---
+
+<ProjectLayout
+  title="Miles Impacting the World"
+  tags={["SEO Optimization", "UI/UX Improvement", "Organic Traffic Growth"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: kmileshowcompic.src, alt: "Miles Impacting the World" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="66%" label="YoY Traffic Growth" />
+      <HighlightCard value="+12%" label="Session Duration" />
+      <HighlightCard value="700K" label="Total Page Views" />
+    </div>
+    <ProjectExternalLink href="https://kmileshow.com" label="Visit Blog Website" />
+  </div>
+
+  <p>
+    Since junior high school, I have built and operated the travel blog "Miles Impacting the World" (kmileshow.com), accumulating over 700,000 total page views. To scale organic discoverability in international search engines, I spearheaded SEO and keyword research initiatives—leveraging Google Analytics and Google Search Console to monitor user journeys, bounce patterns, and search intent. In 2024, total organic traffic expanded by 66% year-over-year, while average session duration increased by 12%.
+  </p>
+  <p>
+    When launching new editorial series, I conduct rigorous demand and keyword gap analyses. Using tools such as Ubersuggest, I evaluate search volume and keyword difficulty scores, then dissect the top-ranking SERP competitors regarding information freshness and structural depth. Where existing guides provide outdated or superficial itineraries, I target these market voids with exhaustive, practical guides. Post-publication, I systematically iterate on meta descriptions, internal link structures, and content hierarchies based on Search Console ranking shifts.
+  </p>
+  <p>
+    Furthermore, I created custom modular affiliate recommendation cards that blend seamlessly into editorial narratives. Inspired by leading travel platforms (such as Klook and KKday), these styled cards combine curated photography, price badges, succinct summaries, and high-contrast call-to-action buttons—enhancing readability while maximizing conversion efficiency.
+  </p>
+  <p>
+    I was also invited as a podcast guest to share insights on digital content operations, user retention, and monetization strategies. Managing this publication has given me hands-on mastery over the complete growth cycle: from opportunity discovery and copy production to technical SEO and data-informed product iteration.
+  </p>
+
+  <SectionTitle title="Publication Vision" />
+  <p>
+    Travel is not merely about reaching a destination; it is an enlightening, transformative pursuit. Miles Impacting the World inspires readers to discover the beauty of our planet—encouraging you to step beyond being a casual tourist and become an intrepid trailblazer who broadens perspectives and uncovers authentic meaning across the globe.
+  </p>
+</ProjectLayout>

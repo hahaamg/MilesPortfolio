@@ -1,0 +1,46 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import dayblocksCover from "../../../assets/DayBlocks cover.png";
+---
+
+<ProjectLayout
+  title="DayBlocks | Modular Card Journal"
+  tags={["iOS App", "Life Journaling", "Social Habits"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: dayblocksCover.src, alt: "DayBlocks" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="7+" label="Modular Card Types" />
+      <HighlightCard value="iOS" label="Solo Developed" />
+      <HighlightCard value="App Store" label="Official Release" />
+    </div>
+    <ProjectExternalLink href="https://apps.apple.com/tw/app/dayblocks/id6761128709" label="View on App Store" />
+  </div>
+
+  <SectionTitle title="Product Concept" />
+  <p>
+    DayBlocks is a life-tracking iOS app built around the core concept of "modular cards," empowering users to curate their personalized daily dashboard using freely draggable and resizable card widgets. Unlike traditional journaling apps with rigid templates, DayBlocks emphasizes flexibility and personalization—allowing users to adapt layouts based on daily priorities and seamlessly integrate self-reflection into their routine.
+  </p>
+
+  <SectionTitle title="Core Features" />
+  <p>
+    The app features over 7 functional card types, spanning Weather, Mood, Journal, Photo, Morning Check-in, To-Do lists, and Habit Tracking. Users can assemble custom modular layouts to fit their lifestyle. Interactive heatmaps provide immediate visibility into habit streaks, while mood trend calendars help users monitor emotional fluctuations and cultivate deeper mindfulness toward their life rhythm.
+  </p>
+
+  <SectionTitle title="Lightweight Social Experience" />
+  <p>
+    Beyond private journaling, DayBlocks introduces lightweight social interactions where users can share daily milestones and habits to a community feed. Journaling becomes more than passive archiving; it evolves into a way to connect and celebrate growth with friends. The philosophy is simple: positive routines and mindful living deserve to be celebrated and shared.
+  </p>
+
+  <SectionTitle title="Development & Release" />
+  <p>
+    From concept and UI/UX design to full-stack iOS development and App Store release, DayBlocks was engineered entirely independently. It is officially published on the App Store, supporting iOS 15.0+ devices with bilingual localization in Traditional Chinese and English.
+  </p>
+</ProjectLayout>

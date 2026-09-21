@@ -1,0 +1,39 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import ragpic from "../../../assets/ragpic.png";
+---
+
+<ProjectLayout
+  title="Blog RAG Intelligent Knowledge System"
+  tags={["AI Workflow", "LLM Application", "Semantic Retrieval"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: ragpic.src, alt: "Blog RAG System" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="RAG" label="Semantic Vector Search" />
+      <HighlightCard value="70B" label="LLaMA 3 Powered" />
+      <HighlightCard value="Q&A" label="Conversational Search" />
+    </div>
+  </div>
+
+  <SectionTitle title="Project Background" />
+  <p>
+    To optimize content reuse and internal knowledge retrieval across hundreds of travel blog archives, I designed and implemented a Retrieval-Augmented Generation (RAG) knowledge engine. Blending dense semantic retrieval with LLM-powered synthesis, it supports instant cross-article query answering, editorial content aggregation, and rapid editorial research.
+  </p>
+
+  <SectionTitle title="Technical Architecture" />
+  <p>
+    The system utilizes LangChain to orchestrate a FAISS vector index with dense E5 text embeddings. Queries are synthesized with near-instant latency via Groq's high-throughput LLaMA-3-70B inference engine. By segmenting historical articles, creating dense vector indices, and applying semantic similarity matching, the pipeline enables conversational question-answering and multi-article summarization to inform content strategy.
+  </p>
+
+  <SectionTitle title="Practical Application" />
+  <p>
+    For example, when a user queries "What are the must-visit attractions in Busan?", the engine retrieves pertinent segments across several travel posts and synthesizes a concise recommendation: highlighting Haeundae Beach, SPA LAND, Busan Tower, Songdo Marine Cable Car, the Busan Fireworks Festival, Seomyeon Market, and the BUSAN X the SKY observatory. This intelligent retrieval dramatically cuts research overhead while enhancing the longevity and discoverability of published content.
+  </p>
+</ProjectLayout>

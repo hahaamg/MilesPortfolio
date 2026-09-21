@@ -1,13 +1,23 @@
 import { useState } from "react";
 import ProjectCard from "./ProjectCard";
 
-const categories = [
-  "全部", "產品設計", "技術開發", "數據驅動成長", "使用者研究"
-];
+interface ProjectListProps {
+  projects: any[];
+  categories?: string[];
+  allCategory?: string;
+  locale?: 'zh' | 'en';
+}
 
-export default function ProjectList({ projects }: { projects: any[] }) {
-  const [selected, setSelected] = useState("全部");
-  const filtered = selected === "全部"
+export default function ProjectList({
+  projects,
+  categories = ["全部", "產品設計", "技術開發", "數據驅動成長", "使用者研究"],
+  allCategory,
+  locale = 'zh',
+}: ProjectListProps) {
+  const initialCategory = allCategory || categories[0] || "全部";
+  const [selected, setSelected] = useState(initialCategory);
+
+  const filtered = selected === initialCategory
     ? projects
     : projects.filter(p => p.category === selected);
 

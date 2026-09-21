@@ -1,0 +1,51 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import cover from "../../../assets/masterthesis.png";
+---
+
+<ProjectLayout
+  title="Disentangled Emotion-Controllable Color Palette Generation via β-CVAE with Conditional Prior"
+  tags={["Generative AI", "Color Design", "Representation Learning", "ICAIIC 2026"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: cover.src, alt: "β-CVAE Color Generation Research" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="53K" label="Palette Dataset" />
+      <HighlightCard value="β-CVAE" label="Dual Subspaces" />
+      <HighlightCard value="ICAIIC" label="Oral Presentation" />
+    </div>
+    <ProjectExternalLink href="https://ieeexplore.ieee.org/abstract/document/11454419" label="View on IEEE Xplore" />
+  </div>
+
+  <SectionTitle title="Research Motivation" />
+  <p>
+    Emotion-guided color palette design has long depended on subjective human intuition. Conventional computational methods primarily utilize discrete semantic labels, which fail to support fine-grained navigation in continuous affective space or allow emotional adjustments while retaining an established aesthetic style. To address this limitation, this research proposes a generative framework conditioned on continuous affective dimensions, transforming emotion into an interactive, controllable parameter while safeguarding stylistic diversity.
+  </p>
+
+  <SectionTitle title="Methodology" />
+  <p>
+    The framework disentangles the latent space into an explicit emotion subspace and a residual style subspace. Grounded in psychophysical color image scales, emotional dimensions are quantified across "Warm–Cool" and "Soft–Hard" axes. An XGBoost model predicts continuous affective coordinates for 53,698 web-harvested color palettes, and a β-Conditional Variational Autoencoder (β-CVAE) learns the underlying generative distribution.
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Dual Latent Subspaces</strong>: Decouples the representation into an emotion subspace (encoding affective coordinates) and a residual style subspace (capturing color harmony and variance independent of emotion), enabling diverse palette synthesis under identical emotional inputs.</li>
+    <li><strong class="text-zinc-200">Conditional Prior & Auxiliary Alignment Loss</strong>: Uses emotion coordinates as conditional priors to guide latent distributions; an auxiliary alignment loss guarantees that emotional prompts exert precise, directional control over palette generation.</li>
+    <li><strong class="text-zinc-200">Decorrelation Constraint</strong>: Applies a decorrelation loss between the two subspaces to prevent affective leakage into style dimensions, achieving clean orthogonal separation in representation.</li>
+  </ul>
+
+  <SectionTitle title="Experimental Results" />
+  <p>
+    Spearman rank correlation coefficients between the emotion subspace and target emotion dimensions achieved 0.92 and 0.95 (plummeting to 0.11 when the alignment mechanism was ablated). Correlation between style representations and emotional conditions remained below 0.06, demonstrating rigorous disentanglement. Smooth latent space interpolation confirms that affective modulation occurs reliably along continuous navigation paths.
+  </p>
+
+  <SectionTitle title="Key Contributions" />
+  <p>
+    This study establishes a continuous, controllable generative mechanism for affective color synthesis, providing an actionable computational framework for emotion-driven digital design. The research was accepted for oral presentation at ICAIIC 2026 and published in the IEEE Xplore digital library.
+  </p>
+</ProjectLayout>

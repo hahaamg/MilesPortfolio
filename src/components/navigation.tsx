@@ -2,8 +2,10 @@ import clsx from "clsx/lite";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-export default function Navigation({ children }: { children: React.ReactNode; }) {
+export default function Navigation({ children, locale = 'zh' }: { children: React.ReactNode; locale?: 'zh' | 'en'; }) {
     const [isOpen, setIsOpen] = useState(false);
+    const aboutHref = locale === 'en' ? '/en/about' : '/about';
+    const contactHref = locale === 'en' ? '/en/contact' : '/contact';
 
     return (
         <div className="flex items-center justify-center">
@@ -30,7 +32,7 @@ export default function Navigation({ children }: { children: React.ReactNode; })
                             className="lg:hidden absolute z-50 w-full h-full flex flex-col gap-4 top-0 bg-zinc-900/20 backdrop-blur-md">
 
                             <div className="fixed bottom-20 sm:bottom-32 left-4 sm:left-8 flex flex-col items-start justify-center gap-4">
-                                <MobileLink href="/about">
+                                <MobileLink href={aboutHref}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" aria-hidden>
                                         <title>Info Icon</title>
                                         <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.634 1.634 0 0 1 1.149.133A9.958 9.958 0 0 0 12 22" opacity=".5" />
@@ -39,7 +41,7 @@ export default function Navigation({ children }: { children: React.ReactNode; })
                                     About
                                 </MobileLink>
 
-                                <MobileLink href="/contact">
+                                <MobileLink href={contactHref}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" aria-hidden>
                                         <title>Smiley Face Icon</title>
                                         <path fill="currentColor" d="M16.791 13.343c.781-.274 1.752-.31 3.78-.315h1.426c-.007.097.01-.097 0 0a1.478 1.478 0 0 1-.424.908l-7.65 7.69a1.262 1.262 0 0 1-.895.37c-.097.01.097-.006 0 0v-1.424c.005-2.03.041-3 .314-3.78a5.621 5.621 0 0 1 3.45-3.45" />

@@ -1,0 +1,75 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import weather_horoscopepic from "../../../assets/weather_horoscopepic.png";
+---
+
+<ProjectLayout
+  title="AstroWeather AI Assistant"
+  tags={["LINE Bot", "API Integration", "Multimodal AI"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: weather_horoscopepic.src, alt: "AstroWeather LINE Bot" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="3-in-1" label="Unified Experience" />
+      <HighlightCard value="YOLO" label="Outfit Recognition" />
+      <HighlightCard value="Dynamic" label="Weather Graphics" />
+    </div>
+    <ProjectExternalLink href="https://www.canva.com/design/DAGYxjACYpA/FY_OYnX4JcU44Vpq0HyVyA/view?utm_content=DAGYxjACYpA&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3c9bc2a57c" label="View Product Deck" />
+  </div>
+
+  <p>
+    AstroWeather is an intelligent LINE chatbot combining real-time environmental data with multimodal generative AI. It delivers an all-in-one interactive experience for daily horoscope readings, AI outfit recommendations, and graphic weather visualization. Tailored for lifestyle-conscious young users, it unifies fragmented daily inquiries ("What should I wear?", "Will it rain today?", "How is my luck?") into an intuitive, visually captivating assistant.
+  </p>
+
+  <SectionTitle title="Market Insights & Pain Points" />
+  <p>An evaluation of mainstream weather and horoscope services identified several recurring pain points:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Fragmented journeys</strong>: Checking weather, horoscopes, and outfit inspiration requires switching across three separate apps.</li>
+    <li><strong class="text-zinc-200">Lack of interactivity</strong>: Most services rely on static tables or canned snippets with minimal personal resonance.</li>
+    <li><strong class="text-zinc-200">Information fatigue</strong>: Text-heavy lists and raw numerical tables create unnecessary cognitive load in morning routines.</li>
+  </ul>
+  <p>
+    While user appetite for conversational AI continues to expand, tools that merge true real-time data with multimodal visual flair are rare. AstroWeather orchestrates web automation, computer vision, and dynamic graphics synthesis to turn routine queries into delightful interactions.
+  </p>
+
+  <SectionTitle title="Product Features & Technical Delivery" />
+  <ul class="list-decimal ml-6 space-y-3">
+    <li>
+      <strong class="text-zinc-200">Real-Time Horoscope Queries (Automated Scraping)</strong>
+      <ul class="list-disc ml-6 mt-1 space-y-1">
+        <li>Selecting a zodiac sign triggers an automated web scraper to fetch and synthesize the latest daily astrological forecast.</li>
+        <li>Eliminates stale data common in static mobile apps.</li>
+      </ul>
+    </li>
+    <li>
+      <strong class="text-zinc-200">AI Outfit Recommendations (Computer Vision + LLM)</strong>
+      <ul class="list-disc ml-6 mt-1 space-y-1">
+        <li>Users upload outfit photos; a YOLOv11 model detects clothing types and dominant color schemes.</li>
+        <li>Synthesizing fashion rules with zodiac energy prompts, Gemini LLM generates bespoke styling suggestions.</li>
+      </ul>
+    </li>
+    <li>
+      <strong class="text-zinc-200">Visual Weather Synthesis (API + Programmatic Graphics)</strong>
+      <ul class="list-disc ml-6 mt-1 space-y-1">
+        <li>Queries OpenWeatherMap API for hyperlocal temperatures, wind, and conditions.</li>
+        <li>Dynamically applies day/night illustration templates and renders stylized infographic cards in real time.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <SectionTitle title="System Architecture" />
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">YOLOv11 + OpenCV</strong>: Apparel detection and image feature extraction</li>
+    <li><strong class="text-zinc-200">LINE Messaging API + ngrok</strong>: High-reliability bot webhook pipeline</li>
+    <li><strong class="text-zinc-200">Gemini API</strong>: Contextual fashion advice generation</li>
+    <li><strong class="text-zinc-200">OpenWeatherMap API</strong>: Hyperlocal weather data feed</li>
+    <li><strong class="text-zinc-200">Pillow + Graphic Templates</strong>: Dynamic typographic card rendering</li>
+  </ul>
+</ProjectLayout>

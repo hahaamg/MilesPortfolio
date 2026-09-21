@@ -1,0 +1,34 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import n8npic from "../../../assets/n8npic.png";
+---
+
+<ProjectLayout
+  title="n8n Automated Marketing Reporting Workflow"
+  tags={["Automation", "API Integration", "GA4 + GSC"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[{ src: n8npic.src, alt: "n8n Marketing Automation" }]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="80%" label="Manual Time Saved" />
+      <HighlightCard value="3+" label="Integrated APIs" />
+      <HighlightCard value="LLM" label="Automated Summaries" />
+    </div>
+  </div>
+
+  <SectionTitle title="Project Background" />
+  <p>
+    To eliminate repetitive manual reporting and avoid metric gaps, I designed and deployed an automated analytics pipeline orchestrated by n8n. The workflow eliminates the friction of repeatedly logging into Google Search Console and Google Analytics to export fragmented performance sheets. Utilizing OAuth2 authorization, cron webhook triggers, and Google Sheets synchronization, it compiles structured weekly dashboards covering traffic metrics, click-through rates, and keyword ranking shifts.
+  </p>
+
+  <SectionTitle title="LLM Synthesis & Operational Impact" />
+  <p>
+    I integrated an LLM node into the pipeline to parse metric variances, identify SEO anomalies, and generate actionable executive summaries that automatically archive to Google Drive. This automation shaved off over 80% of routine reporting hours while institutionalizing a data-driven operating cadence. The workflow remains in active production, providing essential performance telemetry for content iterations and conversion optimization.
+  </p>
+</ProjectLayout>

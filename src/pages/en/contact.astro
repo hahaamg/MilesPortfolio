@@ -1,0 +1,34 @@
+---
+import H1 from "../../components/h1.astro";
+import InfoLayout from "../../layouts/InfoLayout.astro";
+import ExternalLink from "../../components/external-link.astro";
+---
+
+<InfoLayout title="Contact | Miles Sun" description="Get in touch with Miles Sun.">
+     <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh flex flex-col justify-between">
+          <div>
+               <H1>Contact Info</H1>
+
+               <div class="mt-6 sm:mt-12 flex flex-col gap-1">
+                    <a href="mailto:milessun0507@gmail.com" class="mb-8 w-fit group flex items-center gap-1 text-base lg:text-xl text-zinc-400 hover:text-zinc-50">
+                         milessun0507@gmail.com
+                         <svg xmlns="http://www.w3.org/2000/svg" class="-rotate-45 group-hover:rotate-0 transition-all duration-300 ease-in-out" width="24" height="24" viewBox="0 0 24 24">
+                              <title>Arrow Icon</title>
+                              <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12c0 1.6.376 3.112 1.043 4.453c.178.356.237.763.134 1.148l-.595 2.226a1.3 1.3 0 0 0 1.591 1.592l2.226-.596a1.634 1.634 0 0 1 1.149.133A9.958 9.958 0 0 0 12 22" opacity=".5"/>
+                              <path fill="currentColor" d="M13.53 8.47a.75.75 0 1 0-1.06 1.06l1.72 1.72H8a.75.75 0 0 0 0 1.5h6.19l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06z"/>
+                         </svg>
+                    </a>
+
+                    <ExternalLink href="https://www.instagram.com/haha.amg/">Instagram</ExternalLink>
+                    <ExternalLink href="https://www.threads.com/@haha.amg">Threads</ExternalLink>
+                    <ExternalLink href="https://github.com/hahaamg">GitHub</ExternalLink>
+                    <ExternalLink href="https://www.linkedin.com/in/miles-sun/">LinkedIn</ExternalLink>
+               </div>
+          </div>
+
+          <div>
+               <p class="text-base text-zinc-500">Taipei</p>
+               <p class="text-base text-zinc-500">Taiwan</p>
+          </div>
+     </div>
+</InfoLayout>

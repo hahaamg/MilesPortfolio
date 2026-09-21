@@ -1,16 +1,20 @@
 ---
 import InfoLayout from "./InfoLayout.astro";
+import { getLocaleFromPath, ui } from "../lib/i18n";
 
 const { title, tags } = Astro.props;
+const locale = getLocaleFromPath(Astro.url.pathname);
+const projectsHref = locale === 'en' ? '/en/projects' : '/projects';
+const backText = ui[locale].projects.backToProjects;
 ---
 
 <InfoLayout>
   <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
-    <a href="/projects" class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors duration-200 text-sm mb-10">
+    <a href={projectsHref} class="inline-flex items-center gap-2 text-zinc-500 hover:text-zinc-100 transition-colors duration-200 text-sm mb-10">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="m15 18-6-6 6-6"/>
       </svg>
-      Back to Projects
+      {backText}
     </a>
 
     <h1 class="text-3xl font-bold text-white mb-4">{title}</h1>
