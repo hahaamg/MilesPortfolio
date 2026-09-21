@@ -1,0 +1,79 @@
+---
+import ProjectLayout from "../../../layouts/ProjectLayout.astro";
+import ImageSlider from "../../../components/project/ImageSlider";
+import SectionTitle from "../../../components/project/SectionTitle.astro";
+import HighlightCard from "../../../components/project/HighlightCard.astro";
+
+import cover from "../../../assets/kahosim/cover.png";
+import cycle from "../../../assets/kahosim/cycle.png";
+import applicantUi from "../../../assets/kahosim/applicant_ui.png";
+import bankGuide from "../../../assets/kahosim/bank_guide.png";
+import reviewerCanvas from "../../../assets/kahosim/reviewer_canvas.png";
+import linebot from "../../../assets/kahosim/linebot.png";
+---
+
+<ProjectLayout
+  title="Ka-Ho-Sim | GovTech Subsidy Smart Review & Application System"
+  tags={["2026 Meichu Hackathon 2nd Place", "GovTech", "Product Strategy", "Client-Side OCR", "Two-Sided UX"]}
+>
+  <div slot="aside" class="space-y-6">
+    <ImageSlider
+      images={[
+        { src: cover.src, alt: "Ka-Ho-Sim Pitch Cover" },
+        { src: cycle.src, alt: "The Vicious Rejection Cycle" },
+        { src: applicantUi.src, alt: "Applicant Flow & Dynamic Form Fields" },
+        { src: bankGuide.src, alt: "De-identified Mobile Banking Guidance" },
+        { src: reviewerCanvas.src, alt: "Reviewer Canvas & Highlight Marking" },
+        { src: linebot.src, alt: "Intelligent Official LINE Bot Integration" },
+      ]}
+      client:load
+    />
+    <div class="grid grid-cols-3 gap-2">
+      <HighlightCard value="2nd Place" label="Meichu Hackathon (Maker Track)" />
+      <HighlightCard value="72%" label="Interviewed Daily Rejection Rate" />
+      <HighlightCard value="End-to-End" label="Client-side OCR + LINE Bot" />
+    </div>
+  </div>
+
+  <SectionTitle title="Origins & Field User Research" />
+  <p>
+    This project was conceived at the 2026 Meichu Hackathon (Maker Track), addressing the Hsinchu City Government's "AI Youth Digital Tool Subsidy Program." Before writing code, I proactively reached out to the actual civil servants managing the subsidy program to uncover operational friction omitted from the official prompt.
+  </p>
+  <p>
+    The interview findings were staggering: a team of only 3 reviewers had to manually inspect every single application. At peak times, out of ~100 daily submissions, nearly 72 cases were rejected—triggering administrative bottlenecks and widespread citizen frustration.
+  </p>
+  <p>
+    Critically, the root cause was not user negligence, but information architecture failure: most applicants struggled to navigate diverse mobile banking apps to retrieve compliant transaction receipts. The process failed because it never guided them on how to comply.
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    "This discovery transformed our product direction: instead of merely building a faster review dashboard, we chose to eradicate rejections at the source."
+  </p>
+
+  <SectionTitle title="Two-Sided System Architecture" />
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. Applicant Experience: Get It Right on the First Attempt</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Guided Interactive Submission</strong>: Redesigned the applicant journey with explicit document checklists and format previews at each stage to eliminate ambiguity and prevent missing attachments.</li>
+    <li><strong class="text-zinc-200">Conversational Banking Receipts Navigator</strong>: Deployed interactive walkthrough bots that guide users step-by-step through major banking apps (e.g. Cathay Cube, E.SUN Wallet) to retrieve required payment statements, directly solving the #1 cause of rejection.</li>
+    <li><strong class="text-zinc-200">Client-Side Privacy OCR (PCI DSS v4.0 Compliant)</strong>: Implemented pure browser-side OCR using Tesseract.js combined with the Luhn algorithm for card validation. Sensitive cardholder numbers and personal details are masked locally before leaving the user's browser, satisfying PCI DSS v4.0 Requirement 3.4.1.</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. Reviewer Operations: Amplifying 3-Person Throughput</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Self-Learning AI Software Whitelist</strong>: When users submit unlisted AI tools, a single determination by a reviewer automatically updates the global database, allowing the knowledge base to evolve organically.</li>
+    <li><strong class="text-zinc-200">Canvas Review Dashboard & Smart Highlighting</strong>: Consolidates multi-page receipts on an interactive canvas, auto-highlighting amounts, tool names, and applicant credentials to eliminate tedious manual cross-referencing.</li>
+    <li><strong class="text-zinc-200">Intelligent LINE Bot Integration</strong>: Integrated with the official youth government channel (@youthhsinchu) to push automated status alerts, structured resubmission walkthroughs, and FAQ support—substantially curbing repetitive customer service calls.</li>
+  </ul>
+
+  <SectionTitle title="My Role & Contributions" />
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Stakeholder Discovery & Qualitative Interviews</strong>: Initiated contact and interviewed program administrators, uncovering quantitative metrics (~100 cases/day, 72% rejection rate) that re-anchored the problem statement.</li>
+    <li><strong class="text-zinc-200">Problem Framing & MVP Scope Definition</strong>: Steered team strategy from "speeding up reviews" to "preventing upstream errors," orchestrating the two-sided journey and defining hackathon MVP deliverables.</li>
+    <li><strong class="text-zinc-200">Frontend Engineering & Client-Side Privacy OCR</strong>: Developed the applicant interactive interface and built the in-browser Tesseract.js OCR extraction, Luhn validation, and privacy-masking routines.</li>
+  </ul>
+
+  <SectionTitle title="Hackathon Recognition & Impact" />
+  <p>
+    Recognized for its authentic user research, dual-sided user experience, and privacy-conscious technical feasibility, Ka-Ho-Sim was awarded <strong>2nd Place in the Maker Track at the 2026 Meichu Hackathon</strong>.
+  </p>
+</ProjectLayout>

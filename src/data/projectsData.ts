@@ -8,6 +8,7 @@ import Lingodrop from "../assets/Lingodrop.webp";
 import DayBlocksCover from "../assets/DayBlocks cover.png";
 import cvaeCover from "../assets/masterthesis.png";
 import fbAutomationCover from "../assets/FB automation.png";
+import kahosimCover from "../assets/kahosim/cover.png";
 
 export interface ProjectItem {
   title: string;
@@ -26,6 +27,13 @@ export const enCategories = [
 ];
 
 export const zhProjects: ProjectItem[] = [
+  {
+    title: "卡好審｜青年補助智慧申請與審核系統",
+    description: "2026 梅竹黑客松創客組第二名。實地訪談承辦人拆解 72% 退件痛點，結合前端隱私 OCR 與 LINE 智慧引導，從源頭解決政府補助申請問題。",
+    image: kahosimCover,
+    link: "/projects/kahosim",
+    category: "產品設計"
+  },
   {
     title: "DayBlocks｜模組化卡片日記",
     description: "從構想到上架，獨立開發的 iOS 生活記錄 App，結合模組化卡片與輕社交功能。",
@@ -99,6 +107,13 @@ export const zhProjects: ProjectItem[] = [
 ];
 
 export const enProjects: ProjectItem[] = [
+  {
+    title: "Ka-Ho-Sim | GovTech Subsidy Smart Review System",
+    description: "2nd Place at 2026 Meichu Hackathon (Maker Track). Field-researched a 72% rejection bottleneck, building client-side privacy OCR and LINE Bot guidance to fix GovTech subsidies at the source.",
+    image: kahosimCover,
+    link: "/en/projects/kahosim",
+    category: "Product Design"
+  },
   {
     title: "DayBlocks | Modular Card Journal",
     description: "From concept to App Store launch—a solo-developed iOS life-tracking app featuring customizable cards and lightweight social interactions.",
