@@ -50,7 +50,7 @@ export const ui = {
     projects: {
       title: 'Projects',
       allCategory: '全部',
-      categories: ['全部', '產品設計', '技術開發', '數據驅動成長', '使用者研究'],
+      categories: ['全部', '產品規劃與設計', 'AI 與軟體實作', '使用者研究與成長'],
       viewProject: '查看專案',
       backToProjects: 'Back to Projects',
     },
@@ -80,7 +80,7 @@ export const ui = {
     projects: {
       title: 'Projects',
       allCategory: 'All',
-      categories: ['All', 'Product Design', 'Engineering', 'Data-Driven Growth', 'User Research'],
+      categories: ['All', 'Product Planning & Design', 'AI & Software Engineering', 'User Research & Growth'],
       viewProject: 'View Project',
       backToProjects: 'Back to Projects',
     },

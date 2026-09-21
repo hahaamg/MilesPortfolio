@@ -10,7 +10,7 @@ interface ProjectListProps {
 
 export default function ProjectList({
   projects,
-  categories = ["全部", "產品設計", "技術開發", "數據驅動成長", "使用者研究"],
+  categories = ["全部", "產品規劃與設計", "AI 與軟體實作", "使用者研究與成長"],
   allCategory,
   locale = 'zh',
 }: ProjectListProps) {
