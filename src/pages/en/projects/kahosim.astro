@@ -40,13 +40,13 @@ import linebot from "../../../assets/kahosim/linebot.png";
     Built during the 2026 Meichu Hackathon (Maker Track), this project tackled Hsinchu City Government's "AI Youth Digital Tool Subsidy Program." To look beyond the written requirements, I reached out directly to the program's caseworkers to understand the real-world friction that wasn't captured in the prompt.
   </p>
   <p>
-    What we discovered was striking: only three caseworkers managed the entire initiative, manually inspecting every single submission. During peak periods, out of roughly 100 daily applications, nearly 72 were rejected—creating administrative gridlock and widespread public frustration.
+    What we discovered was striking: only three caseworkers managed the entire initiative, manually inspecting every single submission. During peak periods, out of roughly 100 daily applications, nearly 72 were rejected, creating administrative gridlock and widespread public frustration.
   </p>
   <p>
-    More importantly, we uncovered the root cause: most applicants simply didn't know how to export eligible proof-of-payment statements from their specific mobile banking apps. People weren't being careless—the existing process just never showed them what was required.
+    More importantly, we uncovered the root cause: most applicants simply didn't know how to export eligible proof-of-payment statements from their specific mobile banking apps. People weren't being careless; the existing process simply never showed them what was required.
   </p>
   <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
-    "That insight reshaped our strategy: review acceleration was critical, but speeding up internal workflows alone wouldn't solve the bottleneck if non-compliant files kept flooding in. We needed a dual-track approach—prevent errors at the source for applicants, while dramatically accelerating review with smart highlighting and self-learning databases for caseworkers."
+    "That insight reshaped our strategy: review acceleration was critical, but speeding up internal workflows alone wouldn't solve the bottleneck if non-compliant files kept flooding in. We needed a dual-track approach: prevent errors at the source for applicants, while dramatically accelerating review with smart highlighting and self-learning databases for caseworkers."
   </p>
 
   <SectionTitle title="The Solution: A Dual-Sided Experience" />
@@ -54,21 +54,21 @@ import linebot from "../../../assets/kahosim/linebot.png";
   <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. For Applicants: Getting It Right the First Time</h3>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Guided Step-by-Step Flow</strong>: Rebuilt the submission experience with clear document requirements and visual previews at every step, removing ambiguity before submission.</li>
-    <li><strong class="text-zinc-200">Interactive Banking Guides</strong>: Built conversational, step-by-step walkthroughs showing applicants how to find and export monthly statements across major Taiwan banks (Cathay Cube, E.SUN Wallet, etc.)—tackling the #1 cause of rejection head-on.</li>
+    <li><strong class="text-zinc-200">Interactive Banking Guides</strong>: Built conversational, step-by-step walkthroughs showing applicants how to find and export monthly statements across major Taiwan banks (Cathay Cube, E.SUN Wallet, etc.), directly tackling the #1 cause of rejection.</li>
     <li><strong class="text-zinc-200">On-Device Privacy & Redaction (PCI DSS v4.0)</strong>: Embedded client-side OCR using Tesseract.js with Luhn algorithm validation. Sensitive card numbers and personal data are masked locally right inside the user's browser before upload, ensuring zero data leakage and complying with PCI DSS v4.0 Requirement 3.4.1.</li>
   </ul>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. For Caseworkers: Accelerating Review & Multiplying Output</h3>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Canvas Review with Smart Highlighting</strong>: Unifies multi-page receipts on an interactive canvas, auto-highlighting key audit details—subscription price, software name, and applicant identity—eliminating manual line-by-line checks and drastically shortening review cycles.</li>
+    <li><strong class="text-zinc-200">Canvas Review with Smart Highlighting</strong>: Unifies multi-page receipts on an interactive canvas, auto-highlighting key audit details (subscription price, software name, and applicant identity), eliminating manual line-by-line checks and drastically shortening review cycles.</li>
     <li><strong class="text-zinc-200">Self-Learning Software Whitelist</strong>: When an applicant applies for an unlisted AI tool, a caseworker verifies it once, and the system automatically updates the global eligible list for everyone going forward, eliminating duplicate research.</li>
-    <li><strong class="text-zinc-200">Proactive LINE Notifications</strong>: Connected to the city's official youth account (@youthhsinchu) to push real-time status updates, guided resubmission steps, and instant FAQ answers—drastically cutting repetitive phone inquiries.</li>
+    <li><strong class="text-zinc-200">Proactive LINE Notifications</strong>: Connected to the city's official youth account (@youthhsinchu) to push real-time status updates, guided resubmission steps, and instant FAQ answers, drastically cutting repetitive phone inquiries.</li>
   </ul>
 
   <SectionTitle title="My Role" />
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Field Research & Problem Discovery</strong>: Initiated contact and interviewed program caseworkers, identifying the real bottleneck: a 3-person team drowning in a 72% rejection rate.</li>
-    <li><strong class="text-zinc-200">Product Strategy & MVP Scoping</strong>: Established the dual-track roadmap—combining upstream error prevention with downstream review acceleration—to maximize the 3-person team's capacity during the hackathon.</li>
+    <li><strong class="text-zinc-200">Product Strategy & MVP Scoping</strong>: Established the dual-track roadmap, combining upstream error prevention with downstream review acceleration, to maximize the 3-person team's capacity during the hackathon.</li>
     <li><strong class="text-zinc-200">Frontend & On-Device OCR Development</strong>: Built the applicant-facing web interface and implemented client-side OCR, card validation, and automatic data redaction using Tesseract.js.</li>
   </ul>
 
