@@ -5,6 +5,8 @@ import ProjectExternalLink from "../../components/project/ProjectExternalLink.as
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import cover from "../../assets/masterthesis.png";
+import concept from "../../assets/cvae-concept.webp";
+import architecture from "../../assets/cvae-architecture.webp";
 ---
 
 <ProjectLayout
@@ -13,7 +15,11 @@ import cover from "../../assets/masterthesis.png";
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[{ src: cover.src, alt: "β-CVAE 色彩生成研究" }]}
+      images={[
+        { src: cover.src, alt: "β-CVAE 色彩生成研究" },
+        { src: concept.src, light: true, alt: "研究概念圖：情緒座標輸入經 β-CVAE 解耦潛在空間，生成對應的三色色彩組合" },
+        { src: architecture.src, light: true, alt: "模型架構圖：編碼器與條件先驗網路將色彩組合與情緒座標映射至情緒對齊子空間與殘差風格子空間，再由解碼器重建配色" },
+      ]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
@@ -30,7 +36,7 @@ import cover from "../../assets/masterthesis.png";
 
   <SectionTitle title="這個研究在做什麼" />
   <p>
-    生成式 AI 早就能產出大量好看的配色。真正還沒解決的是<strong class="text-zinc-200">可控性</strong>：如何讓生成的色彩組合，確實對應使用者指定的情緒。模型能回應「溫暖的配色」這類指令，卻無法回應「比剛才暖一點、其他都不要動」。情緒在現有的生成模型裡，是一個描述詞，而不是一個可以操作的變數。
+    生成式 AI 早就能產出大量好看的配色。真正還沒解決的是<strong class="text-zinc-200">可控性</strong>：如何讓生成的色彩組合，確實對應使用者指定的情緒。模型能回應「溫暖的配色」這類指令，卻無法回應「比剛才暖一點、風格不要動」。情緒在現有的生成模型裡，是一個描述詞，而不是一個可以操作的變數。
   </p>
   <p>
     本研究的模型以<strong class="text-zinc-200">暖—冷</strong>與<strong class="text-zinc-200">軟—硬</strong>兩個連續維度作為輸入條件。調整其中一個維度，配色沿該方向連續變化，風格維持不變。情緒與風格成為兩組可分別操作的參數。

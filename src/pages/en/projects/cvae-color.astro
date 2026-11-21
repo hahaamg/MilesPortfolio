@@ -5,6 +5,8 @@ import ProjectExternalLink from "../../../components/project/ProjectExternalLink
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import cover from "../../../assets/masterthesis.png";
+import concept from "../../../assets/cvae-concept.webp";
+import architecture from "../../../assets/cvae-architecture.webp";
 ---
 
 <ProjectLayout
@@ -13,7 +15,11 @@ import cover from "../../../assets/masterthesis.png";
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[{ src: cover.src, alt: "β-CVAE Color Generation Research" }]}
+      images={[
+        { src: cover.src, alt: "β-CVAE Color Generation Research" },
+        { src: concept.src, light: true, alt: "Concept diagram: emotion coordinates feed a β-CVAE with a disentangled latent space, which generates the corresponding three-color palette" },
+        { src: architecture.src, light: true, alt: "Model architecture: the encoder and conditional prior network map palettes and emotion coordinates into an emotion-aligned subspace and a residual style subspace, which the decoder reconstructs into a palette" },
+      ]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
@@ -30,7 +36,7 @@ import cover from "../../../assets/masterthesis.png";
 
   <SectionTitle title="What This Research Does" />
   <p>
-    Generative AI has long been able to produce plenty of attractive palettes. What remains unsolved is <strong class="text-zinc-200">controllability</strong>: making the generated colors actually match the emotion a user specifies. A model can respond to an instruction like "a warm palette," but not to "slightly warmer than that, and change nothing else." In today's generative models, emotion is a descriptor, not an operable variable.
+    Generative AI has long been able to produce plenty of attractive palettes. What remains unsolved is <strong class="text-zinc-200">controllability</strong>: making the generated colors actually match the emotion a user specifies. A model can respond to an instruction like "a warm palette," but not to "slightly warmer than that, and keep the style." In today's generative models, emotion is a descriptor, not an operable variable.
   </p>
   <p>
     The model developed in this research takes two continuous dimensions as its conditioning input: <strong class="text-zinc-200">Warm–Cool</strong> and <strong class="text-zinc-200">Soft–Hard</strong>. Adjusting one dimension shifts the palette along that direction while the style holds. Emotion and style become separately operable parameters.
