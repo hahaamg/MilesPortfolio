@@ -53,6 +53,7 @@ export const ui = {
       categories: ['全部', '產品規劃與設計', 'AI 與軟體實作', '使用者研究與成長'],
       viewProject: '查看專案',
       backToProjects: 'Back to Projects',
+      contents: '目錄',
     },
     footer: {
       home: 'Home',
@@ -83,6 +84,7 @@ export const ui = {
       categories: ['All', 'Product Planning & Design', 'AI & Software Engineering', 'User Research & Growth'],
       viewProject: 'View Project',
       backToProjects: 'Back to Projects',
+      contents: 'Contents',
     },
     footer: {
       home: 'Home',

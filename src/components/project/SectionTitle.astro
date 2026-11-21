@@ -1,6 +1,23 @@
 ---
 const { title } = Astro.props;
+
+// Build an anchor id from the title. CJK characters are kept as-is (the
+// browser percent-encodes them in the URL), so Chinese headings get readable,
+// stable ids instead of collapsing to an empty slug.
+function slugify(value: string): string {
+  const ascii = value
+    .toLowerCase()
+    .replace(/[^a-z0-9一-鿿]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return ascii || 'section';
+}
+
+const id = `section-${slugify(title)}`;
 ---
-<h2 class="text-lg font-medium text-zinc-100 mt-10 first:mt-0 mb-3 pb-2 border-b border-zinc-800">
+<h2
+  id={id}
+  data-section-title={title}
+  class="scroll-mt-24 text-lg font-medium text-zinc-100 mt-10 first:mt-0 mb-3 pb-2 border-b border-zinc-800"
+>
   {title}
 </h2>
