@@ -8,7 +8,7 @@ import cover from "../../../assets/masterthesis.png";
 ---
 
 <ProjectLayout
-  title="Disentangled Emotion-Controllable Color Palette Generation via β-CVAE with Conditional Prior"
+  title="Generative AI Model Design: Emotion-Controllable Color Palette Generation"
   tags={["Generative AI", "Color Design", "Representation Learning", "ICAIIC 2026"]}
 >
   <div slot="aside" class="space-y-6">
@@ -24,28 +24,99 @@ import cover from "../../../assets/masterthesis.png";
     <ProjectExternalLink href="https://ieeexplore.ieee.org/abstract/document/11454419" label="View on IEEE Xplore" />
   </div>
 
-  <SectionTitle title="Research Motivation" />
+  <p class="text-sm text-zinc-500 -mt-2">
+    Master's thesis｜Full title: Disentangled Emotion-Controllable Color Palette Generation via β-CVAE with Conditional Prior
+  </p>
+
+  <SectionTitle title="What This Research Does" />
   <p>
-    Emotion-guided color palette design has long depended on subjective human intuition. Conventional computational methods primarily utilize discrete semantic labels, which fail to support fine-grained navigation in continuous affective space or allow emotional adjustments while retaining an established aesthetic style. To address this limitation, this research proposes a generative framework conditioned on continuous affective dimensions, transforming emotion into an interactive, controllable parameter while safeguarding stylistic diversity.
+    Generative AI has long been able to produce plenty of attractive palettes. What remains unsolved is <strong class="text-zinc-200">controllability</strong>: making the generated colors actually match the emotion a user specifies. A model can respond to an instruction like "a warm palette," but not to "slightly warmer than that, and change nothing else." In today's generative models, emotion is a descriptor, not an operable variable.
+  </p>
+  <p>
+    The model developed in this research takes two continuous dimensions as its conditioning input: <strong class="text-zinc-200">Warm–Cool</strong> and <strong class="text-zinc-200">Soft–Hard</strong>. Adjusting one dimension shifts the palette along that direction while the style holds. Emotion and style become separately operable parameters.
+  </p>
+
+  <SectionTitle title="Differences from General-Purpose Models" />
+  <p>
+    The difference is not whether a palette can be generated, but the following four points:
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li>
+      <strong class="text-zinc-200">Independent control along a single axis</strong>: Nudge along the warm–cool axis and soft–hard and style stay fixed. Tell an LLM "make it warmer" and it regenerates the whole set: lightness, saturation, and structure may all change.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Same emotion, different looks</strong>: Hold the emotion coordinates and sample only the style subspace to get several options that share an emotion but differ in style. When an LLM regenerates, emotion and style drift together; neither can be pinned down.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Measuring in reverse: reading emotion out of a palette</strong>: The model's bidirectional mapping projects any palette back into emotion space, including palettes an LLM produced. An LLM will say "this feels warm," but cannot give a number that can be compared or tracked over time. This model can.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Calibrated on human perception</strong>: The emotion coordinates come from human annotations in Kobayashi's Color Image Scale, not from the averaged associations of web text. For brand consistency checks or comparing the emotional delta between two design revisions, that distinction matters.
+    </li>
+  </ul>
+
+  <SectionTitle title="Problem Definition" />
+  <p>
+    Emotion-guided palette design has long depended on subjective intuition. Prior work in color generation has centred on random sampling, optimising for diversity and harmony in the output. The few methods offering real control condition on attributes such as hue, lightness, or thematic style rather than emotion, which has never been handled systematically as a generative condition.
+  </p>
+  <p>
+    Even among studies that do target emotion, the control condition is usually a discrete semantic label, asking for "warm" or "calm" outright. That imposes two limits: emotion can only be selected in jumps rather than tuned across a continuous range, and adjusting it offers no way to preserve an established style. This research addresses that gap with a generative framework conditioned on continuous affective dimensions, turning emotion into a controllable parameter while safeguarding stylistic diversity.
   </p>
 
   <SectionTitle title="Methodology" />
   <p>
-    The framework disentangles the latent space into an explicit emotion subspace and a residual style subspace. Grounded in psychophysical color image scales, emotional dimensions are quantified across "Warm–Cool" and "Soft–Hard" axes. An XGBoost model predicts continuous affective coordinates for 53,698 web-harvested color palettes, and a β-Conditional Variational Autoencoder (β-CVAE) learns the underlying generative distribution.
+    The latent space is split in two: one part governs emotion, the other governs style, and the two are kept from interfering with each other (disentanglement). Emotional dimensions are grounded in psychophysical color image scales along "Warm–Cool" and "Soft–Hard" axes. An XGBoost model first predicts continuous affective coordinates for 53,698 web-harvested palettes, and a β-Conditional Variational Autoencoder (β-CVAE) then learns the generative distribution.
   </p>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Dual Latent Subspaces</strong>: Decouples the representation into an emotion subspace (encoding affective coordinates) and a residual style subspace (capturing color harmony and variance independent of emotion), enabling diverse palette synthesis under identical emotional inputs.</li>
-    <li><strong class="text-zinc-200">Conditional Prior & Auxiliary Alignment Loss</strong>: Uses emotion coordinates as conditional priors to guide latent distributions; an auxiliary alignment loss guarantees that emotional prompts exert precise, directional control over palette generation.</li>
-    <li><strong class="text-zinc-200">Decorrelation Constraint</strong>: Applies a decorrelation loss between the two subspaces to prevent affective leakage into style dimensions, achieving clean orthogonal separation in representation.</li>
+    <li>
+      <strong class="text-zinc-200">Dual Latent Subspaces</strong>: Separates the representation into an emotion subspace (encoding affective coordinates) and a residual style subspace (capturing harmony and variance independent of emotion).
+      <span class="block mt-1 text-zinc-500">Effect: a single emotional condition can still yield palettes across multiple styles.</span>
+    </li>
+    <li>
+      <strong class="text-zinc-200">Conditional Prior & Auxiliary Alignment Loss</strong>: Uses emotion coordinates as conditional priors to steer the latent distribution toward the target emotion, reinforced during training by an auxiliary alignment loss.
+      <span class="block mt-1 text-zinc-500">Effect: the emotional input exerts explicit control over the generated result.</span>
+    </li>
+    <li>
+      <strong class="text-zinc-200">Decorrelation Constraint</strong>: Applies a decorrelation loss between the two subspaces to prevent affective information from leaking into style dimensions.
+      <span class="block mt-1 text-zinc-500">Effect: style remains unaffected when emotion is adjusted.</span>
+    </li>
   </ul>
 
   <SectionTitle title="Experimental Results" />
   <p>
-    Spearman rank correlation coefficients between the emotion subspace and target emotion dimensions achieved 0.92 and 0.95 (plummeting to 0.11 when the alignment mechanism was ablated). Correlation between style representations and emotional conditions remained below 0.06, demonstrating rigorous disentanglement. Smooth latent space interpolation confirms that affective modulation occurs reliably along continuous navigation paths.
+    Spearman rank correlation between the emotion subspace and the target emotion dimensions was <strong class="text-zinc-200">0.92 and 0.95</strong> (maximum 1.0). With the alignment mechanism ablated, the same metric fell to <strong class="text-zinc-200">0.11</strong>. The control derives from the architecture rather than from the distribution of the data.
+  </p>
+  <p>
+    Correlation between style representations and emotional conditions stayed below 0.06, indicating separation at the representation level. Latent-space interpolation is smooth: emotional control operates along continuous paths rather than between discrete presets.
   </p>
 
-  <SectionTitle title="Key Contributions" />
+  <SectionTitle title="Contributions & Applications" />
   <p>
-    This study establishes a continuous, controllable generative mechanism for affective color synthesis, providing an actionable computational framework for emotion-driven digital design. The research was accepted for oral presentation at ICAIIC 2026 and published in the IEEE Xplore digital library.
+    This research establishes a continuous, controllable generative mechanism for affective color synthesis, offering an actionable computational framework for emotion-driven design. The work was accepted for oral presentation at ICAIIC 2026 and published in the IEEE Xplore digital library.
   </p>
+  <p>
+    In practice, the framework could serve as an emotion-adjustment feature inside a design tool, turning palette exploration from trial and error into directed iteration. It also suits brand visual systems that need to flex across contexts, holding the established tone while shifting only the emotional temperature.
+  </p>
+
+  <SectionTitle title="Technical Capabilities Developed" />
+  <p>
+    The project spans the full pipeline, from data preprocessing through model training to validation:
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li>
+      <strong class="text-zinc-200">Data cleaning and preprocessing</strong>: Web-harvested palettes contained duplicates, inconsistent color counts, and outliers, all of which required cleaning and conversion into a uniform color-space representation. Human annotations from Kobayashi's Color Image Scale then served as the ground truth for expanding emotion coordinates across 53,698 palettes.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Model design, implementation, testing, and debugging</strong>: The dual latent subspaces, conditional prior, and decorrelation constraint are not default behaviours of the base architecture and had to be implemented and verified piece by piece. Errors in representation learning rarely raise exceptions; they surface as anomalous metrics or a collapsed latent structure, so debugging depends on continuous inspection of intermediate outputs.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Fine-tuning and comparison of configurations</strong>: Different loss weightings, latent dimensionalities, and data ratios were trialled and compared for their effect on emotional control and generation quality, isolating the settings that actually worked. The loss terms constrain one another; overweighting any single term causes either emotional control or generation quality to break down.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Planning and advancing the research</strong>: Experimental direction and validation priorities were revised against interim results, raising model capability and performance over successive iterations, through to the final paper and its acceptance at an international conference.
+    </li>
+    <li>
+      <strong class="text-zinc-200">Quantitative validation</strong>: Spearman rank correlation measured both the strength of emotional control and the independence of the subspaces, while ablation studies removed mechanisms one at a time to confirm the effect came from a specific design rather than another variable.
+    </li>
+  </ul>
 </ProjectLayout>
