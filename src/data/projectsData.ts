@@ -56,7 +56,7 @@ export const zhProjects: ProjectItem[] = [
     category: "產品規劃與設計"
   },
   {
-    title: "β-CVAE 情緒導向色彩生成",
+    title: "生成式 AI：情緒可控的色彩生成",
     description: "以連續情緒維度為條件的色彩組合生成架構，實現情緒控制與風格解耦，成果發表於 ICAIIC 2026。",
     image: cvaeCover,
     link: "/projects/cvae-color",
@@ -136,7 +136,7 @@ export const enProjects: ProjectItem[] = [
     category: "Product Planning & Design"
   },
   {
-    title: "Emotion-Controllable Color Palette Generation via β-CVAE",
+    title: "Generative AI: Emotion-Controllable Color Generation",
     description: "A generative framework conditioned on continuous emotion dimensions for controllable color palettes and style disentanglement. Presented at ICAIIC 2026.",
     image: cvaeCover,
     link: "/en/projects/cvae-color",
