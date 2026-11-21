@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 interface Props {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; light?: boolean }[];
 }
 
 export default function ImageSlider({ images }: Props) {
@@ -43,8 +43,11 @@ export default function ImageSlider({ images }: Props) {
 
   return (
     <div className="relative w-full group mb-6">
-      <button type="button" onClick={() => setExpanded(true)} aria-label={`${text.zoom}: ${images[current].alt}`} className="relative block w-full cursor-zoom-in overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-4">
-        <img src={images[current].src} alt={images[current].alt} className="w-full object-cover" />
+      <button type="button" onClick={() => setExpanded(true)} aria-label={`${text.zoom}: ${images[current].alt}`} className="relative block w-full cursor-zoom-in overflow-hidden rounded-xl focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-4">
+        {/* Fixed aspect box so the panel keeps one height across slides. */}
+        <span className={`flex aspect-[16/10] w-full items-center justify-center overflow-hidden rounded-xl ${images[current].light ? "bg-white" : "bg-zinc-900"}`}>
+          <img src={images[current].src} alt={images[current].alt} className="max-h-full max-w-full rounded-xl object-contain" />
+        </span>
         <span className="absolute right-3 top-3 rounded-full bg-zinc-900/80 border border-zinc-600 px-3 py-1 text-xs text-white">{text.zoom}</span>
       </button>
 
@@ -69,7 +72,7 @@ export default function ImageSlider({ images }: Props) {
             <button type="button" autoFocus onClick={() => setExpanded(false)} className="shrink-0 rounded-full border border-zinc-500 px-4 py-2 text-sm hover:bg-zinc-800 focus-visible:outline-2 focus-visible:outline-white">{text.close} ×</button>
           </div>
           <div className="flex min-h-0 flex-1 items-center justify-center" onClick={(event) => { if (event.target === event.currentTarget) setExpanded(false); }}>
-            {expanded && <img src={images[current].src} alt={images[current].alt} className="max-h-full max-w-full object-contain" />}
+            {expanded && <img src={images[current].src} alt={images[current].alt} className={`max-h-full max-w-full object-contain ${images[current].light ? "rounded-xl bg-white p-4" : ""}`} />}
           </div>
           {multiple && <div className="flex shrink-0 items-center justify-center gap-6">
             <button type="button" onClick={prev} aria-label={text.prev} className={controlClass}>{arrow("prev")}</button>
