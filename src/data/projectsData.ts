@@ -35,6 +35,13 @@ export const zhProjects: ProjectItem[] = [
     category: "產品規劃與設計"
   },
   {
+    title: "生成式 AI：情緒可控的色彩生成",
+    description: "以連續情緒維度為條件的色彩組合生成架構，實現情緒控制與風格解耦，成果發表於 ICAIIC 2026。",
+    image: cvaeCover,
+    link: "/projects/cvae-color",
+    category: "AI 與軟體實作"
+  },
+  {
     title: "DayBlocks｜模組化卡片日記",
     description: "從構想到上架，獨立開發的 iOS 生活記錄 App，結合模組化卡片與輕社交功能。",
     image: DayBlocksCover,
@@ -54,13 +61,6 @@ export const zhProjects: ProjectItem[] = [
     image: weather_horoscopecover,
     link: "/projects/weather_horoscope",
     category: "產品規劃與設計"
-  },
-  {
-    title: "生成式 AI：情緒可控的色彩生成",
-    description: "以連續情緒維度為條件的色彩組合生成架構，實現情緒控制與風格解耦，成果發表於 ICAIIC 2026。",
-    image: cvaeCover,
-    link: "/projects/cvae-color",
-    category: "AI 與軟體實作"
   },
   {
     title: "Facebook 爬蟲自動化",
@@ -115,6 +115,13 @@ export const enProjects: ProjectItem[] = [
     category: "Product Planning & Design"
   },
   {
+    title: "Generative AI: Emotion-Controllable Color Generation",
+    description: "A generative framework conditioned on continuous emotion dimensions for controllable color palettes and style disentanglement. Presented at ICAIIC 2026.",
+    image: cvaeCover,
+    link: "/en/projects/cvae-color",
+    category: "AI & Software Engineering"
+  },
+  {
     title: "DayBlocks | Modular Card Journal",
     description: "From concept to App Store launch—a solo-developed iOS life-tracking app featuring customizable cards and lightweight social interactions.",
     image: DayBlocksCover,
@@ -134,13 +141,6 @@ export const enProjects: ProjectItem[] = [
     image: weather_horoscopecover,
     link: "/en/projects/weather_horoscope",
     category: "Product Planning & Design"
-  },
-  {
-    title: "Generative AI: Emotion-Controllable Color Generation",
-    description: "A generative framework conditioned on continuous emotion dimensions for controllable color palettes and style disentanglement. Presented at ICAIIC 2026.",
-    image: cvaeCover,
-    link: "/en/projects/cvae-color",
-    category: "AI & Software Engineering"
   },
   {
     title: "Automated Facebook Intelligence Scraper",
