@@ -5,13 +5,6 @@ import ProjectExternalLink from "../../../components/project/ProjectExternalLink
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import LingoDrop from "../../../assets/Lingodrop_mockup.png";
-import slide02 from "../../../assets/lingodrop/slide-02.png";
-import slide04 from "../../../assets/lingodrop/slide-04.png";
-import slide07 from "../../../assets/lingodrop/slide-07.png";
-import slide09 from "../../../assets/lingodrop/slide-09.png";
-import slide10 from "../../../assets/lingodrop/slide-10.png";
-import slide11 from "../../../assets/lingodrop/slide-11.png";
-import slide12 from "../../../assets/lingodrop/slide-12.png";
 
 const gaps = [
   {
@@ -52,16 +45,7 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[
-        { src: LingoDrop.src, alt: "LingoDrop interface" },
-        { src: slide02.src, alt: "The hook: endless TV shows, still just “I'm fine”" },
-        { src: slide04.src, alt: "The gap: understanding vs. using" },
-        { src: slide07.src, alt: "Job to be Done" },
-        { src: slide09.src, alt: "The product" },
-        { src: slide10.src, alt: "Eight core features" },
-        { src: slide11.src, alt: "User journey" },
-        { src: slide12.src, alt: "Early signal" },
-      ]}
+      images={[{ src: LingoDrop.src, alt: "LingoDrop interface" }]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
