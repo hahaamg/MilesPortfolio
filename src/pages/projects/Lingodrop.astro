@@ -5,6 +5,13 @@ import ProjectExternalLink from "../../components/project/ProjectExternalLink.as
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import LingoDrop from "../../assets/Lingodrop_mockup.png";
+import slide02 from "../../assets/lingodrop/slide-02.png";
+import slide04 from "../../assets/lingodrop/slide-04.png";
+import slide07 from "../../assets/lingodrop/slide-07.png";
+import slide09 from "../../assets/lingodrop/slide-09.png";
+import slide10 from "../../assets/lingodrop/slide-10.png";
+import slide11 from "../../assets/lingodrop/slide-11.png";
+import slide12 from "../../assets/lingodrop/slide-12.png";
 
 const gaps = [
   {
@@ -45,7 +52,16 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[{ src: LingoDrop.src, alt: "LingoDrop 介面" }]}
+      images={[
+        { src: LingoDrop.src, alt: "LingoDrop 介面" },
+        { src: slide02.src, alt: "The Hook：看了一堆美劇，還是只會說 I'm fine" },
+        { src: slide04.src, alt: "問題定位：看得懂，卻用不出來" },
+        { src: slide07.src, alt: "Job to be Done" },
+        { src: slide09.src, alt: "產品介紹" },
+        { src: slide10.src, alt: "八個核心功能" },
+        { src: slide11.src, alt: "使用者旅程" },
+        { src: slide12.src, alt: "早期驗證" },
+      ]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
@@ -120,36 +136,10 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
     最接近的是 Language Reactor：它原名 Language Learning with Netflix，證明「看影集學英文」是真實存在的行為。但它處理的是觀看<strong class="text-zinc-200">當下</strong>，看完之後的保存、整理、複習與使用沒有人接手。ChatGPT 能解釋得很好，可是答案留在對話紀錄裡，不會變成一個能回頭複習的個人庫。LingoDrop 的位置就在這些工具中間：不重做它們已經做好的事，而是把斷掉的環節接起來。
   </p>
 
-  <SectionTitle title="市場與時機" />
-  <p>
-    我從台灣繁中的英文學習者切入估算市場（資料來源：Cognitive Market Research）：
-  </p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">TAM｜全球英語學習 App 市場</strong>：約 38.7 億美元。</li>
-    <li><strong class="text-zinc-200">SAM｜台灣英語學習 App 市場</strong>：約 2,486 萬美元（約 8 億台幣）。</li>
-    <li><strong class="text-zinc-200">SOM｜LingoDrop 早期可取得的市場</strong>：約 2.5–12.5 萬美元（80–400 萬台幣）。</li>
-  </ul>
-  <p>
-    老實說，SOM 算出來很小，只靠台灣的早期使用者撐不起一門生意。這個數字讓我把現階段的目標定得很清楚：先驗證「把遇到的英文記下來」這件事是否真的有人需要，而不是急著商業化。
-  </p>
-  <p>至於為什麼是現在做，我整理了四個理由：</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">串流讓真實英文輸入成為日常</strong>：多數人已經透過 Netflix、YouTube 與社群接觸英文，研究也指出字幕影片能支持詞彙的附帶習得（incidental acquisition）。</li>
-    <li><strong class="text-zinc-200">「看影集學英文」已被驗證</strong>：Language Reactor 的成長說明需求存在，缺的是觀看之後的那一段。</li>
-    <li><strong class="text-zinc-200">AI 讓個人化語境學習變得可行</strong>：過去單字 App 很難替每個人遇到的句子產生自然解釋，現在 LLM 能把一句台詞或工作訊息轉成學習材料。</li>
-    <li><strong class="text-zinc-200">市場已接受 AI 付費功能</strong>：Duolingo、Praktika 等產品都在強化 AI 對話與 AI tutor。</li>
-  </ul>
-
   <SectionTitle title="產品定位：先講清楚它不是什麼" />
   <p>
-    為了不和既有工具撞在一起，我用四個「不是」來定義 LingoDrop 的邊界：
+    為了不和既有工具撞在一起，我用四個「不是」定義 LingoDrop 的邊界：<strong class="text-zinc-200">不是傳統字典</strong>，重視個人收藏與長期複習；<strong class="text-zinc-200">不是純 AI 聊天</strong>，把回答結構化保存成個人庫；<strong class="text-zinc-200">不是考試單字 App</strong>，以真實語境為中心；<strong class="text-zinc-200">也不是純筆記</strong>，記下來的內容會透過翻卡與 AI 對話被再次使用。
   </p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">不是傳統字典</strong>：它重視個人收藏與長期複習，而不只是查完就走。</li>
-    <li><strong class="text-zinc-200">不是純 AI 聊天</strong>：它把 AI 的回答結構化，保存成個人庫。</li>
-    <li><strong class="text-zinc-200">不是考試單字 App</strong>：內容以真實語境與個人需求為中心，不是官方預設的單字表。</li>
-    <li><strong class="text-zinc-200">不是純筆記</strong>：它有翻卡、標籤、AI 對話與學習追蹤，記下來之後還會被拿出來用。</li>
-  </ul>
 
   <SectionTitle title="學習閉環與核心功能" />
   <p>
@@ -186,13 +176,8 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
 
   <SectionTitle title="使用者旅程" />
   <p>
-    完整走一次的流程是：遇到不熟的英文 → 輸入 LingoDrop → AI 解析 → 收藏並加上標籤 → 翻卡複習 → AI 情境對話 → 真正會用。設計時我把重點放在三個轉換點：
+    完整流程是：遇到不熟的英文 → 輸入 LingoDrop → AI 解析 → 收藏並加上標籤 → 翻卡複習 → AI 情境對話 → 真正會用。設計重點在把「查詢」轉成「整理」，再轉成「複習」與「使用」：查詢當下就拿到解釋、例句與發音，結果直接進資料夾而不是散落在截圖裡，複習完再用情境對話把詞彙放回句子。
   </p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">輸入即解析</strong>：查詢的當下就拿到中文解釋、例句與發音，不需要另外開字典。</li>
-    <li><strong class="text-zinc-200">從查詢變成整理</strong>：查完的結果直接放進資料夾、加上情境標籤，不再散落在截圖和備忘錄。</li>
-    <li><strong class="text-zinc-200">從整理變成使用</strong>：翻卡複習之後，再用 AI 生成的情境對話把詞彙放回句子裡。</li>
-  </ul>
 
   <SectionTitle title="技術實作" />
   <p>產品從規劃、介面到前後端都由我獨立完成，目前已部署上線：</p>

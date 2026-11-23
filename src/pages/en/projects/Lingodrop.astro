@@ -5,6 +5,13 @@ import ProjectExternalLink from "../../../components/project/ProjectExternalLink
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import LingoDrop from "../../../assets/Lingodrop_mockup.png";
+import slide02 from "../../../assets/lingodrop/slide-02.png";
+import slide04 from "../../../assets/lingodrop/slide-04.png";
+import slide07 from "../../../assets/lingodrop/slide-07.png";
+import slide09 from "../../../assets/lingodrop/slide-09.png";
+import slide10 from "../../../assets/lingodrop/slide-10.png";
+import slide11 from "../../../assets/lingodrop/slide-11.png";
+import slide12 from "../../../assets/lingodrop/slide-12.png";
 
 const gaps = [
   {
@@ -45,7 +52,16 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[{ src: LingoDrop.src, alt: "LingoDrop interface" }]}
+      images={[
+        { src: LingoDrop.src, alt: "LingoDrop interface" },
+        { src: slide02.src, alt: "The hook: endless TV shows, still just “I'm fine”" },
+        { src: slide04.src, alt: "The gap: understanding vs. using" },
+        { src: slide07.src, alt: "Job to be Done" },
+        { src: slide09.src, alt: "The product" },
+        { src: slide10.src, alt: "Eight core features" },
+        { src: slide11.src, alt: "User journey" },
+        { src: slide12.src, alt: "Early signal" },
+      ]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
@@ -120,36 +136,10 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
     The closest is Language Reactor. Originally called Language Learning with Netflix, it proves that learning from shows is a real behavior. But it handles the moment of watching; nobody takes over the saving, organizing, reviewing and using that should come after. ChatGPT explains well, but its answers stay buried in chat history instead of becoming a library you can come back to. LingoDrop sits between these tools: it doesn't redo what they already do well, it connects the broken links.
   </p>
 
-  <SectionTitle title="Market and timing" />
-  <p>
-    I sized the market starting from Traditional Chinese-speaking English learners in Taiwan (source: Cognitive Market Research):
-  </p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">TAM: global English-learning app market</strong> — about US$3.87 billion.</li>
-    <li><strong class="text-zinc-200">SAM: Taiwan English-learning app market</strong> — about US$24.86 million (≈ NT$800 million).</li>
-    <li><strong class="text-zinc-200">SOM: what LingoDrop could reach early on</strong> — about US$25K–125K (NT$0.8–4 million).</li>
-  </ul>
-  <p>
-    Honestly, the SOM is small; early users in Taiwan alone can't sustain a business. That number made the current goal clear: first validate whether people really need a way to capture the English they run into, rather than rushing to monetize.
-  </p>
-  <p>As for why now, I identified four reasons:</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Streaming made authentic English input part of daily life</strong>: most people already meet English on Netflix, YouTube and social media, and research shows subtitled video supports incidental vocabulary acquisition.</li>
-    <li><strong class="text-zinc-200">Learning from shows is a proven behavior</strong>: Language Reactor's growth shows the demand exists; what's missing is the part after watching.</li>
-    <li><strong class="text-zinc-200">AI makes personalized, in-context learning feasible</strong>: vocabulary apps used to struggle to explain every sentence each person encountered. LLMs can now turn a line of dialogue or a work message into study material.</li>
-    <li><strong class="text-zinc-200">The market already pays for AI features</strong>: Duolingo, Praktika and others are doubling down on AI conversation and AI tutors.</li>
-  </ul>
-
   <SectionTitle title="Positioning: defining what it isn't" />
   <p>
-    To avoid overlapping with existing tools, I drew LingoDrop's boundaries with four “nots”:
+    To avoid overlapping with existing tools, I drew LingoDrop's boundaries with four “nots”: <strong class="text-zinc-200">not a dictionary</strong>, since it centers on personal collection and long-term review; <strong class="text-zinc-200">not just an AI chat</strong>, since it saves structured answers into a library; <strong class="text-zinc-200">not an exam vocabulary app</strong>, since content comes from real contexts; and <strong class="text-zinc-200">not just a notebook</strong>, since what you save comes back through flashcards and AI dialogue.
   </p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Not a dictionary</strong>: it's built around personal collection and long-term review, not look-up-and-leave.</li>
-    <li><strong class="text-zinc-200">Not just an AI chat</strong>: it structures AI answers and saves them into a personal library.</li>
-    <li><strong class="text-zinc-200">Not an exam vocabulary app</strong>: content comes from real contexts and personal needs, not a predefined word list.</li>
-    <li><strong class="text-zinc-200">Not just a notebook</strong>: flashcards, tags, AI dialogue and progress tracking mean what you save gets used again.</li>
-  </ul>
 
   <SectionTitle title="The learning loop and core features" />
   <p>
@@ -186,13 +176,8 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
 
   <SectionTitle title="User journey" />
   <p>
-    The full flow is: meet an unfamiliar expression → enter it in LingoDrop → AI analysis → save and tag → flashcard review → AI dialogue → actually use it. I focused the design on three transitions:
+    The full flow: meet an unfamiliar expression → enter it in LingoDrop → AI analysis → save and tag → flashcard review → AI dialogue → actually use it. The design turns looking up into organizing, then into reviewing and using: you get the explanation, examples and pronunciation at lookup time, results go straight into folders instead of scattered screenshots, and after review, contextual dialogues put the vocabulary back into sentences.
   </p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Analysis on input</strong>: you get the Chinese explanation, examples and pronunciation at the moment you look it up, without opening a separate dictionary.</li>
-    <li><strong class="text-zinc-200">From looking up to organizing</strong>: results go straight into folders with context tags instead of scattering across screenshots and notes.</li>
-    <li><strong class="text-zinc-200">From organizing to using</strong>: after flashcard review, AI-generated dialogues put the vocabulary back into sentences.</li>
-  </ul>
 
   <SectionTitle title="Implementation" />
   <p>I built the product on my own, from planning and interface to front and back end, and it's deployed and live:</p>
