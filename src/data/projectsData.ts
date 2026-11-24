@@ -43,7 +43,7 @@ export const zhProjects: ProjectItem[] = [
   },
   {
     title: "DayBlocks｜模組化卡片日記",
-    description: "從構想到上架，獨立開發的 iOS 生活記錄 App，結合模組化卡片與輕社交功能。",
+    description: "從用戶痛點、競品分析、PRD 到上架 App Store，主導 0 到 1 的模組化卡片日記，以輕社交與連勝機制提升記錄習慣。",
     image: DayBlocksCover,
     link: "/projects/dayblocks",
     category: "產品規劃與設計"
@@ -123,7 +123,7 @@ export const enProjects: ProjectItem[] = [
   },
   {
     title: "DayBlocks | Modular Card Journal",
-    description: "From concept to App Store launch—a solo-developed iOS life-tracking app featuring customizable cards and lightweight social interactions.",
+    description: "Led a modular card journal from 0 to 1, from user pain points, competitive analysis and PRD to App Store launch, using light social and streaks to build journaling habits.",
     image: DayBlocksCover,
     link: "/en/projects/dayblocks",
     category: "Product Planning & Design"

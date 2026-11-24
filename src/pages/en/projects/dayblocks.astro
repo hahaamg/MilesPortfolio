@@ -4,43 +4,146 @@ import ImageSlider from "../../../components/project/ImageSlider";
 import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
-import dayblocksCover from "../../../assets/DayBlocks cover.png";
+import { dayblocksImages } from "../../../data/dayblocksSlides";
+
+const images = dayblocksImages("en");
 ---
 
 <ProjectLayout
   title="DayBlocks | Modular Card Journal"
-  tags={["iOS App", "Life Journaling", "Social Habits"]}
+  tags={["iOS App", "0-to-1 Product", "Product Strategy", "Light Social", "Habit Building"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: dayblocksCover.src, alt: "DayBlocks" }]}
-      client:load
-    />
+    <ImageSlider images={images} client:load />
     <div class="grid grid-cols-3 gap-2">
-      <HighlightCard value="7+" label="Modular Card Types" />
-      <HighlightCard value="iOS" label="Solo Developed" />
-      <HighlightCard value="App Store" label="Official Release" />
+      <HighlightCard value="95%" label="Code Contribution (436 / 457 commits)" />
+      <HighlightCard value="10" label="Composable Card Types" />
+      <HighlightCard value="Live" label="Released on the App Store" />
     </div>
     <ProjectExternalLink href="https://apps.apple.com/tw/app/dayblocks/id6761128709" label="View on App Store" />
   </div>
 
-  <SectionTitle title="Product Concept" />
+  <SectionTitle title="Three Apps Just to Log One Day" />
   <p>
-    DayBlocks is a life-tracking iOS app built around the core concept of "modular cards," empowering users to curate their personalized daily dashboard using freely draggable and resizable card widgets. Unlike traditional journaling apps with rigid templates, DayBlocks emphasizes flexibility and personalization—allowing users to adapt layouts based on daily priorities and seamlessly integrate self-reflection into their routine.
+    DayBlocks started from a small frustration: I wanted to keep track of my life, but my journal lived in Day One, my habits in Streaks, my focus time in Forest, and my photos in the camera roll. I described the problem through a typical target user: a 25-year-old security engineer working in finance.
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    "I write my journal in Day One, track habits in Streaks and log focus time in Forest. Just switching between three apps makes me want to give up."
+  </p>
+  <p>Breaking that scenario down gave me three problems:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Fragmentation</strong>: journaling, habits, focus, health and photos are scattered across tools, the data never connects, and every extra app adds friction.</li>
+    <li><strong class="text-zinc-200">No social motivation</strong>: most journaling apps are private islands. You can't see your friends' progress and nobody cheers you on.</li>
+    <li><strong class="text-zinc-200">Rigid templates</strong>: traditional apps give everyone the same layout, no matter what their day actually revolves around.</li>
+  </ul>
+
+  <SectionTitle title="Why a Journal Needs Social" />
+  <p>
+    The first two problems were obvious. The social part took me the longest to justify: journals are private, so why would anyone want others to see them?
+  </p>
+  <p>
+    The answer came from how Gen Z presents itself. Fewer polished selfies, more real data: Spotify Wrapped generates over 2 billion social impressions a year, Strava mentions on Instagram grew 70%, and Duolingo sees over 30 million streak shares a month. "Top 0.5% listener" or "running four weeks straight" says more about a person than a photo does.
+  </p>
+  <p>
+    Research also shows that sharing progress with friends can raise goal completion to 65%. But young users want that without the pressure of comments and likes. They want to be seen, not judged.
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    If Strava lets your athletic self be seen and Spotify lets your music taste be seen, DayBlocks lets your whole self be seen: not just runs and playlists, but moods, focus and the small wins of every day.
   </p>
 
-  <SectionTitle title="Core Features" />
+  <SectionTitle title="Market and Competitors: Finding an Empty Spot" />
   <p>
-    The app features over 7 functional card types, spanning Weather, Mood, Journal, Photo, Morning Check-in, To-Do lists, and Habit Tracking. Users can assemble custom modular layouts to fit their lifestyle. Interactive heatmaps provide immediate visibility into habit streaks, while mood trend calendars help users monitor emotional fluctuations and cultivate deeper mindfulness toward their life rhythm.
+    Driven by the digital self-care trend, the global digital journaling app market is projected at about USD 110M in 2026, growing at an 11.5% CAGR. Asia-Pacific accounts for roughly 30% (USD 33M). Starting from Taiwan, with a target of 100,000 users and 2% converting to Pro, the first-year obtainable market is about NT$1.77M.
+  </p>
+  <p>
+    The main competitors are Daylio and DailyBean, both built around lightweight mood logging. Daylio leads on deep statistics and a large user base; DailyBean wins on a minimal calendar aesthetic. Comparing them feature by feature, productivity tools like a Pomodoro timer, task streaks, wake-up check-ins and habit tracking were missing from both, and so were a friends feed and leaderboard. Neither offered automatic weather or freely arranged cards either. That became the positioning: <strong class="text-zinc-200">a productivity journal with pressure-free social</strong>.
   </p>
 
-  <SectionTitle title="Lightweight Social Experience" />
+  <SectionTitle title="Defining Success Before Building" />
+  <p>Before writing code, I set OKRs for what success would mean:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Objective</strong>: build an app that helps people keep a journaling habit.</li>
+    <li><strong class="text-zinc-200">KR1 Feature completeness</strong>: ship 10 card types covering both mindfulness and productivity.</li>
+    <li><strong class="text-zinc-200">KR2 Cross-platform</strong>: support iOS and Android from one codebase.</li>
+    <li><strong class="text-zinc-200">KR3 User validation</strong>: run a Beta with real users and complete at least one iteration based on their feedback.</li>
+  </ul>
   <p>
-    Beyond private journaling, DayBlocks introduces lightweight social interactions where users can share daily milestones and habits to a community feed. Journaling becomes more than passive archiving; it evolves into a way to connect and celebrate growth with friends. The philosophy is simple: positive routines and mindful living deserve to be celebrated and shared.
+    I then wrote a 15-chapter bilingual PRD covering user scenarios, data architecture and UX flows, plus a card-system spec defining each card's sizes, data structure and global interaction rules. i18n was part of the architecture from day one, so expanding to new markets wouldn't require a rewrite.
+  </p>
+  <p>Features were split into four priority tiers so every stage produced something usable:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">P0 Core card system</strong>: without it there is no product.</li>
+    <li><strong class="text-zinc-200">P1 Streaks</strong>: a reason to come back tomorrow.</li>
+    <li><strong class="text-zinc-200">P2 Social</strong>: the differentiator, built on top of the first two.</li>
+    <li><strong class="text-zinc-200">P3 Future</strong>: music, HealthKit, AI insights. Written down, not rushed.</li>
+  </ul>
+
+  <SectionTitle title="Four Key Trade-offs" />
+  <p>With limited resources, every "yes" means a "no" somewhere else. These four decisions shaped the product most:</p>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. Light social (cheers) vs. deep social (comments)</h3>
+  <p>
+    I kept only cheers and kudos, no comments. Completing a task or adding a card automatically appears on friends' feeds, inspired by Duolingo, so nobody has to compose a post. It gives up depth of interaction in exchange for zero social pressure, and keeps journaling itself free of feed noise.
   </p>
 
-  <SectionTitle title="Development & Release" />
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. Local storage + cloud social</h3>
   <p>
-    From concept and UI/UX design to full-stack iOS development and App Store release, DayBlocks was engineered entirely independently. It is officially published on the App Store, supporting iOS 15.0+ devices with bilingual localization in Traditional Chinese and English.
+    Journals are deeply personal, so they live in on-device SQLite by default. Only the data the social feed needs goes to the cloud. That protects privacy and keeps backend costs very low, which matters for a product without revenue yet.
   </p>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">3. Forgiving streaks vs. reset on a miss</h3>
+  <p>
+    Most streaks reset after one missed day, which is brutal for someone just starting a habit; one miss often means quitting. I added a buffer so an occasional gap doesn't wipe out past progress. The goal is to bring users back, not punish them.
+  </p>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">4. Smart layout inheritance vs. daily setup</h3>
+  <p>
+    Cards can be dragged and resized freely, but rearranging every day turns freedom into a chore. Each new day inherits the previous day's layout, and you change it only when you want to. That makes "open the app and log" possible.
+  </p>
+
+  <SectionTitle title="What Shipped" />
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Modular cards</strong>: weather, mood, journal, photo, Pomodoro, habits, tasks, to-dos and wake-up check-ins, plus a Strava run card. A dynamic grid lets you decide how much space each part of your life gets.</li>
+    <li><strong class="text-zinc-200">Light social feed</strong>: a friends feed, cheers and kudos, and a friends leaderboard. No posting required; logging is sharing.</li>
+    <li><strong class="text-zinc-200">Data insights</strong>: heatmaps show each habit's completion history, alongside streak flame badges and mood trends.</li>
+  </ul>
+
+  <SectionTitle title="Building It" />
+  <p>
+    I was the product owner and lead developer, driving requirements, UX flows, UI guidelines, full-stack development and deployment. I authored 436 of the 457 commits (about 95%).
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Cross-platform app</strong>: React 18 + Capacitor 8, producing iOS and Android builds from one codebase.</li>
+    <li><strong class="text-zinc-200">Backend</strong>: PocketBase on Zeabur handling OAuth sign-in and social data sync, plus a third-party weather API.</li>
+    <li><strong class="text-zinc-200">Data and notifications</strong>: local SQLite with hardware-encrypted secure storage, local push notifications and an automated CI/CD pipeline.</li>
+  </ul>
+
+  <SectionTitle title="Polishing Before Launch" />
+  <p>Working features aren't the same as a good experience. Based on device testing and user feedback, I made several small changes that make a big difference in feel:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Performance</strong>: removed the expensive backdrop-blur on iOS and switched to preloaded sheets, eliminating stutter when panels open.</li>
+    <li><strong class="text-zinc-200">Haptics</strong>: added haptic feedback to key moments like completing a task, so finishing something feels like a small ritual.</li>
+    <li><strong class="text-zinc-200">Respectful notifications</strong>: reminders are skipped if you've already logged that day, so DayBlocks doesn't become one more notification to mute.</li>
+    <li><strong class="text-zinc-200">Visual restraint</strong>: cut redundant animations to shorten response time and keep attention on the content.</li>
+  </ul>
+
+  <SectionTitle title="What the Beta Taught Me" />
+  <p>
+    I ran a Friends &amp; Family Beta. The biggest lesson is a cliché I only understood by living it: <strong class="text-zinc-200">what users want is often different from what you built</strong>. The feedback moved the photo upload flow and the social panel, neither of which was near the top of my list, to the front of the next iteration.
+  </p>
+  <p>
+    The other lesson: the hardest part isn't writing code, it's deciding what not to build. Prioritization took more energy than implementation. Having gone through the full loop from problem definition, spec, development and launch to feedback, I have a clearer sense of where a PM adds value: making the right call for the right users with limited resources.
+  </p>
+
+  <SectionTitle title="Business Model and What's Next" />
+  <p>
+    DayBlocks uses a freemium model: Pro is USD 2.99/month or USD 24.99/year and unlocks advanced features. The local-first architecture keeps running costs low, and growth relies on word of mouth and sharing on communities like Threads. The financial plan projects break-even at about 200 paid users in Q1 2027, with a year-three target of 2,500 paid users.
+  </p>
+  <p>The roadmap has four phases:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Phase 1 Launch</strong>: bug fixes, performance, onboarding, push notifications, paywall and App Store release (done).</li>
+    <li><strong class="text-zinc-200">Phase 2 Social flywheel</strong>: Instagram Story share cards, streak share images, monthly and yearly recaps, achievement badges, community challenges.</li>
+    <li><strong class="text-zinc-200">Phase 3 Expansion</strong>: advanced stats dashboard, cloud backup, music card, dark mode and themes, iOS widgets.</li>
+    <li><strong class="text-zinc-200">Phase 4 AI</strong>: AI-powered insights and HealthKit integration.</li>
+  </ul>
 </ProjectLayout>
