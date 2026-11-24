@@ -25,12 +25,12 @@ const images = dayblocksImages("zh");
 
   <SectionTitle title="一天要開三個 App，才記得完一天" />
   <p>
-    DayBlocks 的起點是一個很小的煩躁：想好好記錄生活，結果日記在 Day One、習慣在 Streaks、專注時間在 Forest，照片又在相簿裡。我用一個典型的目標用戶來描述這件事：一位 25 歲、在金融業做資安的工程師。
+    想完整記錄一天的生活，往往需要同時使用好幾個 App：日記在 Day One、習慣在 Streaks、專注時間在 Forest，照片則在相簿裡。以一位典型目標用戶為例，一位 25 歲、在金融業做資安的工程師：
   </p>
   <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
     「我用 Day One 寫日記、Streaks 追蹤習慣、Forest 紀錄專注時間，光是切換三個 App 就讓我想放棄紀錄了。」
   </p>
-  <p>把這個情境拆開，我整理出三個問題：</p>
+  <p>這個情境可以拆成三個問題：</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">功能碎片化</strong>：日記、習慣、專注、健康、照片分散在不同工具，資料無法整合，每多一個 App 就多一道記錄的摩擦。</li>
     <li><strong class="text-zinc-200">缺乏社交激勵</strong>：多數日記 App 是完全私密的孤島，看不到朋友的進度，也沒有人會為你的堅持打氣。</li>
@@ -39,10 +39,10 @@ const images = dayblocksImages("zh");
 
   <SectionTitle title="為什麼日記需要社交" />
   <p>
-    前兩個問題很直覺，第三個「社交」是我花最多時間說服自己的。日記本來就是私密的，為什麼要讓別人看見？
+    功能整合與自訂版面的需求相對直覺，社交則需要更多理由支撐：日記本質上是私密的，為什麼要讓別人看見？
   </p>
   <p>
-    答案來自觀察 Z 世代怎麼分享自己。他們越來越少發精修的自拍，反而熱衷分享「真實的數據」：Spotify Wrapped 每年創造超過 20 億次社群曝光，Instagram 上提及 Strava 的貼文成長 70%，Duolingo 每月有超過 3,000 萬次連勝分享。「Top 0.5% 的聽眾」、「連續跑步 4 週」這些數字，比照片更能說明一個人是誰。
+    答案在於 Z 世代分享自己的方式。他們越來越少發精修的自拍，反而熱衷分享「真實的數據」：Spotify Wrapped 每年創造超過 20 億次社群曝光，Instagram 上提及 Strava 的貼文成長 70%，Duolingo 每月有超過 3,000 萬次連勝分享。「Top 0.5% 的聽眾」、「連續跑步 4 週」這些數字，比照片更能說明一個人是誰。
   </p>
   <p>
     同時，研究指出與朋友共享進度能把目標達成率提升到 65%。但年輕人也明確表示不想要留言和按讚的壓力。他們需要的是「被看見」，不是「被評論」。
@@ -56,11 +56,11 @@ const images = dayblocksImages("zh");
     在數位自我照護（Digital Self-care）趨勢下，全球數位日記 App 市場預估 2026 年約 1.1 億美元，年複合成長率 11.5%；亞太區約佔 30%，即 3,300 萬美元。以台灣為起點，目標取得 10 萬名用戶、2% 轉換為 Pro 訂閱，首年可獲得市場約新台幣 177 萬元。
   </p>
   <p>
-    主要競品是 Daylio 和 DailyBean，兩者都以輕量心情紀錄為核心：Daylio 靠深度統計與龐大用戶穩居領導地位，DailyBean 則以極簡的月曆視覺取勝。逐項比對後我發現，番茄鐘、任務連勝、起床打卡、習慣追蹤這些「生產力」功能，以及好友動態牆和排行榜，在兩者中都完全缺席；天氣自動整合和自由排版的卡片也是兩者都沒有的。這就是 DayBlocks 的定位：<strong class="text-zinc-200">一本「生產力日記」，再加上沒有壓力的輕社交</strong>。
+    主要競品是 Daylio 和 DailyBean，兩者都以輕量心情紀錄為核心：Daylio 靠深度統計與龐大用戶穩居領導地位，DailyBean 則以極簡的月曆視覺取勝。逐項比對後可以發現，番茄鐘、任務連勝、起床打卡、習慣追蹤這些「生產力」功能，以及好友動態牆和排行榜，在兩者中都完全缺席；天氣自動整合和自由排版的卡片也是兩者都沒有的。這就是 DayBlocks 的定位：<strong class="text-zinc-200">一本「生產力日記」，再加上沒有壓力的輕社交</strong>。
   </p>
 
   <SectionTitle title="先定義成功，再開始做" />
-  <p>動手之前，我先用 OKR 寫下這個專案怎樣才算成功：</p>
+  <p>開發前先以 OKR 定義專案的成功標準：</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Objective</strong>：打造一個能讓人持續養成記錄習慣的 App。</li>
     <li><strong class="text-zinc-200">KR1 功能完備</strong>：完整實作 10 種卡片，涵蓋正念與生產力兩類情境。</li>
@@ -68,7 +68,7 @@ const images = dayblocksImages("zh");
     <li><strong class="text-zinc-200">KR3 用戶驗證</strong>：邀請真實用戶參與 Beta 測試，並根據回饋完成至少一輪迭代。</li>
   </ul>
   <p>
-    接著我寫了一份 15 章節的中英雙語 PRD，涵蓋用戶情境、資料架構與 UX 流程，並為每種卡片定義尺寸系統、資料結構和全域互動規則。i18n 從第一天就放進架構，之後要擴展到其他市場不必重寫。
+    接著撰寫 15 章節的中英雙語 PRD，涵蓋用戶情境、資料架構與 UX 流程，並為每種卡片定義尺寸系統、資料結構和全域互動規則。i18n 從第一天就放進架構，之後要擴展到其他市場不必重寫。
   </p>
   <p>功能依優先級分成四層，確保每一階段都有可以用的產品：</p>
   <ul class="list-disc ml-6 space-y-2">
@@ -83,7 +83,7 @@ const images = dayblocksImages("zh");
 
   <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">一、輕社交（打氣）vs. 深社交（留言）</h3>
   <p>
-    我選擇只保留「打氣」和「歡呼」，不開放留言。完成任務或新增卡片會自動出現在好友動態牆上，靈感來自 Duolingo，不用刻意發文，朋友自然看見你的努力。這樣做犧牲了互動深度，但換到的是零社交壓力，也不會讓記錄本身被社群干擾。
+    社交互動只保留「打氣」和「歡呼」，不開放留言。完成任務或新增卡片會自動出現在好友動態牆上，靈感來自 Duolingo，不用刻意發文，朋友自然看見你的努力。這樣做犧牲了互動深度，但換到的是零社交壓力，也不會讓記錄本身被社群干擾。
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">二、本地儲存 + 雲端社交的混合架構</h3>
@@ -93,7 +93,7 @@ const images = dayblocksImages("zh");
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">三、連勝的緩衝機制 vs. 中斷即歸零</h3>
   <p>
-    多數連勝設計是斷一天就歸零，但這對剛開始建立習慣的人打擊很大，常常斷一次就直接放棄。我加入了緩衝機制，讓偶然的中斷不會抹掉之前的累積，目的是提高回訪率，而不是懲罰用戶。
+    多數連勝設計是斷一天就歸零，但這對剛開始建立習慣的人打擊很大，常常斷一次就直接放棄。因此 DayBlocks 加入緩衝機制，讓偶然的中斷不會抹掉之前的累積，目的是提高回訪率，而不是懲罰用戶。
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">四、智慧繼承版面 vs. 每天手動設定</h3>
@@ -110,7 +110,7 @@ const images = dayblocksImages("zh");
 
   <SectionTitle title="技術實作" />
   <p>
-    我擔任產品負責人兼主要開發者，從需求定義、UX 流程、介面規範到前後端開發與部署都由我主導，貢獻了 457 個 commits 中的 436 個（約 95%）。
+    擔任產品負責人兼主要開發者，主導需求定義、UX 流程、介面規範、前後端開發與部署，貢獻 457 個 commits 中的 436 個（約 95%）。
   </p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">跨平台 App</strong>：以 React 18 + Capacitor 8 開發，一套程式碼產出 iOS 與 Android 版本。</li>
@@ -119,7 +119,7 @@ const images = dayblocksImages("zh");
   </ul>
 
   <SectionTitle title="上架前的打磨" />
-  <p>功能做完不等於好用。上架前我根據實機測試和用戶反饋，做了幾個看不太出來、但體感差很多的調整：</p>
+  <p>功能做完不等於好用。上架前根據實機測試和用戶反饋，做了幾項不顯眼、但體感差異很大的調整：</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">效能</strong>：移除 iOS 上很耗效能的 backdrop-blur，改用預先載入的 Sheet，消除開啟面板時的卡頓。</li>
     <li><strong class="text-zinc-200">觸覺回饋</strong>：在完成任務等關鍵操作加入 Haptic Feedback，讓「完成」這件事有儀式感。</li>
@@ -127,12 +127,12 @@ const images = dayblocksImages("zh");
     <li><strong class="text-zinc-200">視覺克制</strong>：拿掉多餘的動畫，縮短反應時間，讓注意力回到內容本身。</li>
   </ul>
 
-  <SectionTitle title="Beta 測試教會我的事" />
+  <SectionTitle title="Beta 測試的收穫" />
   <p>
-    我邀請親友參與 Friends &amp; Family Beta 測試。最大的收穫是一句很老套但親身體會才懂的話：<strong class="text-zinc-200">用戶要的和你做的，常常不一樣</strong>。測試回饋讓我把下一輪迭代的重點，放在原本沒排在前面的照片上傳流程和社交面板。
+    透過 Friends &amp; Family Beta 測試，最大的收穫是驗證了一句老話：<strong class="text-zinc-200">用戶要的和開發者做的，常常不一樣</strong>。測試回饋讓下一輪迭代的重點，轉向原本優先級不高的照片上傳流程和社交面板。
   </p>
   <p>
-    另一個體會是，最難的不是寫程式，而是決定「不做什麼」。功能優先級的排序，比寫 code 更消耗精力。從問題定義、規格、開發、上架到收集回饋，完整走過這一圈之後，我更清楚 PM 的價值在哪裡：在有限的資源下，為對的用戶做出對的決定。
+    另一個體會是，最難的不是寫程式，而是決定「不做什麼」。功能優先級的排序，比寫 code 更消耗精力。從問題定義、規格、開發、上架到收集回饋，完整走過這一圈，也更清楚 PM 的價值所在：在有限的資源下，為對的用戶做出對的決定。
   </p>
 
   <SectionTitle title="商業模式與下一步" />

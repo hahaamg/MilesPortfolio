@@ -25,12 +25,12 @@ const images = dayblocksImages("en");
 
   <SectionTitle title="Three Apps Just to Log One Day" />
   <p>
-    DayBlocks started from a small frustration: I wanted to keep track of my life, but my journal lived in Day One, my habits in Streaks, my focus time in Forest, and my photos in the camera roll. I described the problem through a typical target user: a 25-year-old security engineer working in finance.
+    Logging a full day often means juggling several apps: a journal in Day One, habits in Streaks, focus time in Forest and photos in the camera roll. A typical target user, a 25-year-old security engineer working in finance, put it this way:
   </p>
   <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
     "I write my journal in Day One, track habits in Streaks and log focus time in Forest. Just switching between three apps makes me want to give up."
   </p>
-  <p>Breaking that scenario down gave me three problems:</p>
+  <p>The scenario breaks down into three problems:</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Fragmentation</strong>: journaling, habits, focus, health and photos are scattered across tools, the data never connects, and every extra app adds friction.</li>
     <li><strong class="text-zinc-200">No social motivation</strong>: most journaling apps are private islands. You can't see your friends' progress and nobody cheers you on.</li>
@@ -39,7 +39,7 @@ const images = dayblocksImages("en");
 
   <SectionTitle title="Why a Journal Needs Social" />
   <p>
-    The first two problems were obvious. The social part took me the longest to justify: journals are private, so why would anyone want others to see them?
+    Integration and custom layouts are intuitive needs. Social needs more justification: journals are private, so why would anyone want others to see them?
   </p>
   <p>
     The answer came from how Gen Z presents itself. Fewer polished selfies, more real data: Spotify Wrapped generates over 2 billion social impressions a year, Strava mentions on Instagram grew 70%, and Duolingo sees over 30 million streak shares a month. "Top 0.5% listener" or "running four weeks straight" says more about a person than a photo does.
@@ -60,7 +60,7 @@ const images = dayblocksImages("en");
   </p>
 
   <SectionTitle title="Defining Success Before Building" />
-  <p>Before writing code, I set OKRs for what success would mean:</p>
+  <p>Before development, success was defined with OKRs:</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Objective</strong>: build an app that helps people keep a journaling habit.</li>
     <li><strong class="text-zinc-200">KR1 Feature completeness</strong>: ship 10 card types covering both mindfulness and productivity.</li>
@@ -68,7 +68,7 @@ const images = dayblocksImages("en");
     <li><strong class="text-zinc-200">KR3 User validation</strong>: run a Beta with real users and complete at least one iteration based on their feedback.</li>
   </ul>
   <p>
-    I then wrote a 15-chapter bilingual PRD covering user scenarios, data architecture and UX flows, plus a card-system spec defining each card's sizes, data structure and global interaction rules. i18n was part of the architecture from day one, so expanding to new markets wouldn't require a rewrite.
+    Next came a 15-chapter bilingual PRD covering user scenarios, data architecture and UX flows, plus a card-system spec defining each card's sizes, data structure and global interaction rules. i18n was part of the architecture from day one, so expanding to new markets wouldn't require a rewrite.
   </p>
   <p>Features were split into four priority tiers so every stage produced something usable:</p>
   <ul class="list-disc ml-6 space-y-2">
@@ -83,7 +83,7 @@ const images = dayblocksImages("en");
 
   <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. Light social (cheers) vs. deep social (comments)</h3>
   <p>
-    I kept only cheers and kudos, no comments. Completing a task or adding a card automatically appears on friends' feeds, inspired by Duolingo, so nobody has to compose a post. It gives up depth of interaction in exchange for zero social pressure, and keeps journaling itself free of feed noise.
+    Social interaction is limited to cheers and kudos, with no comments. Completing a task or adding a card automatically appears on friends' feeds, inspired by Duolingo, so nobody has to compose a post. It gives up depth of interaction in exchange for zero social pressure, and keeps journaling itself free of feed noise.
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. Local storage + cloud social</h3>
@@ -93,7 +93,7 @@ const images = dayblocksImages("en");
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">3. Forgiving streaks vs. reset on a miss</h3>
   <p>
-    Most streaks reset after one missed day, which is brutal for someone just starting a habit; one miss often means quitting. I added a buffer so an occasional gap doesn't wipe out past progress. The goal is to bring users back, not punish them.
+    Most streaks reset after one missed day, which is brutal for someone just starting a habit; one miss often means quitting. DayBlocks adds a buffer so an occasional gap doesn't wipe out past progress. The goal is to bring users back, not punish them.
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">4. Smart layout inheritance vs. daily setup</h3>
@@ -110,7 +110,7 @@ const images = dayblocksImages("en");
 
   <SectionTitle title="Building It" />
   <p>
-    I was the product owner and lead developer, driving requirements, UX flows, UI guidelines, full-stack development and deployment. I authored 436 of the 457 commits (about 95%).
+    Role: product owner and lead developer, covering requirements, UX flows, UI guidelines, full-stack development and deployment, with 436 of 457 commits (about 95%).
   </p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Cross-platform app</strong>: React 18 + Capacitor 8, producing iOS and Android builds from one codebase.</li>
@@ -119,7 +119,7 @@ const images = dayblocksImages("en");
   </ul>
 
   <SectionTitle title="Polishing Before Launch" />
-  <p>Working features aren't the same as a good experience. Based on device testing and user feedback, I made several small changes that make a big difference in feel:</p>
+  <p>Working features aren't the same as a good experience. Device testing and user feedback led to several small changes that make a big difference in feel:</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Performance</strong>: removed the expensive backdrop-blur on iOS and switched to preloaded sheets, eliminating stutter when panels open.</li>
     <li><strong class="text-zinc-200">Haptics</strong>: added haptic feedback to key moments like completing a task, so finishing something feels like a small ritual.</li>
@@ -127,12 +127,12 @@ const images = dayblocksImages("en");
     <li><strong class="text-zinc-200">Visual restraint</strong>: cut redundant animations to shorten response time and keep attention on the content.</li>
   </ul>
 
-  <SectionTitle title="What the Beta Taught Me" />
+  <SectionTitle title="Lessons from the Beta" />
   <p>
-    I ran a Friends &amp; Family Beta. The biggest lesson is a cliché I only understood by living it: <strong class="text-zinc-200">what users want is often different from what you built</strong>. The feedback moved the photo upload flow and the social panel, neither of which was near the top of my list, to the front of the next iteration.
+    A Friends &amp; Family Beta confirmed an old lesson: <strong class="text-zinc-200">what users want is often different from what gets built</strong>. The feedback moved the photo upload flow and the social panel, neither originally a high priority, to the front of the next iteration.
   </p>
   <p>
-    The other lesson: the hardest part isn't writing code, it's deciding what not to build. Prioritization took more energy than implementation. Having gone through the full loop from problem definition, spec, development and launch to feedback, I have a clearer sense of where a PM adds value: making the right call for the right users with limited resources.
+    The other lesson: the hardest part isn't writing code, it's deciding what not to build. Prioritization took more energy than implementation. Going through the full loop from problem definition, spec, development and launch to feedback makes clear where a PM adds value: making the right call for the right users with limited resources.
   </p>
 
   <SectionTitle title="Business Model and What's Next" />
