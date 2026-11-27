@@ -2,7 +2,7 @@
 const { value, label } = Astro.props;
 ---
 <div class="highlight-card border border-zinc-700/60 rounded-lg text-center">
-  <span class:list={['value font-bold tracking-tight bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent', { 'long-value': [...value].length > 5 }]}>{value}</span>
+  <span class="value font-bold tracking-tight bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">{value}</span>
   <span class="label text-zinc-400">{label}</span>
 </div>
 
@@ -13,21 +13,95 @@ const { value, label } = Astro.props;
     height: 9rem;
     padding: 0.75rem;
     display: grid;
-    grid-template-rows: 2.75rem 3.25rem;
-    gap: 0.5rem;
-    align-items: center;
+    grid-template-rows: auto auto;
+    row-gap: 0.5rem;
+    /* Centre the pair as a block, so the leftover height splits evenly
+       above and below the text instead of pooling at one end. */
     align-content: center;
+    justify-items: center;
   }
   .value {
-    font-size: clamp(0.75rem, 30cqw, 2.25rem);
+    /* --value-fs is set per grid row by the script below, so every card in a
+       row shares one size and the values sit on a common baseline. The clamp
+       is the pre-script fallback. */
+    font-size: var(--value-fs, clamp(0.875rem, 22cqw, 2.25rem));
     line-height: 1.1;
     white-space: nowrap;
   }
-  .long-value { font-size: clamp(0.75rem, 18cqw, 1.75rem); }
   .label {
     font-size: clamp(0.625rem, 12cqw, 0.75rem);
     line-height: 1.35;
     overflow-wrap: anywhere;
     text-wrap: balance;
+    /* Reserve the tallest label in this grid row (set by the script), so a
+       card whose label wraps to fewer lines keeps the same block height and
+       stays aligned with its neighbours. */
+    height: calc(var(--label-rows, 2) * 1.35em);
+    align-self: start;
   }
 </style>
+
+<script>
+  // One value font-size per row: measure each value at a reference size and
+  // scale so the widest one fits its card, then apply that size to the whole
+  // row. Keeps baselines aligned and the top/bottom whitespace even.
+  const REF = 100;      // px, measurement reference
+  const MAX = 36;       // px, 2.25rem
+  const MIN = 14;       // px, 0.875rem
+
+  function fitRow(row: HTMLElement) {
+    const cards = Array.from(
+      row.querySelectorAll<HTMLElement>('.highlight-card'),
+    );
+    if (!cards.length) return;
+
+    let size = MAX;
+    for (const card of cards) {
+      const value = card.querySelector<HTMLElement>('.value');
+      if (!value) continue;
+      const avail = card.clientWidth
+        - parseFloat(getComputedStyle(card).paddingLeft)
+        - parseFloat(getComputedStyle(card).paddingRight);
+      if (avail <= 0) continue;
+
+      const prev = value.style.fontSize;
+      value.style.fontSize = `${REF}px`;
+      const width = value.getBoundingClientRect().width;
+      value.style.fontSize = prev;
+      if (!width) continue;
+
+      size = Math.min(size, (avail / width) * REF);
+    }
+
+    row.style.setProperty('--value-fs', `${Math.max(MIN, size).toFixed(2)}px`);
+
+    // Reserve the tallest label in the row, so cards with fewer label lines
+    // keep the same block height and stay aligned.
+    let lines = 1;
+    for (const card of cards) {
+      const label = card.querySelector<HTMLElement>('.label');
+      if (!label) continue;
+      const prev = label.style.height;
+      label.style.height = 'auto';
+      const lh = parseFloat(getComputedStyle(label).lineHeight);
+      const n = lh > 0 ? Math.round(label.scrollHeight / lh) : 1;
+      label.style.height = prev;
+      lines = Math.max(lines, n);
+    }
+    row.style.setProperty('--label-rows', String(lines));
+  }
+
+  function fitAll() {
+    const rows = new Set<HTMLElement>();
+    document.querySelectorAll<HTMLElement>('.highlight-card').forEach((card) => {
+      if (card.parentElement) rows.add(card.parentElement);
+    });
+    rows.forEach(fitRow);
+  }
+
+  const run = () => requestAnimationFrame(fitAll);
+  run();
+  addEventListener('resize', run);
+  document.addEventListener('astro:page-load', run);
+  if (document.fonts?.ready) document.fonts.ready.then(run);
+</script>
