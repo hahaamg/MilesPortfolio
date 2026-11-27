@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 
@@ -17,16 +17,15 @@ import linebot from "../../../assets/kahosim/linebot.png";
   tags={["Meichu Hackathon 2nd Place", "GovTech", "Product Strategy", "On-Device OCR", "End-to-End Service Design"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
+    <ProjectGallery
       images={[
-        { src: cover.src, alt: "Ka-Ho-Sim project cover" },
-        { src: cycle.src, alt: "The vicious rejection cycle in subsidy review" },
-        { src: applicantUi.src, alt: "Redesigned applicant flow with dynamic fields" },
-        { src: bankGuide.src, alt: "De-identified mobile banking tutorials" },
-        { src: reviewerCanvas.src, alt: "Reviewer canvas with smart highlight extraction" },
-        { src: linebot.src, alt: "Official LINE integration for status updates" },
+        { src: cover, alt: "Ka-Ho-Sim project cover" },
+        { src: cycle, alt: "The vicious rejection cycle in subsidy review" },
+        { src: applicantUi, alt: "Redesigned applicant flow with dynamic fields" },
+        { src: bankGuide, alt: "De-identified mobile banking tutorials" },
+        { src: reviewerCanvas, alt: "Reviewer canvas with smart highlight extraction" },
+        { src: linebot, alt: "Official LINE integration for status updates" },
       ]}
-      client:load
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="2nd Place" label="Meichu Hackathon (Maker Track)" />

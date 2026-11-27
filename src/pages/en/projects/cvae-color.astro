@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
@@ -14,13 +14,12 @@ import architecture from "../../../assets/cvae-architecture.webp";
   tags={["Generative AI", "Color Design", "Representation Learning", "ICAIIC 2026"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
+    <ProjectGallery
       images={[
-        { src: cover.src, alt: "β-CVAE Color Generation Research" },
-        { src: concept.src, light: true, alt: "Concept diagram: emotion coordinates feed a β-CVAE with a disentangled latent space, which generates the corresponding three-color palette" },
-        { src: architecture.src, light: true, alt: "Model architecture: the encoder and conditional prior network map palettes and emotion coordinates into an emotion-aligned subspace and a residual style subspace, which the decoder reconstructs into a palette" },
+        { src: cover, alt: "β-CVAE Color Generation Research" },
+        { src: concept, light: true, alt: "Concept diagram: emotion coordinates feed a β-CVAE with a disentangled latent space, which generates the corresponding three-color palette" },
+        { src: architecture, light: true, alt: "Model architecture: the encoder and conditional prior network map palettes and emotion coordinates into an emotion-aligned subspace and a residual style subspace, which the decoder reconstructs into a palette" },
       ]}
-      client:load
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="53K" label="Palette Dataset" />

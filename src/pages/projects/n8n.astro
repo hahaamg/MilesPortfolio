@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../components/project/ImageSlider";
+import ProjectGallery from "../../components/project/ProjectGallery.astro";
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import n8npic from "../../assets/n8npic.png";
@@ -11,9 +11,8 @@ import n8npic from "../../assets/n8npic.png";
   tags={["自動化", "API 整合", "GA + GSC"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: n8npic.src, alt: "n8n 自動化行銷報表" }]}
-      client:load
+    <ProjectGallery
+      images={[{ src: n8npic, alt: "n8n 自動化行銷報表" }]}
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="80%" label="人工時間節省" />

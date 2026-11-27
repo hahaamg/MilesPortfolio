@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../components/project/ImageSlider";
+import ProjectGallery from "../../components/project/ProjectGallery.astro";
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import ragpic from "../../assets/ragpic.png";
@@ -11,9 +11,8 @@ import ragpic from "../../assets/ragpic.png";
   tags={["AI 工作流", "LLM 應用", "智慧檢索"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: ragpic.src, alt: "部落格 RAG 系統" }]}
-      client:load
+    <ProjectGallery
+      images={[{ src: ragpic, alt: "部落格 RAG 系統" }]}
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="RAG" label="語意向量即時檢索" />

@@ -1,0 +1,73 @@
+---
+// Server-side half of the project image slider.
+//
+// The slider itself is a React island, which cannot run Astro's image
+// optimizer. Pages used to hand it `image.src` — the untouched original — so a
+// 2880x1620 PNG was served into a ~300px box: around 60x more pixels than the
+// screen can show, and roughly 18MB of bitmap for the browser to decode on the
+// main thread. That decode is what made switching slides feel slow (~1s per
+// first view), not the download (4-32ms).
+//
+// So the work happens here, at build time: each image becomes a set of WebP
+// variants, and the island receives a plain srcset string it can put straight
+// on an <img>. The browser then picks a variant that matches the box.
+import { getImage } from "astro:assets";
+import ImageSlider from "./ImageSlider";
+import type { ImageMetadata } from "astro";
+
+interface GalleryImage {
+  /** An imported image, or an already-resolved URL for remote/public files. */
+  src: ImageMetadata | string;
+  alt: string;
+  /** Pad against white, for diagrams and slides drawn on a light background. */
+  light?: boolean;
+}
+
+const { images } = Astro.props as { images: GalleryImage[] };
+
+// Inline widths cover the aside column (~40% of the viewport on desktop, full
+// width on a phone); the dialog width covers the near-fullscreen zoomed view.
+const INLINE_WIDTHS = [320, 480, 640, 960, 1280];
+const DIALOG_WIDTH = 1920;
+
+async function optimize(image: GalleryImage) {
+  // A string src is already a URL (public/ or remote): nothing to optimize.
+  if (typeof image.src === "string") {
+    return { src: image.src, alt: image.alt, light: image.light };
+  }
+
+  const source = image.src;
+  // Never upscale: an image narrower than a target width would just be
+  // re-encoded at the same pixel count for no benefit.
+  const widths = INLINE_WIDTHS.filter((w) => w <= source.width);
+  if (widths.length === 0) widths.push(source.width);
+
+  const variants = await Promise.all(
+    widths.map((width) => getImage({ src: source, width, format: "webp" })),
+  );
+
+  // The zoomed view needs more detail than the inline box, but still far less
+  // than the original; cap it at the source width so this never upscales.
+  const full = await getImage({
+    src: source,
+    width: Math.min(DIALOG_WIDTH, source.width),
+    format: "webp",
+  });
+
+  return {
+    // Smallest variant as the fallback src, so a browser without srcset
+    // support never pulls the largest file.
+    src: variants[0].src,
+    srcSet: variants.map((v, i) => `${v.src} ${widths[i]}w`).join(", "),
+    fullSrc: full.src,
+    width: source.width,
+    height: source.height,
+    alt: image.alt,
+    light: image.light,
+  };
+}
+
+const optimized = await Promise.all(images.map(optimize));
+---
+
+<ImageSlider images={optimized} client:load />

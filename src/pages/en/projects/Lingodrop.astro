@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
@@ -51,18 +51,17 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
   tags={["Product Pitch", "Language Learning × AI", "Web App", "Solo Build"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
+    <ProjectGallery
       images={[
-        { src: LingoDrop.src, alt: "LingoDrop interface" },
-        { src: slide02.src, alt: "The hook: endless TV shows, still just “I'm fine”" },
-        { src: slide04.src, alt: "The gap: understanding vs. using" },
-        { src: slide07.src, alt: "Job to be Done" },
-        { src: slide09.src, alt: "The product" },
-        { src: slide10.src, alt: "Eight core features" },
-        { src: slide11.src, alt: "User journey" },
-        { src: slide12.src, alt: "Early signal" },
+        { src: LingoDrop, alt: "LingoDrop interface" },
+        { src: slide02, alt: "The hook: endless TV shows, still just “I'm fine”" },
+        { src: slide04, alt: "The gap: understanding vs. using" },
+        { src: slide07, alt: "Job to be Done" },
+        { src: slide09, alt: "The product" },
+        { src: slide10, alt: "Eight core features" },
+        { src: slide11, alt: "User journey" },
+        { src: slide12, alt: "Early signal" },
       ]}
-      client:load
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="Context" label="Personal Dictionary" />

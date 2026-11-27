@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../components/project/ImageSlider";
+import ProjectGallery from "../../components/project/ProjectGallery.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import HighlightCard from "../../components/project/HighlightCard.astro";
 
@@ -17,16 +17,15 @@ import linebot from "../../assets/kahosim/linebot.png";
   tags={["2026 梅竹黑客松第二名", "政府數位服務", "產品規劃", "使用者研究", "隱私 OCR"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
+    <ProjectGallery
       images={[
-        { src: cover.src, alt: "卡好審提案主視覺" },
-        { src: cycle.src, alt: "目前審核的負面循環" },
-        { src: applicantUi.src, alt: "申請端流程與動態欄位改善" },
-        { src: bankGuide.src, alt: "銀行 APP 脫敏操作教學" },
-        { src: reviewerCanvas.src, alt: "審查端畫布式展現與螢光筆標記" },
-        { src: linebot.src, alt: "官方 LINE 智慧化引導" },
+        { src: cover, alt: "卡好審提案主視覺" },
+        { src: cycle, alt: "目前審核的負面循環" },
+        { src: applicantUi, alt: "申請端流程與動態欄位改善" },
+        { src: bankGuide, alt: "銀行 APP 脫敏操作教學" },
+        { src: reviewerCanvas, alt: "審查端畫布式展現與螢光筆標記" },
+        { src: linebot, alt: "官方 LINE 智慧化引導" },
       ]}
-      client:load
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="第二名" label="梅竹黑客松創客組" />

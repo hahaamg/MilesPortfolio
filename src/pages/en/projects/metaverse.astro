@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import metaversepic from "../../../assets/metaversepic.webp";
@@ -11,9 +11,8 @@ import metaversepic from "../../../assets/metaversepic.webp";
   tags={["UGC Research", "User Experience", "Cross-Cultural Research"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: metaversepic.src, alt: "Metaverse Product Research" }]}
-      client:load
+    <ProjectGallery
+      images={[{ src: metaversepic, alt: "Metaverse Product Research" }]}
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="NSTC" label="Undergraduate Grant" />

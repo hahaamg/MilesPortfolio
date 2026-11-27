@@ -23,9 +23,11 @@ export function dayblocksImages(lang: "zh" | "en") {
   const found = slides
     .map((s) => ({ mod: files[`../assets/dayblocks/${s.name}.png`], alt: s[lang] }))
     .filter((s) => s.mod)
-    .map((s) => ({ src: s.mod.default.src, alt: s.alt, light: true }));
+    // Hand back the ImageMetadata itself: ProjectGallery.astro needs the
+    // original's dimensions to build a srcset, which `.src` alone discards.
+    .map((s) => ({ src: s.mod.default, alt: s.alt, light: true }));
 
   return found.length > 0
     ? found
-    : [{ src: dayblocksCover.src, alt: "DayBlocks" }];
+    : [{ src: dayblocksCover, alt: "DayBlocks" }];
 }

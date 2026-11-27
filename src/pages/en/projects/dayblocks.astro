@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
@@ -14,7 +14,7 @@ const images = dayblocksImages("en");
   tags={["iOS App", "0-to-1 Product", "Product Strategy", "Light Social", "Habit Building"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider images={images} client:load />
+    <ProjectGallery images={images} />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="7+" label="Modular Card Types" />
       <HighlightCard value="iOS" label="Solo Developed" />

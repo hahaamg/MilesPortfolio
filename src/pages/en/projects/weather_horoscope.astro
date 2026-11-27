@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import ProjectExternalLink from "../../../components/project/ProjectExternalLink.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
@@ -12,9 +12,8 @@ import weather_horoscopepic from "../../../assets/weather_horoscopepic.png";
   tags={["LINE Bot", "API Integration", "Multimodal AI"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: weather_horoscopepic.src, alt: "AstroWeather LINE Bot" }]}
-      client:load
+    <ProjectGallery
+      images={[{ src: weather_horoscopepic, alt: "AstroWeather LINE Bot" }]}
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="3-in-1" label="Unified Experience" />

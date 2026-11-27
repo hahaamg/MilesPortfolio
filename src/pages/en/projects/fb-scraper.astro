@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../../components/project/ImageSlider";
+import ProjectGallery from "../../../components/project/ProjectGallery.astro";
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import fbAutomation from "../../../assets/FB automation.png";
@@ -11,9 +11,8 @@ import fbAutomation from "../../../assets/FB automation.png";
   tags={["agent-browser", "CDP", "automation"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: fbAutomation.src, alt: "Automated Facebook Intelligence Scraper" }]}
-      client:load
+    <ProjectGallery
+      images={[{ src: fbAutomation, alt: "Automated Facebook Intelligence Scraper" }]}
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="1.5 hrs" label="Daily Time Saved" />

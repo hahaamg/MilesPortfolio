@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../components/project/ImageSlider";
+import ProjectGallery from "../../components/project/ProjectGallery.astro";
 import ProjectExternalLink from "../../components/project/ProjectExternalLink.astro";
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
@@ -51,18 +51,17 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
   tags={["產品提案", "語言學習 × AI", "Web App", "獨立開發"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
+    <ProjectGallery
       images={[
-        { src: LingoDrop.src, alt: "LingoDrop 介面" },
-        { src: slide02.src, alt: "The Hook：看了一堆美劇，還是只會說 I'm fine" },
-        { src: slide04.src, alt: "問題定位：看得懂，卻用不出來" },
-        { src: slide07.src, alt: "Job to be Done" },
-        { src: slide09.src, alt: "產品介紹" },
-        { src: slide10.src, alt: "八個核心功能" },
-        { src: slide11.src, alt: "使用者旅程" },
-        { src: slide12.src, alt: "早期驗證" },
+        { src: LingoDrop, alt: "LingoDrop 介面" },
+        { src: slide02, alt: "The Hook：看了一堆美劇，還是只會說 I'm fine" },
+        { src: slide04, alt: "問題定位：看得懂，卻用不出來" },
+        { src: slide07, alt: "Job to be Done" },
+        { src: slide09, alt: "產品介紹" },
+        { src: slide10, alt: "八個核心功能" },
+        { src: slide11, alt: "使用者旅程" },
+        { src: slide12, alt: "早期驗證" },
       ]}
-      client:load
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="個人" label="情境字典系統" />

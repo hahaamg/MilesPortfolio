@@ -1,6 +1,6 @@
 ---
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
-import ImageSlider from "../../components/project/ImageSlider";
+import ProjectGallery from "../../components/project/ProjectGallery.astro";
 import ProjectExternalLink from "../../components/project/ProjectExternalLink.astro";
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
@@ -14,13 +14,12 @@ import architecture from "../../assets/cvae-architecture.webp";
   tags={["生成式 AI", "色彩設計", "表徵學習", "ICAIIC 2026"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
+    <ProjectGallery
       images={[
-        { src: cover.src, alt: "β-CVAE 色彩生成研究" },
-        { src: concept.src, light: true, alt: "研究概念圖：情緒座標輸入經 β-CVAE 解耦潛在空間，生成對應的三色色彩組合" },
-        { src: architecture.src, light: true, alt: "模型架構圖：編碼器與條件先驗網路將色彩組合與情緒座標映射至情緒對齊子空間與殘差風格子空間，再由解碼器重建配色" },
+        { src: cover, alt: "β-CVAE 色彩生成研究" },
+        { src: concept, light: true, alt: "研究概念圖：情緒座標輸入經 β-CVAE 解耦潛在空間，生成對應的三色色彩組合" },
+        { src: architecture, light: true, alt: "模型架構圖：編碼器與條件先驗網路將色彩組合與情緒座標映射至情緒對齊子空間與殘差風格子空間，再由解碼器重建配色" },
       ]}
-      client:load
     />
     <div class="grid grid-cols-3 gap-2">
       <HighlightCard value="53K" label="色彩組合訓練資料" />
