@@ -120,10 +120,10 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
     <tbody>
       {competitors.map((c) => (
         <tr>
-          <td class="scan-type">{c.type}</td>
+          <td class="scan-type" data-tools={c.tools}>{c.type}</td>
           <td class="scan-tools">{c.tools}</td>
-          <td data-label="解決什麼">{c.solves}</td>
-          <td class="scan-gap" data-label="尚未解決">{c.gap}</td>
+          <td>{c.solves}</td>
+          <td class="scan-gap">{c.gap}</td>
         </tr>
       ))}
     </tbody>
@@ -176,7 +176,7 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
 
   <SectionTitle title="使用者旅程" />
   <p>
-    這條閉環真正的設計重點，是讓每一步的產物都成為下一步的材料：查詢當下就拿到解釋、例句與發音，結果直接進資料夾而不是散落在截圖裡；翻卡複習挑出還不熟的詞，再由情境對話把這些詞放回完整句子。使用者不需要自己維護任何東西，整理是查詢的副產品。
+    這條閉環真正的設計重點，是讓每一步的產物都成為下一步的材料：查詢當下就拿到解釋、例句與發音，結果直接進資料夾而不是散落在截圖裡；翻卡複習挑出還不熟的詞，再由情境對話把這些詞放回完整句子。
   </p>
 
   <SectionTitle title="早期驗證：「欸，這個 App 叫什麼名字？」" />
@@ -370,38 +370,35 @@ const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
     color: var(--color-zinc-200, #e4e4e7);
   }
 
-  /* On a phone four columns cannot hold prose, so each row becomes a
-     stacked block and the column headers move inline as labels. */
+  /* The scan stays a table on a phone too. Four prose columns in a ~311px
+     viewport would be about 70px each, so the "代表工具" column folds under
+     the type it belongs to rather than being squeezed or dropped. */
   @media (max-width: 640px) {
-    .scan,
-    .scan tbody,
-    .scan tr,
-    .scan td {
-      display: block;
-      width: auto;
+    .scan {
+      font-size: 0.75rem;
+      line-height: 1.5;
     }
-    .scan thead {
+    .scan th,
+    .scan td {
+      padding-right: 0.5rem;
+    }
+    .scan th:nth-child(1) { width: 34%; }
+    .scan th:nth-child(3) { width: 28%; }
+    .scan th:nth-child(4) { width: 38%; }
+    /* The examples move into the first cell, shown by its ::after. */
+    .scan th:nth-child(2),
+    .scan td:nth-child(2) {
       display: none;
     }
-    .scan tr {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid color-mix(in oklab, var(--color-zinc-800, #27272a) 60%, transparent);
-    }
-    .scan td {
-      padding: 0;
-      border: none;
-    }
-    .scan td + td {
-      margin-top: 0.375rem;
-    }
-    .scan td[data-label]::before {
-      content: attr(data-label);
+    .scan-type::after {
+      content: attr(data-tools);
+      overflow-wrap: anywhere;
       display: block;
+      margin-top: 0.25rem;
       font-size: 0.6875rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-zinc-600, #52525b);
-      margin-bottom: 0.125rem;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--color-zinc-500, #71717a);
     }
   }
 </style>
