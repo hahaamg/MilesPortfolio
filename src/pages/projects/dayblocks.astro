@@ -4,43 +4,146 @@ import ImageSlider from "../../components/project/ImageSlider";
 import ProjectExternalLink from "../../components/project/ProjectExternalLink.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import HighlightCard from "../../components/project/HighlightCard.astro";
-import dayblocksCover from "../../assets/DayBlocks cover.png";
+import { dayblocksImages } from "../../data/dayblocksSlides";
+
+const images = dayblocksImages("zh");
 ---
 
 <ProjectLayout
   title="DayBlocks｜模組化卡片日記"
-  tags={["iOS App", "生活記錄", "輕社交"]}
+  tags={["iOS App", "0 到 1 產品開發", "產品規劃", "輕社交", "習慣養成"]}
 >
   <div slot="aside" class="space-y-6">
-    <ImageSlider
-      images={[{ src: dayblocksCover.src, alt: "DayBlocks" }]}
-      client:load
-    />
+    <ImageSlider images={images} client:load />
     <div class="grid grid-cols-3 gap-2">
-      <HighlightCard value="7+" label="功能卡片類型" />
-      <HighlightCard value="iOS" label="獨立開發上架" />
-      <HighlightCard value="App Store" label="正式發布" />
+      <HighlightCard value="95%" label="程式碼貢獻（436 / 457 commits）" />
+      <HighlightCard value="10 種" label="可自由拼裝的卡片" />
+      <HighlightCard value="上架" label="App Store 正式發布" />
     </div>
     <ProjectExternalLink href="https://apps.apple.com/tw/app/dayblocks/id6761128709" label="前往 App Store" />
   </div>
 
-  <SectionTitle title="產品概念" />
+  <SectionTitle title="一天要開三個 App，才記得完一天" />
   <p>
-    DayBlocks 是一款以「模組化卡片」為核心概念的生活記錄 App，讓使用者透過可自由拖曳、調整大小的卡片元件，打造屬於自己的每日儀表板。不同於傳統日記 App 的固定格式，DayBlocks 強調彈性與個人化，你可以根據當天的生活重心，隨時調整版面配置，讓記錄這件事真正融入日常節奏。
+    想完整記錄一天的生活，往往需要同時使用好幾個 App：日記在 Day One、習慣在 Streaks、專注時間在 Forest，照片則在相簿裡。以一位典型目標用戶為例，一位 25 歲、在金融業做資安的工程師：
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    「我用 Day One 寫日記、Streaks 追蹤習慣、Forest 紀錄專注時間，光是切換三個 App 就讓我想放棄紀錄了。」
+  </p>
+  <p>這個情境可以拆成三個問題：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">功能碎片化</strong>：日記、習慣、專注、健康、照片分散在不同工具，資料無法整合，每多一個 App 就多一道記錄的摩擦。</li>
+    <li><strong class="text-zinc-200">缺乏社交激勵</strong>：多數日記 App 是完全私密的孤島，看不到朋友的進度，也沒有人會為你的堅持打氣。</li>
+    <li><strong class="text-zinc-200">固定模板</strong>：傳統日記 App 只提供固定格式，沒辦法依照每個人不同的生活重心自由組合。</li>
+  </ul>
+
+  <SectionTitle title="為什麼日記需要社交" />
+  <p>
+    功能整合與自訂版面的需求相對直覺，社交則需要更多理由支撐：日記本質上是私密的，為什麼要讓別人看見？
+  </p>
+  <p>
+    答案在於 Z 世代分享自己的方式。他們越來越少發精修的自拍，反而熱衷分享「真實的數據」：Spotify Wrapped 每年創造超過 20 億次社群曝光，Instagram 上提及 Strava 的貼文成長 70%，Duolingo 每月有超過 3,000 萬次連勝分享。「Top 0.5% 的聽眾」、「連續跑步 4 週」這些數字，比照片更能說明一個人是誰。
+  </p>
+  <p>
+    同時，研究指出與朋友共享進度能把目標達成率提升到 65%。但年輕人也明確表示不想要留言和按讚的壓力。他們需要的是「被看見」，不是「被評論」。
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    如果 Strava 讓「運動的自己」被看見，Spotify 讓「音樂品味」被看見，DayBlocks 想讓「完整的自己」被看見：不只是外在的跑步與音樂，也包括心情、專注和每天的小成就。
   </p>
 
-  <SectionTitle title="核心功能" />
+  <SectionTitle title="市場與競品：找一個沒人站的位置" />
   <p>
-    App 內建 7 種以上的功能卡片，涵蓋天氣、心情、日記、相片、晨間打卡、待辦清單與習慣追蹤，使用者可以依需求自由組合。透過視覺化熱力圖，可以一眼看出習慣養成的軌跡；心情趨勢日曆則幫助你回顧情緒變化，逐漸建立對自己生活節奏的覺察。
+    在數位自我照護（Digital Self-care）趨勢下，全球數位日記 App 市場預估 2026 年約 1.1 億美元，年複合成長率 11.5%；亞太區約佔 30%，即 3,300 萬美元。以台灣為起點，目標取得 10 萬名用戶、2% 轉換為 Pro 訂閱，首年可獲得市場約新台幣 177 萬元。
+  </p>
+  <p>
+    主要競品是 Daylio 和 DailyBean，兩者都以輕量心情紀錄為核心：Daylio 靠深度統計與龐大用戶穩居領導地位，DailyBean 則以極簡的月曆視覺取勝。逐項比對後可以發現，番茄鐘、任務連勝、起床打卡、習慣追蹤這些「生產力」功能，以及好友動態牆和排行榜，在兩者中都完全缺席；天氣自動整合和自由排版的卡片也是兩者都沒有的。這就是 DayBlocks 的定位：<strong class="text-zinc-200">一本「生產力日記」，再加上沒有壓力的輕社交</strong>。
   </p>
 
-  <SectionTitle title="輕社交設計" />
+  <SectionTitle title="先定義成功，再開始做" />
+  <p>開發前先以 OKR 定義專案的成功標準：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Objective</strong>：打造一個能讓人持續養成記錄習慣的 App。</li>
+    <li><strong class="text-zinc-200">KR1 功能完備</strong>：完整實作 10 種卡片，涵蓋正念與生產力兩類情境。</li>
+    <li><strong class="text-zinc-200">KR2 跨平台</strong>：同一套程式碼支援 iOS 與 Android。</li>
+    <li><strong class="text-zinc-200">KR3 用戶驗證</strong>：邀請真實用戶參與 Beta 測試，並根據回饋完成至少一輪迭代。</li>
+  </ul>
   <p>
-    除了個人記錄，DayBlocks 也加入輕社交元素，使用者可以在動態牆上分享日常成就與里程碑，讓生活記錄不只是自我留存，也能成為與朋友連結的方式。這個設計的出發點是：好的習慣與生活感，值得被看見，也值得被鼓勵。
+    接著撰寫 15 章節的中英雙語 PRD，涵蓋用戶情境、資料架構與 UX 流程，並為每種卡片定義尺寸系統、資料結構和全域互動規則。i18n 從第一天就放進架構，之後要擴展到其他市場不必重寫。
+  </p>
+  <p>功能依優先級分成四層，確保每一階段都有可以用的產品：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">P0 核心卡片系統</strong>：沒有它就沒有產品。</li>
+    <li><strong class="text-zinc-200">P1 連勝激勵</strong>：讓人明天還想回來。</li>
+    <li><strong class="text-zinc-200">P2 社交連結</strong>：差異化的關鍵，但建立在前兩者之上。</li>
+    <li><strong class="text-zinc-200">P3 未來擴充</strong>：音樂、HealthKit、AI 洞察等，先記下來，不急著做。</li>
+  </ul>
+
+  <SectionTitle title="四個關鍵取捨" />
+  <p>資源有限時，每個「要做」都意味著別的「不做」。以下是影響最大的四個決定：</p>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">一、輕社交（打氣）vs. 深社交（留言）</h3>
+  <p>
+    社交互動只保留「打氣」和「歡呼」，不開放留言。完成任務或新增卡片會自動出現在好友動態牆上，靈感來自 Duolingo，不用刻意發文，朋友自然看見你的努力。這樣做犧牲了互動深度，但換到的是零社交壓力，也不會讓記錄本身被社群干擾。
   </p>
 
-  <SectionTitle title="開發歷程" />
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">二、本地儲存 + 雲端社交的混合架構</h3>
   <p>
-    DayBlocks 從構想、設計到開發、上架，由我獨立完成，目前已於 App Store 正式發布，支援 iOS 15.0 以上裝置，並提供繁體中文與英文介面。
+    日記是很私密的資料，所以預設存在裝置上的 SQLite，只有社交動態需要的資料才上雲端。這樣同時照顧到隱私，也大幅壓低後端維運成本，對一個還沒有營收的產品來說很重要。
   </p>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">三、連勝的緩衝機制 vs. 中斷即歸零</h3>
+  <p>
+    多數連勝設計是斷一天就歸零，但這對剛開始建立習慣的人打擊很大，常常斷一次就直接放棄。因此 DayBlocks 加入緩衝機制，讓偶然的中斷不會抹掉之前的累積，目的是提高回訪率，而不是懲罰用戶。
+  </p>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">四、智慧繼承版面 vs. 每天手動設定</h3>
+  <p>
+    卡片可以自由拖曳、調整大小，但如果每天都要重新排版，自由就變成負擔。所以新的一天會自動繼承前一天的配置，想改再改。這讓「打開 App 就能記」成為可能。
+  </p>
+
+  <SectionTitle title="做出來的產品" />
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">模組化卡片</strong>：天氣、心情、日記、照片、番茄鐘、習慣、任務、待辦、起床打卡等卡片自由拼裝，並可串接 Strava 跑步紀錄。透過動態網格，生活重心的比例由你自己決定。</li>
+    <li><strong class="text-zinc-200">輕社交動態</strong>：好友動態牆、打氣與歡呼、好友排行榜。不需要發文，記錄本身就是分享。</li>
+    <li><strong class="text-zinc-200">數據化洞察</strong>：用熱力圖呈現每個習慣的完成軌跡，搭配連勝火焰徽章和心情趨勢，讓你看見自己的成長。</li>
+  </ul>
+
+  <SectionTitle title="技術實作" />
+  <p>
+    擔任產品負責人兼主要開發者，主導需求定義、UX 流程、介面規範、前後端開發與部署，貢獻 457 個 commits 中的 436 個（約 95%）。
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">跨平台 App</strong>：以 React 18 + Capacitor 8 開發，一套程式碼產出 iOS 與 Android 版本。</li>
+    <li><strong class="text-zinc-200">後端</strong>：PocketBase 部署於 Zeabur，負責 OAuth 登入與社交資料同步，並串接第三方天氣 API。</li>
+    <li><strong class="text-zinc-200">資料與通知</strong>：本地 SQLite 儲存搭配硬體加密的安全儲存、本地推播通知，以及 CI/CD 自動化流程。</li>
+  </ul>
+
+  <SectionTitle title="上架前的打磨" />
+  <p>功能做完不等於好用。上架前根據實機測試和用戶反饋，做了幾項不顯眼、但體感差異很大的調整：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">效能</strong>：移除 iOS 上很耗效能的 backdrop-blur，改用預先載入的 Sheet，消除開啟面板時的卡頓。</li>
+    <li><strong class="text-zinc-200">觸覺回饋</strong>：在完成任務等關鍵操作加入 Haptic Feedback，讓「完成」這件事有儀式感。</li>
+    <li><strong class="text-zinc-200">不打擾的通知</strong>：如果當天已經記錄過，就自動跳過提醒，避免變成另一個讓人想關掉的推播。</li>
+    <li><strong class="text-zinc-200">視覺克制</strong>：拿掉多餘的動畫，縮短反應時間，讓注意力回到內容本身。</li>
+  </ul>
+
+  <SectionTitle title="Beta 測試的收穫" />
+  <p>
+    透過 Friends &amp; Family Beta 測試，最大的收穫是驗證了一句老話：<strong class="text-zinc-200">用戶要的和開發者做的，常常不一樣</strong>。測試回饋讓下一輪迭代的重點，轉向原本優先級不高的照片上傳流程和社交面板。
+  </p>
+  <p>
+    另一個體會是，最難的不是寫程式，而是決定「不做什麼」。功能優先級的排序，比寫 code 更消耗精力。從問題定義、規格、開發、上架到收集回饋，完整走過這一圈，也更清楚 PM 的價值所在：在有限的資源下，為對的用戶做出對的決定。
+  </p>
+
+  <SectionTitle title="商業模式與下一步" />
+  <p>
+    DayBlocks 採 Freemium 訂閱制，Pro 方案每月 2.99 美元或每年 24.99 美元，解鎖進階功能。本地優先的架構讓維運成本維持在很低的水位，成長則靠 Threads 等社群的口碑與分享。依財務預估，約 200 名付費用戶即可在 2027 年第一季達到損益平衡，第三年目標 2,500 名付費用戶。
+  </p>
+  <p>接下來的 Roadmap 分四個階段：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Phase 1 上架</strong>：修 bug、效能優化、完善 Onboarding、推播通知與 Paywall，正式上架 App Store（已完成）。</li>
+    <li><strong class="text-zinc-200">Phase 2 社交飛輪</strong>：IG Story 分享卡片、連勝分享圖、月度與年度回顧、成就徽章、社群挑戰。</li>
+    <li><strong class="text-zinc-200">Phase 3 擴展功能</strong>：進階統計儀表板、雲端備份、音樂卡片、深色模式與主題、iOS Widget。</li>
+    <li><strong class="text-zinc-200">Phase 4 AI 導入</strong>：AI 數據洞察與 HealthKit 整合。</li>
+  </ul>
 </ProjectLayout>
