@@ -82,18 +82,21 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
 
   <SectionTitle title="Breaking down the problem: three gaps" />
   <p>
-    I split the distance between “I understand it” and “I can use it” into three stages. Each one is a gap existing tools leave open, and every feature that follows maps back to one of them.
+    I split the distance between “I understand it” and “I can use it” into three stages, each one a gap existing tools leave open. The competitive scan and the feature design that follow both run along these three.
   </p>
-  <div class="grid 2xl:grid-cols-3 gap-3">
-    {gaps.map((g) => (
-      <div class="border border-zinc-800 rounded-lg p-4 flex flex-col gap-2">
-        <span class="text-[11px] tracking-widest uppercase text-zinc-500">{g.en}</span>
-        <h3 class="text-zinc-100 font-medium leading-snug">{g.title}</h3>
-        <p class="text-sm">{g.body}</p>
-        <p class="text-xs text-zinc-500 mt-auto pt-2 border-t border-zinc-800">Result: {g.result}</p>
-      </div>
+  <ol class="gap-stages">
+    {gaps.map((g, i) => (
+      <li class="gap-stage">
+        <span class="gap-step" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+        <div class="gap-body">
+          <p class="gap-name">{g.en}</p>
+          <h3 class="gap-title">{g.title}</h3>
+          <p class="gap-text">{g.body}</p>
+          <p class="gap-result"><span>Result</span>{g.result}</p>
+        </div>
+      </li>
     ))}
-  </div>
+  </ol>
   <p>
     I then condensed the product's purpose into a single Job to be Done:
   </p>
@@ -105,33 +108,32 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
   <p>
     There's no shortage of English tools, so I grouped the alternatives into six categories and looked at what each one solves and what it leaves undone.
   </p>
-  <div class="overflow-x-auto -mx-1">
-    <table class="w-full min-w-[560px] text-sm border-collapse">
-      <thead>
-        <tr class="text-left text-zinc-500 text-xs tracking-wider">
-          <th class="font-normal py-2 pr-3 border-b border-zinc-800">Type</th>
-          <th class="font-normal py-2 pr-3 border-b border-zinc-800">Examples</th>
-          <th class="font-normal py-2 pr-3 border-b border-zinc-800">What it solves</th>
-          <th class="font-normal py-2 border-b border-zinc-800">Gap left open</th>
+  <table class="scan">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Examples</th>
+        <th>What it solves</th>
+        <th>Gap left open</th>
+      </tr>
+    </thead>
+    <tbody>
+      {competitors.map((c) => (
+        <tr>
+          <td class="scan-type">{c.type}</td>
+          <td class="scan-tools">{c.tools}</td>
+          <td data-label="What it solves">{c.solves}</td>
+          <td class="scan-gap" data-label="Gap left open">{c.gap}</td>
         </tr>
-      </thead>
-      <tbody>
-        {competitors.map((c) => (
-          <tr class="align-top">
-            <td class="py-2 pr-3 border-b border-zinc-800/60 text-zinc-200">{c.type}</td>
-            <td class="py-2 pr-3 border-b border-zinc-800/60">{c.tools}</td>
-            <td class="py-2 pr-3 border-b border-zinc-800/60">{c.solves}</td>
-            <td class="py-2 border-b border-zinc-800/60">{c.gap}</td>
-          </tr>
-        ))}
-        <tr class="align-top bg-zinc-800/40">
-          <td class="py-2 px-2 text-zinc-100 font-medium">LingoDrop</td>
-          <td class="py-2 pr-3 text-zinc-300" colspan="2">Turns English from real life and entertainment into a personal library</td>
-          <td class="py-2 pr-2 text-zinc-100">Closes the Capture → Context → Retention loop</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      ))}
+      <tr class="scan-own">
+        <td class="scan-type">LingoDrop</td>
+        <td class="scan-tools" aria-hidden="true"></td>
+        <td data-label="What it solves">Turns English from real life and entertainment into a personal library</td>
+        <td class="scan-gap" data-label="Gap it closes">Closes the Capture → Context → Retention loop</td>
+      </tr>
+    </tbody>
+  </table>
   <p>
     The closest is Language Reactor. Originally called Language Learning with Netflix, it proves that learning from shows is a real behavior. But it handles the moment of watching; nobody takes over the saving, organizing, reviewing and using that should come after. ChatGPT explains well, but its answers stay buried in chat history instead of becoming a library you can come back to. LingoDrop sits between these tools: it doesn't redo what they already do well, it connects the broken links.
   </p>
@@ -154,19 +156,19 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
     ))}
   </div>
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">1. Capture and analysis: closing the Capture Gap</h3>
+  <h3 class="text-base font-medium text-zinc-200 mt-6 mb-2">1. Capture and analysis: closing the Capture Gap</h3>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Save words, phrases and sentences</strong>: the system detects the type and creates a study card. Saving has to be easy enough to do mid-episode.</li>
     <li><strong class="text-zinc-200">AI analysis</strong>: dictionary lookup plus AI generates Traditional Chinese explanations, translations, definitions, phonetics, pronunciation and example sentences, lowering the effort for intermediate learners.</li>
   </ul>
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. Knowing how to use it: closing the Context Gap</h3>
+  <h3 class="text-base font-medium text-zinc-200 mt-6 mb-2">2. Knowing how to use it: closing the Context Gap</h3>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Unnatural-usage correction</strong>: when an expression is Chinglish or unidiomatic, it suggests more natural alternatives.</li>
     <li><strong class="text-zinc-200">Folders and context tags</strong>: organize content with scene-based tags like work, travel, casual speech or TV lines, with search, editing and bulk move to folders.</li>
   </ul>
 
-  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">3. Review and use: closing the Retention Gap</h3>
+  <h3 class="text-base font-medium text-zinc-200 mt-6 mb-2">3. Review and use: closing the Retention Gap</h3>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Random flashcard review</strong>: quick memory checks that fit into a commute.</li>
     <li><strong class="text-zinc-200">AI dialogue generation</strong>: pick saved words and have AI write a conversation set in daily life, business or travel, putting vocabulary back into real use.</li>
@@ -176,16 +178,8 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
 
   <SectionTitle title="User journey" />
   <p>
-    The full flow: meet an unfamiliar expression → enter it in LingoDrop → AI analysis → save and tag → flashcard review → AI dialogue → actually use it. The design turns looking up into organizing, then into reviewing and using: you get the explanation, examples and pronunciation at lookup time, results go straight into folders instead of scattered screenshots, and after review, contextual dialogues put the vocabulary back into sentences.
+    What matters in this loop is that each step produces the material for the next: you get the explanation, examples and pronunciation at lookup time, and the result goes straight into a folder instead of a scattered screenshot; flashcard review surfaces the words that haven't stuck, and contextual dialogue puts those words back into full sentences. Nobody has to maintain a library by hand — organizing is a by-product of looking something up.
   </p>
-
-  <SectionTitle title="Implementation" />
-  <p>I built the product on my own, from planning and interface to front and back end, and it's deployed and live:</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Accounts and data isolation</strong>: Email / Password and Google OAuth sign-in, with each user's cards, folders and AI dialogue history kept separate.</li>
-    <li><strong class="text-zinc-200">Dictionary + AI analysis pipeline</strong>: a dictionary lookup supplies the base definition and pronunciation, then AI adds translation, example sentences, usage notes and tags, saved as one structured card.</li>
-    <li><strong class="text-zinc-200">Dialogue generation and storage</strong>: dialogues are generated from the user's selected saved words and stored back in their library, so AI answers don't disappear like chat history.</li>
-  </ul>
 
   <SectionTitle title="Early signal: “Wait, what's this app called?”" />
   <p>
@@ -206,3 +200,225 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
     <li><strong class="text-zinc-200">Plan paid features by learning stage</strong>: understand which stage of language learning users are in before deciding what stays free and what's worth paying for.</li>
   </ul>
 </ProjectLayout>
+
+<style>
+  /* The three gaps are a sequence, not a set: a numbered rail reads as
+     stages from "I understand it" to "I can use it", and pairs with the
+     一 / 二 / 三 headings that address each gap further down the page. */
+  .gap-stages {
+    list-style: none;
+    /* The parent's space-y utility only spaces element siblings it owns;
+       set the rhythm here so the list does not collide with the paragraph
+       that follows it. */
+    margin: 0.25rem 0 1.5rem;
+    padding: 0;
+    display: grid;
+    gap: 0;
+  }
+  .gap-stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    column-gap: 0.875rem;
+    padding-bottom: 1.5rem;
+  }
+  .gap-stage:last-child {
+    padding-bottom: 0;
+  }
+  /* Rail joining the step numbers, so the three read as one progression
+     instead of three separate boxes. */
+  .gap-stage::before {
+    content: "";
+    position: absolute;
+    top: 1.75rem;
+    bottom: 0;
+    left: 1.25rem;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-zinc-700, #3f3f46),
+      var(--color-zinc-800, #27272a)
+    );
+  }
+  .gap-stage:last-child::before {
+    display: none;
+  }
+  .gap-step {
+    grid-column: 1;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 1.75rem;
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    color: var(--color-zinc-500, #71717a);
+    border: 1px solid var(--color-zinc-800, #27272a);
+    border-radius: 0.375rem;
+  }
+  .gap-body {
+    grid-column: 2;
+    min-width: 0;
+    padding-top: 0.125rem;
+  }
+  .gap-name {
+    margin: 0;
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-zinc-500, #71717a);
+  }
+  .gap-title {
+    margin: 0.25rem 0 0;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--color-zinc-100, #f4f4f5);
+  }
+  .gap-text {
+    margin: 0.5rem 0 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+  /* The consequence is the payoff of each stage, so it stays on the same
+     line as its label rather than sitting behind another divider. */
+  .gap-result {
+    margin: 0.625rem 0 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: var(--color-zinc-500, #71717a);
+  }
+  /* A quiet label, not a second badge: the step number is the only
+     element in this block that should read as a marker. */
+  .gap-result span {
+    margin-right: 0.5rem;
+    color: var(--color-zinc-600, #52525b);
+    white-space: nowrap;
+  }
+  .gap-result span::after {
+    content: "／";
+    margin-left: 0.5rem;
+  }
+
+  /* The competitor scan stays a table: four columns of parallel facts are
+     what a table is for. The previous version set a 560px minimum width,
+     which forced horizontal scrolling in this ~483px column and cut off the
+     "尚未解決的缺口" cell — the column that carries the argument. Dropping
+     the minimum and letting cells wrap keeps every gap readable in place. */
+  .scan {
+    width: 100%;
+    margin: 0.25rem 0 1.5rem;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    table-layout: fixed;
+  }
+  .scan th {
+    font-weight: 400;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-align: left;
+    color: var(--color-zinc-500, #71717a);
+    padding: 0 0.625rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-zinc-800, #27272a);
+    vertical-align: bottom;
+  }
+  .scan td {
+    padding: 0.625rem 0.625rem 0.625rem 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-zinc-800, #27272a) 60%, transparent);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+  .scan th:last-child,
+  .scan td:last-child {
+    padding-right: 0;
+  }
+  /* Give the two prose columns the room; the first two are short labels. */
+  .scan th:nth-child(1) { width: 18%; }
+  .scan th:nth-child(2) { width: 22%; }
+  .scan th:nth-child(3) { width: 28%; }
+  .scan th:nth-child(4) { width: 32%; }
+  .scan-type {
+    color: var(--color-zinc-200, #e4e4e7);
+    font-weight: 500;
+    /* Keep product names whole: overflow-wrap would split "LingoDrop". */
+    overflow-wrap: normal;
+    word-break: keep-all;
+  }
+  .scan-tools {
+    color: var(--color-zinc-400, #a1a1aa);
+  }
+  .scan-gap {
+    color: var(--color-zinc-300, #d4d4d8);
+  }
+  /* The last row is the conclusion of the scan, not another competitor.
+     The tint is drawn with a box-shadow so it can bleed past the cell edge
+     without padding, which would push this row's text out of line with
+     the column above it. */
+  .scan-own td {
+    background: color-mix(in oklab, var(--color-zinc-800, #27272a) 45%, transparent);
+    border-bottom: none;
+    color: var(--color-zinc-100, #f4f4f5);
+  }
+  .scan-own td:first-child {
+    border-radius: 0.375rem 0 0 0.375rem;
+    box-shadow: -0.625rem 0 0 color-mix(in oklab, var(--color-zinc-800, #27272a) 45%, transparent);
+  }
+  .scan-own td:last-child {
+    border-radius: 0 0.375rem 0.375rem 0;
+  }
+
+  /* On a phone four columns cannot hold prose, so each row becomes a
+     stacked block and the column headers move inline as labels. */
+  @media (max-width: 640px) {
+    .scan,
+    .scan tbody,
+    .scan tr,
+    .scan td {
+      display: block;
+      width: auto;
+    }
+    .scan thead {
+      display: none;
+    }
+    .scan tr {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid color-mix(in oklab, var(--color-zinc-800, #27272a) 60%, transparent);
+    }
+    .scan td {
+      padding: 0;
+      border: none;
+    }
+    .scan td + td {
+      margin-top: 0.375rem;
+    }
+    .scan td[data-label]::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.6875rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-zinc-600, #52525b);
+      margin-bottom: 0.125rem;
+    }
+    /* The empty "examples" cell only exists to hold the column grid on
+       desktop; stacked on a phone it would be a blank gap. */
+    .scan-own td[aria-hidden] {
+      display: none;
+    }
+    .scan-own {
+      display: block;
+      background: color-mix(in oklab, var(--color-zinc-800, #27272a) 45%, transparent);
+      border-radius: 0.5rem;
+      padding: 0.75rem;
+      border-bottom: none;
+    }
+    .scan-own td,
+    .scan-own td:first-child,
+    .scan-own td:last-child {
+      background: none;
+      border-radius: 0;
+      padding: 0;
+    }
+  }
+</style>
