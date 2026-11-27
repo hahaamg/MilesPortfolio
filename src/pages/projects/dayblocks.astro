@@ -125,9 +125,21 @@ const images = dayblocksImages("zh");
     透過 Friends &amp; Family Beta 測試收集回饋，結果與原本的優先級判斷有落差：照片上傳流程和社交面板原本排序不高，卻是測試者反應最多的兩處，因此成為下一輪迭代的重點。
   </p>
 
+  <SectionTitle title="原本規劃的 Roadmap" />
+  <p>上架後的開發原本分四個階段：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Phase 1 上架</strong>：修 bug、效能優化、完善 Onboarding、推播通知與 Paywall，正式上架 App Store（已完成）。</li>
+    <li><strong class="text-zinc-200">Phase 2 社交飛輪</strong>：IG Story 分享卡片、連勝分享圖、月度與年度回顧、成就徽章、社群挑戰。</li>
+    <li><strong class="text-zinc-200">Phase 3 擴展功能</strong>：進階統計儀表板、雲端備份、音樂卡片、深色模式與主題、iOS Widget。</li>
+    <li><strong class="text-zinc-200">Phase 4 AI 導入</strong>：AI 數據洞察與 HealthKit 整合。</li>
+  </ul>
+  <p>
+    Phase 1 完成後，後續階段與行銷推廣因其他因素暫緩。
+  </p>
+
   <SectionTitle title="一個人做 App，下次會怎麼做" />
   <p>
-    這個專案從問題定義、規格撰寫、開發、上架到收集回饋完整走過一輪，其中花費最多心力的不是開發，而是功能優先級的取捨。有兩件事如果重來，我會用不同的方式處理。
+    這個專案從問題定義、規格撰寫、開發、上架到收集回饋完整走過一輪，其中花費最多心力的不是開發，而是功能優先級的取捨。有三件事如果重來，我會用不同的方式處理。
   </p>
   <p>
     <strong class="text-zinc-200">市場與使用者研究做得不夠紮實。</strong>這個專案的需求來自我自己的使用情境，加上桌面研究與競品比對，但沒有在開發前做足夠的使用者訪談去驗證「真的有人願意為此改變記錄習慣」。Beta 測試的回饋與我原本的優先級判斷有落差，某種程度上就是這個缺口的結果。下一次我會先用訪談和可用性測試確認需求存在、規模夠大，再決定要投入多少開發。
@@ -135,13 +147,7 @@ const images = dayblocksImages("zh");
   <p>
     <strong class="text-zinc-200">技術選型要考慮得更長遠。</strong>React 18 + Capacitor 讓一套程式碼同時產出 iOS 與 Android，在初期確實省下不少時間，但網頁技術做不出 iOS 原生的互動手感，手勢、轉場與捲動的細節都要額外補；後端選了 PocketBase，上手快、單機部署簡單，但要往多節點或高流量擴張並不容易。這兩個選擇在驗證想法的階段是合理的，若以長期經營為前提，我會重新評估原生開發與可水平擴展的後端。
   </p>
-
-  <SectionTitle title="Roadmap" />
-  <p>後續開發分四個階段：</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Phase 1 上架</strong>：修 bug、效能優化、完善 Onboarding、推播通知與 Paywall，正式上架 App Store（已完成）。</li>
-    <li><strong class="text-zinc-200">Phase 2 社交飛輪</strong>：IG Story 分享卡片、連勝分享圖、月度與年度回顧、成就徽章、社群挑戰。</li>
-    <li><strong class="text-zinc-200">Phase 3 擴展功能</strong>：進階統計儀表板、雲端備份、音樂卡片、深色模式與主題、iOS Widget。</li>
-    <li><strong class="text-zinc-200">Phase 4 AI 導入</strong>：AI 數據洞察與 HealthKit 整合。</li>
-  </ul>
+  <p>
+    <strong class="text-zinc-200">行銷的投入被低估了。</strong>這次大部分時間花在開發上，直到上架才意識到：App Store 本身不會帶來用戶，一個沒有人認識的日記 App 需要的行銷量遠比我預期的多。具體來說有三件事沒有準備好——如何用一句話講清楚它解決什麼痛點，讓沒用過的人三秒內知道為什麼需要它；定價怎麼訂才符合用戶的付費意願，而不是從成本回推；以及潛在用戶實際聚集在哪裡，該用 Threads、社群經營、ASO 還是其他管道觸及他們。下一次我會把這些和功能規劃放在同一個時間軸上，在開發期間就同步推進，而不是等產品做完才開始想。
+  </p>
 </ProjectLayout>

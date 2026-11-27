@@ -125,9 +125,21 @@ const images = dayblocksImages("en");
     A Friends &amp; Family Beta gathered feedback that diverged from the original priorities: the photo upload flow and the social panel, neither ranked high, drew the most comments from testers and became the focus of the next iteration.
   </p>
 
+  <SectionTitle title="The Roadmap As Planned" />
+  <p>Development after launch was planned in four phases:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Phase 1 Launch</strong>: bug fixes, performance, onboarding, push notifications, paywall and App Store release (done).</li>
+    <li><strong class="text-zinc-200">Phase 2 Social flywheel</strong>: IG Story cards, streak images, monthly and yearly recaps, achievement badges, community challenges.</li>
+    <li><strong class="text-zinc-200">Phase 3 More features</strong>: advanced stats dashboard, cloud backup, music cards, dark mode and themes, an iOS widget.</li>
+    <li><strong class="text-zinc-200">Phase 4 AI</strong>: AI insights and HealthKit integration.</li>
+  </ul>
+  <p>
+    After Phase 1, the remaining phases and the marketing effort were put on hold for other reasons.
+  </p>
+
   <SectionTitle title="Building an App Alone, and What I'd Do Differently" />
   <p>
-    The project went through a full cycle from problem definition, spec writing, development and launch to gathering feedback; the part that took the most effort was not building the features but deciding their priority. Two things I would handle differently next time.
+    The project went through a full cycle from problem definition, spec writing, development and launch to gathering feedback; the part that took the most effort was not building the features but deciding their priority. Three things I would handle differently next time.
   </p>
   <p>
     <strong class="text-zinc-200">Market and user research were not thorough enough.</strong> The requirements came from my own use case, backed by desk research and a competitive comparison, but I did not run enough user interviews beforehand to verify that people would actually change their journaling habits for this. The gap between the beta feedback and my original priorities is partly a result of that. Next time I would confirm the need exists, and that the audience is large enough, through interviews and usability testing before deciding how much to build.
@@ -135,13 +147,7 @@ const images = dayblocksImages("en");
   <p>
     <strong class="text-zinc-200">Technology choices needed a longer view.</strong> React 18 and Capacitor produced iOS and Android from one codebase and saved real time early on, but web technology cannot reproduce the feel of native iOS interaction: gestures, transitions and scrolling all needed extra work to approximate. PocketBase was quick to start with and simple to deploy on a single machine, but it does not scale easily to multiple nodes or heavy traffic. Both were reasonable for validating the idea; for something meant to run long term, I would reconsider native development and a horizontally scalable backend.
   </p>
-
-  <SectionTitle title="Roadmap" />
-  <p>Development continues in four phases:</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Phase 1 Launch</strong>: bug fixes, performance, onboarding, push notifications, paywall and App Store release (done).</li>
-    <li><strong class="text-zinc-200">Phase 2 Social flywheel</strong>: Instagram Story share cards, streak share images, monthly and yearly recaps, achievement badges, community challenges.</li>
-    <li><strong class="text-zinc-200">Phase 3 Expansion</strong>: advanced stats dashboard, cloud backup, music card, dark mode and themes, iOS widgets.</li>
-    <li><strong class="text-zinc-200">Phase 4 AI</strong>: AI-powered insights and HealthKit integration.</li>
-  </ul>
+  <p>
+    <strong class="text-zinc-200">Marketing was underestimated.</strong> Most of the time went into building, and only after launch did it become clear that the App Store brings no users on its own: a journaling app nobody has heard of needs far more marketing than I had planned for. Three things in particular were not ready — how to state the pain point in one line, so someone who has never used it understands in three seconds why they would want it; how to set a price around what users are willing to pay rather than working back from cost; and where potential users actually gather, whether that is Threads, community building, ASO or another channel. Next time I would put these on the same timeline as the feature work and run them during development, instead of starting to think about them once the product is finished.
+  </p>
 </ProjectLayout>
