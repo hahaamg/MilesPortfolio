@@ -21,10 +21,10 @@ const { value, label } = Astro.props;
     justify-items: center;
   }
   .value {
-    /* --value-fs is set per grid row by the script below, so every card in a
-       row shares one size and the values sit on a common baseline. The clamp
-       is the pre-script fallback. */
-    font-size: var(--value-fs, clamp(0.875rem, 22cqw, 2.25rem));
+    /* One size for every card on the site, so the component looks the same
+       from project to project. The script below only overrides --value-fs
+       for a row whose widest value would not fit at this size. */
+    font-size: var(--value-fs, clamp(1.5rem, 26cqw, 2.25rem));
     line-height: 1.1;
     white-space: nowrap;
   }
@@ -42,12 +42,12 @@ const { value, label } = Astro.props;
 </style>
 
 <script>
-  // One value font-size per row: measure each value at a reference size and
-  // scale so the widest one fits its card, then apply that size to the whole
-  // row. Keeps baselines aligned and the top/bottom whitespace even.
+  // Cards share one size from CSS so the component reads the same on every
+  // project page. This only measures whether the widest value in a row still
+  // fits; if it does not, the whole row steps down together, which keeps the
+  // three baselines aligned. It also reserves the tallest label in the row.
   const REF = 100;      // px, measurement reference
-  const MAX = 36;       // px, 2.25rem
-  const MIN = 14;       // px, 0.875rem
+  const MIN = 14;       // px, 0.875rem — floor for an unusually long value
 
   function fitRow(row: HTMLElement) {
     const cards = Array.from(
@@ -55,7 +55,15 @@ const { value, label } = Astro.props;
     );
     if (!cards.length) return;
 
-    let size = MAX;
+    // The CSS base size applies everywhere; only step in when the widest
+    // value in this row would spill out of its card, so one long value does
+    // not shrink the cards on every other page.
+    row.style.removeProperty('--value-fs');
+    const base = parseFloat(
+      getComputedStyle(cards[0].querySelector('.value') as HTMLElement).fontSize,
+    );
+
+    let size = base;
     for (const card of cards) {
       const value = card.querySelector<HTMLElement>('.value');
       if (!value) continue;
@@ -73,7 +81,9 @@ const { value, label } = Astro.props;
       size = Math.min(size, (avail / width) * REF);
     }
 
-    row.style.setProperty('--value-fs', `${Math.max(MIN, size).toFixed(2)}px`);
+    if (size < base - 0.5) {
+      row.style.setProperty('--value-fs', `${Math.max(MIN, size).toFixed(2)}px`);
+    }
 
     // Reserve the tallest label in the row, so cards with fewer label lines
     // keep the same block height and stay aligned.
