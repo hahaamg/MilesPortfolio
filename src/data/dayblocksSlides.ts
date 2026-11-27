@@ -17,10 +17,6 @@ const slides: { name: string; zh: string; en: string }[] = [
   { name: "dashboard", zh: "自由拼裝的日常儀表板", en: "A daily dashboard you assemble yourself" },
   { name: "dashboard2", zh: "Onboarding、Strava 卡片與好友動態", en: "Onboarding, Strava card and friends feed" },
   { name: "heatmap", zh: "熱力圖與個人軌跡", en: "Habit heatmap and personal stats" },
-  { name: "competitive", zh: "與 Daylio、DailyBean 的競品分析", en: "Competitive analysis vs. Daylio and DailyBean" },
-  { name: "operation", zh: "三年營運計畫", en: "Three-year operating plan" },
-  { name: "roadmap", zh: "產品 Roadmap", en: "Product roadmap" },
-  { name: "breakeven", zh: "付費用戶成長與損益平衡點", en: "Paid-user growth and break-even point" },
 ];
 
 export function dayblocksImages(lang: "zh" | "en") {

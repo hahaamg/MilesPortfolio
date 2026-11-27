@@ -16,9 +16,9 @@ const images = dayblocksImages("en");
   <div slot="aside" class="space-y-6">
     <ImageSlider images={images} client:load />
     <div class="grid grid-cols-3 gap-2">
-      <HighlightCard value="95%" label="Code Contribution (436 / 457 commits)" />
-      <HighlightCard value="10" label="Composable Card Types" />
-      <HighlightCard value="Live" label="Released on the App Store" />
+      <HighlightCard value="7+" label="Modular Card Types" />
+      <HighlightCard value="iOS" label="Solo Developed" />
+      <HighlightCard value="App Store" label="Official Release" />
     </div>
     <ProjectExternalLink href="https://apps.apple.com/tw/app/dayblocks/id6761128709" label="View on App Store" />
   </div>
@@ -68,44 +68,44 @@ const images = dayblocksImages("en");
     <li><strong class="text-zinc-200">KR3 User validation</strong>: run a Beta with real users and complete at least one iteration based on their feedback.</li>
   </ul>
   <p>
-    Next came a 15-chapter bilingual PRD covering user scenarios, data architecture and UX flows, plus a card-system spec defining each card's sizes, data structure and global interaction rules. i18n was part of the architecture from day one, so expanding to new markets wouldn't require a rewrite.
+    Next came a 15-chapter bilingual PRD covering user scenarios, data architecture and UX flows, plus a card-system spec defining each card's sizes, data structure and global interaction rules, with i18n built into the architecture.
   </p>
-  <p>Features were split into four priority tiers so every stage produced something usable:</p>
+  <p>Features were split into four priority tiers:</p>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">P0 Core card system</strong>: without it there is no product.</li>
-    <li><strong class="text-zinc-200">P1 Streaks</strong>: a reason to come back tomorrow.</li>
-    <li><strong class="text-zinc-200">P2 Social</strong>: the differentiator, built on top of the first two.</li>
-    <li><strong class="text-zinc-200">P3 Future</strong>: music, HealthKit, AI insights. Written down, not rushed.</li>
+    <li><strong class="text-zinc-200">P0 Core card system</strong>: creating, editing and arranging cards, and storing their data.</li>
+    <li><strong class="text-zinc-200">P1 Streaks</strong>: consecutive-day counts, the buffer mechanism and achievement badges.</li>
+    <li><strong class="text-zinc-200">P2 Social</strong>: friends, the activity feed, cheers and leaderboards.</li>
+    <li><strong class="text-zinc-200">P3 Future</strong>: music cards, HealthKit integration and AI insights.</li>
   </ul>
 
-  <SectionTitle title="Four Key Trade-offs" />
-  <p>With limited resources, every "yes" means a "no" somewhere else. These four decisions shaped the product most:</p>
+  <SectionTitle title="Four Trade-offs" />
+  <p>Four of the main trade-offs made during development:</p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">1. Light social (cheers) vs. deep social (comments)</h3>
   <p>
-    Social interaction is limited to cheers and kudos, with no comments. Completing a task or adding a card automatically appears on friends' feeds, inspired by Duolingo, so nobody has to compose a post. It gives up depth of interaction in exchange for zero social pressure, and keeps journaling itself free of feed noise.
+    Social interaction is limited to cheers and kudos, with no comments. Completing a task or adding a card automatically appears on friends' feeds, inspired by Duolingo, so nobody has to compose a post. The cost is shallower interaction; what it avoids is the pressure of comments and likes.
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. Local storage + cloud social</h3>
   <p>
-    Journals are deeply personal, so they live in on-device SQLite by default. Only the data the social feed needs goes to the cloud. That protects privacy and keeps backend costs very low, which matters for a product without revenue yet.
+    Journals are deeply personal, so they live in on-device SQLite by default. Only the data the social feed needs goes to the cloud. The backend therefore only carries traffic for the social features.
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">3. Forgiving streaks vs. reset on a miss</h3>
   <p>
-    Most streaks reset after one missed day, which is brutal for someone just starting a habit; one miss often means quitting. DayBlocks adds a buffer so an occasional gap doesn't wipe out past progress. The goal is to bring users back, not punish them.
+    Most streaks reset after one missed day, which is brutal for someone just starting a habit; one miss often means quitting. DayBlocks adds a buffer, so an occasional missed day does not reset the accumulated count.
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">4. Smart layout inheritance vs. daily setup</h3>
   <p>
-    Cards can be dragged and resized freely, but rearranging every day turns freedom into a chore. Each new day inherits the previous day's layout, and you change it only when you want to. That makes "open the app and log" possible.
+    Cards can be dragged and resized freely, but rearranging every day turns freedom into a chore. Each new day inherits the previous day's layout, adjusted only when needed.
   </p>
 
   <SectionTitle title="What Shipped" />
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">Modular cards</strong>: weather, mood, journal, photo, Pomodoro, habits, tasks, to-dos and wake-up check-ins, plus a Strava run card. A dynamic grid lets you decide how much space each part of your life gets.</li>
-    <li><strong class="text-zinc-200">Light social feed</strong>: a friends feed, cheers and kudos, and a friends leaderboard. No posting required; logging is sharing.</li>
-    <li><strong class="text-zinc-200">Data insights</strong>: heatmaps show each habit's completion history, alongside streak flame badges and mood trends.</li>
+    <li><strong class="text-zinc-200">Modular cards</strong>: weather, mood, journal, photo, Pomodoro, habits, tasks, to-dos and wake-up check-ins, plus a Strava run card, arranged on a dynamic grid that sets each card's size and position.</li>
+    <li><strong class="text-zinc-200">Light social feed</strong>: a friends feed, cheers and kudos, and a friends leaderboard; logging activity appears on the feed automatically, with no separate post.</li>
+    <li><strong class="text-zinc-200">Data insights</strong>: heatmaps of each habit's completion history, alongside streak flame badges and mood trend charts.</li>
   </ul>
 
   <SectionTitle title="Building It" />
@@ -119,20 +119,20 @@ const images = dayblocksImages("en");
   </ul>
 
   <SectionTitle title="Polishing Before Launch" />
-  <p>Working features aren't the same as a good experience. Device testing and user feedback led to several small changes that make a big difference in feel:</p>
+  <p>Device testing and user feedback led to several changes before launch:</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Performance</strong>: removed the expensive backdrop-blur on iOS and switched to preloaded sheets, eliminating stutter when panels open.</li>
-    <li><strong class="text-zinc-200">Haptics</strong>: added haptic feedback to key moments like completing a task, so finishing something feels like a small ritual.</li>
-    <li><strong class="text-zinc-200">Respectful notifications</strong>: reminders are skipped if you've already logged that day, so DayBlocks doesn't become one more notification to mute.</li>
-    <li><strong class="text-zinc-200">Visual restraint</strong>: cut redundant animations to shorten response time and keep attention on the content.</li>
+    <li><strong class="text-zinc-200">Haptics</strong>: added haptic feedback to actions like completing a task or checking off a to-do.</li>
+    <li><strong class="text-zinc-200">Respectful notifications</strong>: reminders are skipped if you have already logged that day.</li>
+    <li><strong class="text-zinc-200">Visual restraint</strong>: cut redundant animations and shortened interface response time.</li>
   </ul>
 
-  <SectionTitle title="Lessons from the Beta" />
+  <SectionTitle title="Beta Testing" />
   <p>
-    A Friends &amp; Family Beta confirmed an old lesson: <strong class="text-zinc-200">what users want is often different from what gets built</strong>. The feedback moved the photo upload flow and the social panel, neither originally a high priority, to the front of the next iteration.
+    A Friends &amp; Family Beta gathered feedback that diverged from the original priorities: the photo upload flow and the social panel, neither ranked high, drew the most comments from testers and became the focus of the next iteration.
   </p>
   <p>
-    The other lesson: the hardest part isn't writing code, it's deciding what not to build. Prioritization took more energy than implementation. Going through the full loop from problem definition, spec, development and launch to feedback makes clear where a PM adds value: making the right call for the right users with limited resources.
+    The project went through a full cycle from problem definition, spec writing, development and launch to gathering feedback; the part that took the most effort was not building the features but deciding their priority.
   </p>
 
   <SectionTitle title="Business Model and What's Next" />

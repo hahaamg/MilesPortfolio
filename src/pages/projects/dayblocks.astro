@@ -16,9 +16,9 @@ const images = dayblocksImages("zh");
   <div slot="aside" class="space-y-6">
     <ImageSlider images={images} client:load />
     <div class="grid grid-cols-3 gap-2">
-      <HighlightCard value="95%" label="程式碼貢獻（436 / 457 commits）" />
-      <HighlightCard value="10 種" label="可自由拼裝的卡片" />
-      <HighlightCard value="上架" label="App Store 正式發布" />
+      <HighlightCard value="7+" label="功能卡片類型" />
+      <HighlightCard value="iOS" label="獨立開發上架" />
+      <HighlightCard value="App Store" label="正式發布" />
     </div>
     <ProjectExternalLink href="https://apps.apple.com/tw/app/dayblocks/id6761128709" label="前往 App Store" />
   </div>
@@ -68,44 +68,44 @@ const images = dayblocksImages("zh");
     <li><strong class="text-zinc-200">KR3 用戶驗證</strong>：邀請真實用戶參與 Beta 測試，並根據回饋完成至少一輪迭代。</li>
   </ul>
   <p>
-    接著撰寫 15 章節的中英雙語 PRD，涵蓋用戶情境、資料架構與 UX 流程，並為每種卡片定義尺寸系統、資料結構和全域互動規則。i18n 從第一天就放進架構，之後要擴展到其他市場不必重寫。
+    接著撰寫 15 章節的中英雙語 PRD，涵蓋用戶情境、資料架構與 UX 流程，為每種卡片定義尺寸系統、資料結構和全域互動規則，並在架構中納入 i18n。
   </p>
-  <p>功能依優先級分成四層，確保每一階段都有可以用的產品：</p>
+  <p>功能依優先級分成四層：</p>
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">P0 核心卡片系統</strong>：沒有它就沒有產品。</li>
-    <li><strong class="text-zinc-200">P1 連勝激勵</strong>：讓人明天還想回來。</li>
-    <li><strong class="text-zinc-200">P2 社交連結</strong>：差異化的關鍵，但建立在前兩者之上。</li>
-    <li><strong class="text-zinc-200">P3 未來擴充</strong>：音樂、HealthKit、AI 洞察等，先記下來，不急著做。</li>
+    <li><strong class="text-zinc-200">P0 核心卡片系統</strong>：卡片的建立、編輯、拖曳排版與資料儲存。</li>
+    <li><strong class="text-zinc-200">P1 連勝激勵</strong>：連續記錄天數、緩衝機制與成就徽章。</li>
+    <li><strong class="text-zinc-200">P2 社交連結</strong>：好友系統、動態牆、打氣與排行榜。</li>
+    <li><strong class="text-zinc-200">P3 未來擴充</strong>：音樂卡片、HealthKit 整合與 AI 數據洞察。</li>
   </ul>
 
-  <SectionTitle title="四個關鍵取捨" />
-  <p>資源有限時，每個「要做」都意味著別的「不做」。以下是影響最大的四個決定：</p>
+  <SectionTitle title="四個取捨" />
+  <p>以下是開發過程中四個主要的取捨：</p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-4 mb-2">一、輕社交（打氣）vs. 深社交（留言）</h3>
   <p>
-    社交互動只保留「打氣」和「歡呼」，不開放留言。完成任務或新增卡片會自動出現在好友動態牆上，靈感來自 Duolingo，不用刻意發文，朋友自然看見你的努力。這樣做犧牲了互動深度，但換到的是零社交壓力，也不會讓記錄本身被社群干擾。
+    社交互動只保留「打氣」和「歡呼」，不開放留言。完成任務或新增卡片會自動出現在好友動態牆上，靈感來自 Duolingo，不用刻意發文，朋友自然看見你的努力。代價是互動深度較淺，換來的是沒有留言與按讚的壓力。
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">二、本地儲存 + 雲端社交的混合架構</h3>
   <p>
-    日記是很私密的資料，所以預設存在裝置上的 SQLite，只有社交動態需要的資料才上雲端。這樣同時照顧到隱私，也大幅壓低後端維運成本，對一個還沒有營收的產品來說很重要。
+    日記是很私密的資料，所以預設存在裝置上的 SQLite，只有社交動態需要的資料才上雲端。後端因此只需承載社交功能的流量。
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">三、連勝的緩衝機制 vs. 中斷即歸零</h3>
   <p>
-    多數連勝設計是斷一天就歸零，但這對剛開始建立習慣的人打擊很大，常常斷一次就直接放棄。因此 DayBlocks 加入緩衝機制，讓偶然的中斷不會抹掉之前的累積，目的是提高回訪率，而不是懲罰用戶。
+    多數連勝設計是斷一天就歸零，但這對剛開始建立習慣的人打擊很大，常常斷一次就直接放棄。因此 DayBlocks 加入緩衝機制，偶然中斷一天不會讓先前的累積歸零。
   </p>
 
   <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">四、智慧繼承版面 vs. 每天手動設定</h3>
   <p>
-    卡片可以自由拖曳、調整大小，但如果每天都要重新排版，自由就變成負擔。所以新的一天會自動繼承前一天的配置，想改再改。這讓「打開 App 就能記」成為可能。
+    卡片可以自由拖曳、調整大小，但如果每天都要重新排版，自由就變成負擔。所以新的一天會自動繼承前一天的配置，需要時再調整。
   </p>
 
   <SectionTitle title="做出來的產品" />
   <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">模組化卡片</strong>：天氣、心情、日記、照片、番茄鐘、習慣、任務、待辦、起床打卡等卡片自由拼裝，並可串接 Strava 跑步紀錄。透過動態網格，生活重心的比例由你自己決定。</li>
-    <li><strong class="text-zinc-200">輕社交動態</strong>：好友動態牆、打氣與歡呼、好友排行榜。不需要發文，記錄本身就是分享。</li>
-    <li><strong class="text-zinc-200">數據化洞察</strong>：用熱力圖呈現每個習慣的完成軌跡，搭配連勝火焰徽章和心情趨勢，讓你看見自己的成長。</li>
+    <li><strong class="text-zinc-200">模組化卡片</strong>：天氣、心情、日記、照片、番茄鐘、習慣、任務、待辦、起床打卡等卡片自由拼裝，並可串接 Strava 跑步紀錄，透過動態網格調整各張卡片的大小與位置。</li>
+    <li><strong class="text-zinc-200">輕社交動態</strong>：好友動態牆、打氣與歡呼、好友排行榜，記錄行為會自動出現在動態牆上，不需另外發文。</li>
+    <li><strong class="text-zinc-200">數據化洞察</strong>：用熱力圖呈現每個習慣的完成軌跡，搭配連勝火焰徽章與心情趨勢圖。</li>
   </ul>
 
   <SectionTitle title="技術實作" />
@@ -119,20 +119,20 @@ const images = dayblocksImages("zh");
   </ul>
 
   <SectionTitle title="上架前的打磨" />
-  <p>功能做完不等於好用。上架前根據實機測試和用戶反饋，做了幾項不顯眼、但體感差異很大的調整：</p>
+  <p>上架前根據實機測試與用戶回饋，做了幾項調整：</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">效能</strong>：移除 iOS 上很耗效能的 backdrop-blur，改用預先載入的 Sheet，消除開啟面板時的卡頓。</li>
-    <li><strong class="text-zinc-200">觸覺回饋</strong>：在完成任務等關鍵操作加入 Haptic Feedback，讓「完成」這件事有儀式感。</li>
-    <li><strong class="text-zinc-200">不打擾的通知</strong>：如果當天已經記錄過，就自動跳過提醒，避免變成另一個讓人想關掉的推播。</li>
-    <li><strong class="text-zinc-200">視覺克制</strong>：拿掉多餘的動畫，縮短反應時間，讓注意力回到內容本身。</li>
+    <li><strong class="text-zinc-200">觸覺回饋</strong>：在完成任務、勾選待辦等操作加入 Haptic Feedback。</li>
+    <li><strong class="text-zinc-200">不打擾的通知</strong>：如果當天已經記錄過，就自動跳過當天的提醒。</li>
+    <li><strong class="text-zinc-200">視覺克制</strong>：拿掉多餘的動畫，縮短介面的反應時間。</li>
   </ul>
 
-  <SectionTitle title="Beta 測試的收穫" />
+  <SectionTitle title="Beta 測試" />
   <p>
-    透過 Friends &amp; Family Beta 測試，最大的收穫是驗證了一句老話：<strong class="text-zinc-200">用戶要的和開發者做的，常常不一樣</strong>。測試回饋讓下一輪迭代的重點，轉向原本優先級不高的照片上傳流程和社交面板。
+    透過 Friends &amp; Family Beta 測試收集回饋，結果與原本的優先級判斷有落差：照片上傳流程和社交面板原本排序不高，卻是測試者反應最多的兩處，因此成為下一輪迭代的重點。
   </p>
   <p>
-    另一個體會是，最難的不是寫程式，而是決定「不做什麼」。功能優先級的排序，比寫 code 更消耗精力。從問題定義、規格、開發、上架到收集回饋，完整走過這一圈，也更清楚 PM 的價值所在：在有限的資源下，為對的用戶做出對的決定。
+    這個專案從問題定義、規格撰寫、開發、上架到收集回饋完整走過一輪，其中花費最多心力的不是開發，而是功能優先級的取捨。
   </p>
 
   <SectionTitle title="商業模式與下一步" />
