@@ -126,14 +126,12 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
           <td class="scan-gap" data-label="Gap left open">{c.gap}</td>
         </tr>
       ))}
-      <tr class="scan-own">
-        <td class="scan-type">LingoDrop</td>
-        <td class="scan-tools" aria-hidden="true"></td>
-        <td data-label="What it solves">Turns English from real life and entertainment into a personal library</td>
-        <td class="scan-gap" data-label="Gap it closes">Closes the Capture → Context → Retention loop</td>
-      </tr>
     </tbody>
   </table>
+  <div class="scan-own">
+    <p class="scan-own-label">LingoDrop</p>
+    <p class="scan-own-text">Turns English from real life and entertainment into a personal library, closing the Capture → Context → Retention loop.</p>
+  </div>
   <p>
     The closest is Language Reactor. Originally called Language Learning with Netflix, it proves that learning from shows is a real behavior. But it handles the moment of watching; nobody takes over the saving, organizing, reviewing and using that should come after. ChatGPT explains well, but its answers stay buried in chat history instead of becoming a library you can come back to. LingoDrop sits between these tools: it doesn't redo what they already do well, it connects the broken links.
   </p>
@@ -351,21 +349,26 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
   .scan-gap {
     color: var(--color-zinc-300, #d4d4d8);
   }
-  /* The last row is the conclusion of the scan, not another competitor.
-     The tint is drawn with a box-shadow so it can bleed past the cell edge
-     without padding, which would push this row's text out of line with
-     the column above it. */
-  .scan-own td {
+  /* LingoDrop is not a seventh competitor: it answers the scan rather than
+     taking part in it, so it sits outside the table as the conclusion. */
+  .scan-own {
+    margin: -0.75rem 0 1.5rem;
+    padding: 0.75rem 0.875rem;
+    border-radius: 0.5rem;
+    border-left: 2px solid var(--color-zinc-600, #52525b);
     background: color-mix(in oklab, var(--color-zinc-800, #27272a) 45%, transparent);
-    border-bottom: none;
-    color: var(--color-zinc-100, #f4f4f5);
   }
-  .scan-own td:first-child {
-    border-radius: 0.375rem 0 0 0.375rem;
-    box-shadow: -0.625rem 0 0 color-mix(in oklab, var(--color-zinc-800, #27272a) 45%, transparent);
+  .scan-own-label {
+    margin: 0 0 0.25rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--color-zinc-500, #71717a);
   }
-  .scan-own td:last-child {
-    border-radius: 0 0.375rem 0.375rem 0;
+  .scan-own-text {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    color: var(--color-zinc-200, #e4e4e7);
   }
 
   /* On a phone four columns cannot hold prose, so each row becomes a
@@ -400,25 +403,6 @@ const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
       text-transform: uppercase;
       color: var(--color-zinc-600, #52525b);
       margin-bottom: 0.125rem;
-    }
-    /* The empty "examples" cell only exists to hold the column grid on
-       desktop; stacked on a phone it would be a blank gap. */
-    .scan-own td[aria-hidden] {
-      display: none;
-    }
-    .scan-own {
-      display: block;
-      background: color-mix(in oklab, var(--color-zinc-800, #27272a) 45%, transparent);
-      border-radius: 0.5rem;
-      padding: 0.75rem;
-      border-bottom: none;
-    }
-    .scan-own td,
-    .scan-own td:first-child,
-    .scan-own td:last-child {
-      background: none;
-      border-radius: 0;
-      padding: 0;
     }
   }
 </style>
