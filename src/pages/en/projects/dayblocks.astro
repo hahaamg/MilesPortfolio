@@ -70,13 +70,6 @@ const images = dayblocksImages("en");
   <p>
     Next came a 15-chapter bilingual PRD covering user scenarios, data architecture and UX flows, plus a card-system spec defining each card's sizes, data structure and global interaction rules, with i18n built into the architecture.
   </p>
-  <p>Features were split into four priority tiers:</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">P0 Core card system</strong>: creating, editing and arranging cards, and storing their data.</li>
-    <li><strong class="text-zinc-200">P1 Streaks</strong>: consecutive-day counts, the buffer mechanism and achievement badges.</li>
-    <li><strong class="text-zinc-200">P2 Social</strong>: friends, the activity feed, cheers and leaderboards.</li>
-    <li><strong class="text-zinc-200">P3 Future</strong>: music cards, HealthKit integration and AI insights.</li>
-  </ul>
 
   <SectionTitle title="Four Trade-offs" />
   <p>Four of the main trade-offs made during development:</p>
@@ -110,7 +103,7 @@ const images = dayblocksImages("en");
 
   <SectionTitle title="Building It" />
   <p>
-    Role: product owner and lead developer, covering requirements, UX flows, UI guidelines, full-stack development and deployment, with 436 of 457 commits (about 95%).
+    From requirements and UX flows to interface guidelines, full-stack development and deployment, I built the entire project myself.
   </p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Cross-platform app</strong>: React 18 + Capacitor 8, producing iOS and Android builds from one codebase.</li>
@@ -131,15 +124,20 @@ const images = dayblocksImages("en");
   <p>
     A Friends &amp; Family Beta gathered feedback that diverged from the original priorities: the photo upload flow and the social panel, neither ranked high, drew the most comments from testers and became the focus of the next iteration.
   </p>
+
+  <SectionTitle title="Building an App Alone, and What I'd Do Differently" />
   <p>
-    The project went through a full cycle from problem definition, spec writing, development and launch to gathering feedback; the part that took the most effort was not building the features but deciding their priority.
+    The project went through a full cycle from problem definition, spec writing, development and launch to gathering feedback; the part that took the most effort was not building the features but deciding their priority. Two things I would handle differently next time.
+  </p>
+  <p>
+    <strong class="text-zinc-200">Market and user research were not thorough enough.</strong> The requirements came from my own use case, backed by desk research and a competitive comparison, but I did not run enough user interviews beforehand to verify that people would actually change their journaling habits for this. The gap between the beta feedback and my original priorities is partly a result of that. Next time I would confirm the need exists, and that the audience is large enough, through interviews and usability testing before deciding how much to build.
+  </p>
+  <p>
+    <strong class="text-zinc-200">Technology choices needed a longer view.</strong> React 18 and Capacitor produced iOS and Android from one codebase and saved real time early on, but web technology cannot reproduce the feel of native iOS interaction: gestures, transitions and scrolling all needed extra work to approximate. PocketBase was quick to start with and simple to deploy on a single machine, but it does not scale easily to multiple nodes or heavy traffic. Both were reasonable for validating the idea; for something meant to run long term, I would reconsider native development and a horizontally scalable backend.
   </p>
 
-  <SectionTitle title="Business Model and What's Next" />
-  <p>
-    DayBlocks uses a freemium model: Pro is USD 2.99/month or USD 24.99/year and unlocks advanced features. The local-first architecture keeps running costs low, and growth relies on word of mouth and sharing on communities like Threads. The financial plan projects break-even at about 200 paid users in Q1 2027, with a year-three target of 2,500 paid users.
-  </p>
-  <p>The roadmap has four phases:</p>
+  <SectionTitle title="Roadmap" />
+  <p>Development continues in four phases:</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Phase 1 Launch</strong>: bug fixes, performance, onboarding, push notifications, paywall and App Store release (done).</li>
     <li><strong class="text-zinc-200">Phase 2 Social flywheel</strong>: Instagram Story share cards, streak share images, monthly and yearly recaps, achievement badges, community challenges.</li>

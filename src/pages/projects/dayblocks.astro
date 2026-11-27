@@ -70,13 +70,6 @@ const images = dayblocksImages("zh");
   <p>
     接著撰寫 15 章節的中英雙語 PRD，涵蓋用戶情境、資料架構與 UX 流程，為每種卡片定義尺寸系統、資料結構和全域互動規則，並在架構中納入 i18n。
   </p>
-  <p>功能依優先級分成四層：</p>
-  <ul class="list-disc ml-6 space-y-2">
-    <li><strong class="text-zinc-200">P0 核心卡片系統</strong>：卡片的建立、編輯、拖曳排版與資料儲存。</li>
-    <li><strong class="text-zinc-200">P1 連勝激勵</strong>：連續記錄天數、緩衝機制與成就徽章。</li>
-    <li><strong class="text-zinc-200">P2 社交連結</strong>：好友系統、動態牆、打氣與排行榜。</li>
-    <li><strong class="text-zinc-200">P3 未來擴充</strong>：音樂卡片、HealthKit 整合與 AI 數據洞察。</li>
-  </ul>
 
   <SectionTitle title="四個取捨" />
   <p>以下是開發過程中四個主要的取捨：</p>
@@ -110,7 +103,7 @@ const images = dayblocksImages("zh");
 
   <SectionTitle title="技術實作" />
   <p>
-    擔任產品負責人兼主要開發者，主導需求定義、UX 流程、介面規範、前後端開發與部署，貢獻 457 個 commits 中的 436 個（約 95%）。
+    從需求定義、UX 流程、介面規範到前後端開發與部署，整個專案由我一人完成。
   </p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">跨平台 App</strong>：以 React 18 + Capacitor 8 開發，一套程式碼產出 iOS 與 Android 版本。</li>
@@ -131,15 +124,20 @@ const images = dayblocksImages("zh");
   <p>
     透過 Friends &amp; Family Beta 測試收集回饋，結果與原本的優先級判斷有落差：照片上傳流程和社交面板原本排序不高，卻是測試者反應最多的兩處，因此成為下一輪迭代的重點。
   </p>
+
+  <SectionTitle title="一個人做 App，下次會怎麼做" />
   <p>
-    這個專案從問題定義、規格撰寫、開發、上架到收集回饋完整走過一輪，其中花費最多心力的不是開發，而是功能優先級的取捨。
+    這個專案從問題定義、規格撰寫、開發、上架到收集回饋完整走過一輪，其中花費最多心力的不是開發，而是功能優先級的取捨。有兩件事如果重來，我會用不同的方式處理。
+  </p>
+  <p>
+    <strong class="text-zinc-200">市場與使用者研究做得不夠紮實。</strong>這個專案的需求來自我自己的使用情境，加上桌面研究與競品比對，但沒有在開發前做足夠的使用者訪談去驗證「真的有人願意為此改變記錄習慣」。Beta 測試的回饋與我原本的優先級判斷有落差，某種程度上就是這個缺口的結果。下一次我會先用訪談和可用性測試確認需求存在、規模夠大，再決定要投入多少開發。
+  </p>
+  <p>
+    <strong class="text-zinc-200">技術選型要考慮得更長遠。</strong>React 18 + Capacitor 讓一套程式碼同時產出 iOS 與 Android，在初期確實省下不少時間，但網頁技術做不出 iOS 原生的互動手感，手勢、轉場與捲動的細節都要額外補；後端選了 PocketBase，上手快、單機部署簡單，但要往多節點或高流量擴張並不容易。這兩個選擇在驗證想法的階段是合理的，若以長期經營為前提，我會重新評估原生開發與可水平擴展的後端。
   </p>
 
-  <SectionTitle title="商業模式與下一步" />
-  <p>
-    DayBlocks 採 Freemium 訂閱制，Pro 方案每月 2.99 美元或每年 24.99 美元，解鎖進階功能。本地優先的架構讓維運成本維持在很低的水位，成長則靠 Threads 等社群的口碑與分享。依財務預估，約 200 名付費用戶即可在 2027 年第一季達到損益平衡，第三年目標 2,500 名付費用戶。
-  </p>
-  <p>接下來的 Roadmap 分四個階段：</p>
+  <SectionTitle title="Roadmap" />
+  <p>後續開發分四個階段：</p>
   <ul class="list-disc ml-6 space-y-2">
     <li><strong class="text-zinc-200">Phase 1 上架</strong>：修 bug、效能優化、完善 Onboarding、推播通知與 Paywall，正式上架 App Store（已完成）。</li>
     <li><strong class="text-zinc-200">Phase 2 社交飛輪</strong>：IG Story 分享卡片、連勝分享圖、月度與年度回顧、成就徽章、社群挑戰。</li>
