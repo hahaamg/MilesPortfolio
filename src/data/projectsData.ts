@@ -49,8 +49,8 @@ export const zhProjects: ProjectItem[] = [
     category: "產品規劃與設計"
   },
   {
-    title: "LingoDrop｜個人化字典",
-    description: "一滴一字，累積你的語言力。隨手收藏遇見的詞彙與句子。",
+    title: "LingoDrop｜個人英文語言庫",
+    description: "從「看懂」到「會用」：拆解英文學習的三個斷點與六類競品，打造收藏、AI 解析、複習到情境對話的學習閉環。",
     image: Lingodrop,
     link: "/projects/Lingodrop",
     category: "產品規劃與設計"
@@ -129,8 +129,8 @@ export const enProjects: ProjectItem[] = [
     category: "Product Planning & Design"
   },
   {
-    title: "LingoDrop | Personalized Contextual Dictionary",
-    description: "One drop, one word—build your language intuition. Effortlessly capture and organize vocabulary and phrases you encounter in daily life.",
+    title: "LingoDrop | Your Personal English Library",
+    description: "From understanding to using: mapped three learning gaps and six competitor types, then built a loop from capture and AI analysis to review and contextual dialogue.",
     image: Lingodrop,
     link: "/en/projects/Lingodrop",
     category: "Product Planning & Design"
