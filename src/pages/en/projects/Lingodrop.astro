@@ -5,15 +5,63 @@ import ProjectExternalLink from "../../../components/project/ProjectExternalLink
 import HighlightCard from "../../../components/project/HighlightCard.astro";
 import SectionTitle from "../../../components/project/SectionTitle.astro";
 import LingoDrop from "../../../assets/Lingodrop_mockup.png";
+import slide02 from "../../../assets/lingodrop/slide-02.webp";
+import slide04 from "../../../assets/lingodrop/slide-04.webp";
+import slide07 from "../../../assets/lingodrop/slide-07.webp";
+import slide09 from "../../../assets/lingodrop/slide-09.webp";
+import slide10 from "../../../assets/lingodrop/slide-10.webp";
+import slide11 from "../../../assets/lingodrop/slide-11.webp";
+import slide12 from "../../../assets/lingodrop/slide-12.webp";
+
+const gaps = [
+  {
+    en: "Capture Gap",
+    title: "Seen it, looked it up, forgot it",
+    body: "You run into a useful phrase on Netflix, YouTube, in an article or a work message. You understand it or look it up, but nothing brings it back later, so it never becomes long-term memory.",
+    result: "Scattered across screenshots, notes and chat logs",
+  },
+  {
+    en: "Context Gap",
+    title: "Know the word, not how to use it",
+    body: "Dictionaries and subtitles help you understand. They don't tell you the tone, the situations it fits, common collocations or more natural alternatives.",
+    result: "You can read it, but can't say or write it naturally",
+  },
+  {
+    en: "Retention Gap",
+    title: "Got it then, still can't say it",
+    body: "Words you've learned are never put back into a conversation or a context. Most review tools are built around exams.",
+    result: "No loop that builds everyday fluency",
+  },
+];
+
+const competitors = [
+  { type: "Dictionary / translation", tools: "Cambridge, Google Translate, DeepL", solves: "Meaning and translation", gap: "No saving, review or reuse in context" },
+  { type: "Course apps", tools: "Duolingo, Cake, VoiceTube", solves: "Structured curriculum", gap: "The platform picks the content, not your real life" },
+  { type: "Flashcard tools", tools: "Anki, Quizlet", solves: "Memorization and review", gap: "No AI context or natural-usage correction" },
+  { type: "AI chat", tools: "ChatGPT, Gemini", solves: "Explanations, dialogue, example sentences", gap: "Answers get lost; no structured personal library" },
+  { type: "Subtitle tools", tools: "Language Reactor", solves: "Learning while watching Netflix / YouTube", gap: "Focused on the moment of watching, not what comes after" },
+  { type: "Speaking practice", tools: "Speak, ELSA", solves: "Pronunciation and speaking practice", gap: "No personal vocabulary collection" },
+];
+
+const loop = ["Capture", "AI analysis", "Organize", "Review", "AI dialogue"];
 ---
 
 <ProjectLayout
-  title="LingoDrop | Personalized Contextual Dictionary"
-  tags={["Language Learning", "Product Design", "Web & Mobile App"]}
+  title="LingoDrop | Your Personal English Library"
+  tags={["Product Pitch", "Language Learning × AI", "Competitive Analysis", "Web App", "Solo Build"]}
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[{ src: LingoDrop.src, alt: "LingoDrop" }]}
+      images={[
+        { src: LingoDrop.src, alt: "LingoDrop interface" },
+        { src: slide02.src, alt: "The hook: endless TV shows, still just “I'm fine”" },
+        { src: slide04.src, alt: "The gap: understanding vs. using" },
+        { src: slide07.src, alt: "Job to be Done" },
+        { src: slide09.src, alt: "The product" },
+        { src: slide10.src, alt: "Eight core features" },
+        { src: slide11.src, alt: "User journey" },
+        { src: slide12.src, alt: "Early signal" },
+      ]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
@@ -24,22 +72,137 @@ import LingoDrop from "../../../assets/Lingodrop_mockup.png";
     <ProjectExternalLink href="https://lingodropapp.zeabur.app/" label="Visit LingoDrop" />
   </div>
 
-  <SectionTitle title="Problem Insight" />
+  <SectionTitle title="Starting point: endless TV shows, still just “I'm fine”" />
   <p>
-    Most conventional language learning apps rely on passive reception—forcing learners through predefined vocabulary lists and canned sentences. These lack authentic context, rarely resonate with real-world experiences, and inevitably cause learning motivation to wane over time.
+    Many people around me learn English by watching Netflix and YouTube. They understand plenty every day, yet when it's their turn to speak, after hearing ten different ways to compliment someone on a show, all that comes out is “Good!”
+  </p>
+  <p>
+    The problem I wanted to solve isn't that people don't see enough English. It's that <strong class="text-zinc-200">the English they see never becomes their own</strong>. LingoDrop turns the English you run into every day from “seen and forgotten” into a personal library you can save, understand, review and actually say.
   </p>
 
-  <SectionTitle title="Product Philosophy" />
+  <SectionTitle title="Breaking down the problem: three gaps" />
   <p>
-    LingoDrop was born from a fundamental belief: "The best learning material comes from your own life." When watching a TV show, listening to a podcast, or scrolling social media, encountering a phrase that makes you think "that's so useful!" is when motivation peaks. Without frictionless capture, these moments slip away. LingoDrop transforms learners from passive recipients into active curators—building a personalized "contextual dictionary" that turns spontaneous linguistic input into high-value knowledge assets.
+    I split the distance between “I understand it” and “I can use it” into three stages. Each one is a gap existing tools leave open, and every feature that follows maps back to one of them.
+  </p>
+  <div class="grid 2xl:grid-cols-3 gap-3">
+    {gaps.map((g) => (
+      <div class="border border-zinc-800 rounded-lg p-4 flex flex-col gap-2">
+        <span class="text-[11px] tracking-widest uppercase text-zinc-500">{g.en}</span>
+        <h3 class="text-zinc-100 font-medium leading-snug">{g.title}</h3>
+        <p class="text-sm">{g.body}</p>
+        <p class="text-xs text-zinc-500 mt-auto pt-2 border-t border-zinc-800">Result: {g.result}</p>
+      </div>
+    ))}
+  </div>
+  <p>
+    I then condensed the product's purpose into a single Job to be Done:
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    “When I come across a useful English expression, I want to understand it and save it quickly, know how to use it naturally, and later turn it into a real skill through review and contextual conversation.”
   </p>
 
-  <SectionTitle title="Core Features" />
-  <ul class="list-disc pl-5 space-y-2">
-    <li>Secure authentication via Email/Password and Google OAuth, with strict user-level data isolation for cards, folders, and AI dialogue histories.</li>
-    <li>Seamless vocabulary and phrase capture: combines real-time dictionary lookups with AI analysis to automatically extract definitions, phonetic transcriptions, audio pronunciations, contextual example sentences, and tags.</li>
-    <li>Folder organization, instant search, batch editing, and tagging for streamlined vocabulary management.</li>
-    <li>Spaced repetition mechanics: random flashcard reviews, daily addition targets, and streak tracking to reinforce memory retention.</li>
-    <li>Contextual AI dialogue generation: creates authentic English conversational scenarios based on your saved words, grounding vocabulary in practical application.</li>
+  <SectionTitle title="Competitive scan: each tool solves one piece" />
+  <p>
+    There's no shortage of English tools, so I grouped the alternatives into six categories and looked at what each one solves and what it leaves undone.
+  </p>
+  <div class="overflow-x-auto -mx-1">
+    <table class="w-full min-w-[560px] text-sm border-collapse">
+      <thead>
+        <tr class="text-left text-zinc-500 text-xs tracking-wider">
+          <th class="font-normal py-2 pr-3 border-b border-zinc-800">Type</th>
+          <th class="font-normal py-2 pr-3 border-b border-zinc-800">Examples</th>
+          <th class="font-normal py-2 pr-3 border-b border-zinc-800">What it solves</th>
+          <th class="font-normal py-2 border-b border-zinc-800">Gap left open</th>
+        </tr>
+      </thead>
+      <tbody>
+        {competitors.map((c) => (
+          <tr class="align-top">
+            <td class="py-2 pr-3 border-b border-zinc-800/60 text-zinc-200">{c.type}</td>
+            <td class="py-2 pr-3 border-b border-zinc-800/60">{c.tools}</td>
+            <td class="py-2 pr-3 border-b border-zinc-800/60">{c.solves}</td>
+            <td class="py-2 border-b border-zinc-800/60">{c.gap}</td>
+          </tr>
+        ))}
+        <tr class="align-top bg-zinc-800/40">
+          <td class="py-2 px-2 text-zinc-100 font-medium">LingoDrop</td>
+          <td class="py-2 pr-3 text-zinc-300" colspan="2">Turns English from real life and entertainment into a personal library</td>
+          <td class="py-2 pr-2 text-zinc-100">Closes the Capture → Context → Retention loop</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    The closest is Language Reactor. Originally called Language Learning with Netflix, it proves that learning from shows is a real behavior. But it handles the moment of watching; nobody takes over the saving, organizing, reviewing and using that should come after. ChatGPT explains well, but its answers stay buried in chat history instead of becoming a library you can come back to. LingoDrop sits between these tools: it doesn't redo what they already do well, it connects the broken links.
+  </p>
+
+  <SectionTitle title="Positioning: defining what it isn't" />
+  <p>
+    To avoid overlapping with existing tools, I drew LingoDrop's boundaries with four “nots”: <strong class="text-zinc-200">not a dictionary</strong>, since it centers on personal collection and long-term review; <strong class="text-zinc-200">not just an AI chat</strong>, since it saves structured answers into a library; <strong class="text-zinc-200">not an exam vocabulary app</strong>, since content comes from real contexts; and <strong class="text-zinc-200">not just a notebook</strong>, since what you save comes back through flashcards and AI dialogue.
+  </p>
+
+  <SectionTitle title="The learning loop and core features" />
+  <p>
+    Features weren't stacked one by one; they're arranged along a loop, and each step addresses one of the gaps above:
+  </p>
+  <div class="flex flex-wrap items-center gap-2 text-sm">
+    {loop.map((step, i) => (
+      <>
+        <span class="px-3 py-1 rounded-full border border-zinc-700 text-zinc-200">{step}</span>
+        {i < loop.length - 1 && <span class="text-zinc-600">→</span>}
+      </>
+    ))}
+  </div>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">1. Capture and analysis: closing the Capture Gap</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Save words, phrases and sentences</strong>: the system detects the type and creates a study card. Saving has to be easy enough to do mid-episode.</li>
+    <li><strong class="text-zinc-200">AI analysis</strong>: dictionary lookup plus AI generates Traditional Chinese explanations, translations, definitions, phonetics, pronunciation and example sentences, lowering the effort for intermediate learners.</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">2. Knowing how to use it: closing the Context Gap</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Unnatural-usage correction</strong>: when an expression is Chinglish or unidiomatic, it suggests more natural alternatives.</li>
+    <li><strong class="text-zinc-200">Folders and context tags</strong>: organize content with scene-based tags like work, travel, casual speech or TV lines, with search, editing and bulk move to folders.</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">3. Review and use: closing the Retention Gap</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Random flashcard review</strong>: quick memory checks that fit into a commute.</li>
+    <li><strong class="text-zinc-200">AI dialogue generation</strong>: pick saved words and have AI write a conversation set in daily life, business or travel, putting vocabulary back into real use.</li>
+    <li><strong class="text-zinc-200">Saved dialogues</strong>: generated conversations become review material, extending single words into full context.</li>
+    <li><strong class="text-zinc-200">Daily goals and streaks</strong>: lightweight indicators of today's progress and consecutive days help build a routine.</li>
+  </ul>
+
+  <SectionTitle title="User journey" />
+  <p>
+    The full flow: meet an unfamiliar expression → enter it in LingoDrop → AI analysis → save and tag → flashcard review → AI dialogue → actually use it. The design turns looking up into organizing, then into reviewing and using: you get the explanation, examples and pronunciation at lookup time, results go straight into folders instead of scattered screenshots, and after review, contextual dialogues put the vocabulary back into sentences.
+  </p>
+
+  <SectionTitle title="Implementation" />
+  <p>I built the product on my own, from planning and interface to front and back end, and it's deployed and live:</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Accounts and data isolation</strong>: Email / Password and Google OAuth sign-in, with each user's cards, folders and AI dialogue history kept separate.</li>
+    <li><strong class="text-zinc-200">Dictionary + AI analysis pipeline</strong>: a dictionary lookup supplies the base definition and pronunciation, then AI adds translation, example sentences, usage notes and tags, saved as one structured card.</li>
+    <li><strong class="text-zinc-200">Dialogue generation and storage</strong>: dialogues are generated from the user's selected saved words and stored back in their library, so AI answers don't disappear like chat history.</li>
+  </ul>
+
+  <SectionTitle title="Early signal: “Wait, what's this app called?”" />
+  <p>
+    I once asked a classmate who struggles with English how they usually study. They said they watch Netflix. I asked how they learn from shows, then mentioned I'd found an app that lets you quickly save lines you come across. They immediately said they wanted to download it. Only then did I tell them I'd built it and it wasn't released yet.
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    One conversation isn't large-scale validation. But it shows the pain point lands in a single sentence: users don't need to be convinced why they should learn English. They need a way to keep what they come across.
+  </p>
+
+  <SectionTitle title="Reflections after the pitch and next steps" />
+  <p>
+    After the pitch, I realized the biggest issue isn't how good the AI analysis is. It's that <strong class="text-zinc-200">the friction from capturing a line to getting it into the library is still too high</strong>: see a line, screenshot it, switch to the app, type it again, and many people give up right there. Another open question: if ChatGPT can explain words too, LingoDrop's difference has to land more clearly on personalization and study material tailored to you. So the next steps are:
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">Reduce capture friction</strong>: make saving faster (for example with a browser extension) and offer some passive learning material to keep the rhythm going.</li>
+    <li><strong class="text-zinc-200">Make review closer to real life</strong>: redesign review so users know how to use vocabulary flexibly, not just flip cards.</li>
+    <li><strong class="text-zinc-200">Build a phrase database to control cost</strong>: translate and organize common phrases from open datasets first, calling AI only when needed to cut token usage.</li>
+    <li><strong class="text-zinc-200">Plan paid features by learning stage</strong>: understand which stage of language learning users are in before deciding what stays free and what's worth paying for.</li>
   </ul>
 </ProjectLayout>

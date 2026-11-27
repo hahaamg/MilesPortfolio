@@ -43,14 +43,14 @@ export const zhProjects: ProjectItem[] = [
   },
   {
     title: "DayBlocks｜模組化卡片日記",
-    description: "從構想到上架，獨立開發的 iOS 生活記錄 App，結合模組化卡片與輕社交功能。",
+    description: "從用戶痛點、競品分析、PRD 到上架 App Store，主導 0 到 1 的模組化卡片日記，以輕社交與連勝機制提升記錄習慣。",
     image: DayBlocksCover,
     link: "/projects/dayblocks",
     category: "產品規劃與設計"
   },
   {
-    title: "LingoDrop｜個人化字典",
-    description: "一滴一字，累積你的語言力。隨手收藏遇見的詞彙與句子。",
+    title: "LingoDrop｜個人英文語言庫",
+    description: "從「看懂」到「會用」：拆解英文學習的三個斷點與六類競品，打造收藏、AI 解析、複習到情境對話的學習閉環。",
     image: Lingodrop,
     link: "/projects/Lingodrop",
     category: "產品規劃與設計"
@@ -123,14 +123,14 @@ export const enProjects: ProjectItem[] = [
   },
   {
     title: "DayBlocks | Modular Card Journal",
-    description: "From concept to App Store launch—a solo-developed iOS life-tracking app featuring customizable cards and lightweight social interactions.",
+    description: "Led a modular card journal from 0 to 1, from user pain points, competitive analysis and PRD to App Store launch, using light social and streaks to build journaling habits.",
     image: DayBlocksCover,
     link: "/en/projects/dayblocks",
     category: "Product Planning & Design"
   },
   {
-    title: "LingoDrop | Personalized Contextual Dictionary",
-    description: "One drop, one word—build your language intuition. Effortlessly capture and organize vocabulary and phrases you encounter in daily life.",
+    title: "LingoDrop | Your Personal English Library",
+    description: "From understanding to using: mapped three learning gaps and six competitor types, then built a loop from capture and AI analysis to review and contextual dialogue.",
     image: Lingodrop,
     link: "/en/projects/Lingodrop",
     category: "Product Planning & Design"

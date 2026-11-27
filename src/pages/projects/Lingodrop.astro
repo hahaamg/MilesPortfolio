@@ -5,15 +5,63 @@ import ProjectExternalLink from "../../components/project/ProjectExternalLink.as
 import HighlightCard from "../../components/project/HighlightCard.astro";
 import SectionTitle from "../../components/project/SectionTitle.astro";
 import LingoDrop from "../../assets/Lingodrop_mockup.png";
+import slide02 from "../../assets/lingodrop/slide-02.webp";
+import slide04 from "../../assets/lingodrop/slide-04.webp";
+import slide07 from "../../assets/lingodrop/slide-07.webp";
+import slide09 from "../../assets/lingodrop/slide-09.webp";
+import slide10 from "../../assets/lingodrop/slide-10.webp";
+import slide11 from "../../assets/lingodrop/slide-11.webp";
+import slide12 from "../../assets/lingodrop/slide-12.webp";
+
+const gaps = [
+  {
+    en: "Capture Gap",
+    title: "看過、查過，但很快就忘",
+    body: "在 Netflix、YouTube、文章或工作訊息裡遇到實用的英文，當下看懂或查過，卻沒有後續複習，最後沒有變成長期記憶。",
+    result: "散落在截圖、備忘錄、聊天紀錄",
+  },
+  {
+    en: "Context Gap",
+    title: "知道單字，卻不知道怎麼用",
+    body: "字典和字幕只幫你「理解」，沒告訴你語氣、使用情境、常見搭配，以及更道地的替代說法。",
+    result: "看得懂，但說不出、寫不自然",
+  },
+  {
+    en: "Retention Gap",
+    title: "當下懂了，下次還是講不出口",
+    body: "學過的字沒有被放回對話或情境裡重現；現有的複習工具又多以考試為中心。",
+    result: "缺少日常語感養成的閉環",
+  },
+];
+
+const competitors = [
+  { type: "字典 / 翻譯", tools: "Cambridge、Google Translate、DeepL", solves: "查意思、翻譯", gap: "不負責收藏、複習與情境再使用" },
+  { type: "課程型 App", tools: "Duolingo、Cake、VoiceTube", solves: "系統化的課程內容", gap: "內容由平台決定，未必來自真實生活" },
+  { type: "單字卡工具", tools: "Anki、Quizlet", solves: "記憶與複習", gap: "缺少 AI 語境與自然用法修正" },
+  { type: "AI 聊天工具", tools: "ChatGPT、Gemini", solves: "解釋、對話、生成例句", gap: "回答容易散失，沒有結構化的個人庫" },
+  { type: "影音字幕工具", tools: "Language Reactor", solves: "邊看 Netflix / YouTube 邊學", gap: "集中在觀看當下，少處理之後的沉澱" },
+  { type: "口說練習", tools: "Speak、ELSA", solves: "發音與開口環境", gap: "不負責個人化的詞彙收藏" },
+];
+
+const loop = ["收藏", "AI 解析", "整理", "複習", "AI 情境對話"];
 ---
 
 <ProjectLayout
-  title="LingoDrop｜個人化字典"
-  tags={["語言學習", "產品設計", "Mobile App"]}
+  title="LingoDrop｜個人英文語言庫"
+  tags={["產品提案", "語言學習 × AI", "競品分析", "Web App", "獨立開發"]}
 >
   <div slot="aside" class="space-y-6">
     <ImageSlider
-      images={[{ src: LingoDrop.src, alt: "LingoDrop" }]}
+      images={[
+        { src: LingoDrop.src, alt: "LingoDrop 介面" },
+        { src: slide02.src, alt: "The Hook：看了一堆美劇，還是只會說 I'm fine" },
+        { src: slide04.src, alt: "問題定位：看得懂，卻用不出來" },
+        { src: slide07.src, alt: "Job to be Done" },
+        { src: slide09.src, alt: "產品介紹" },
+        { src: slide10.src, alt: "八個核心功能" },
+        { src: slide11.src, alt: "使用者旅程" },
+        { src: slide12.src, alt: "早期驗證" },
+      ]}
       client:load
     />
     <div class="grid grid-cols-3 gap-2">
@@ -24,22 +72,137 @@ import LingoDrop from "../../assets/Lingodrop_mockup.png";
     <ProjectExternalLink href="https://lingodropapp.zeabur.app/" label="前往 LingoDrop" />
   </div>
 
-  <SectionTitle title="問題洞察" />
+  <SectionTitle title="起點：看了一堆美劇，還是只會說 I'm fine" />
   <p>
-    現有的語言學習 App 多採「被動接收」模式，使用者只能學習官方預設的罐頭單字或簡單語句，這些內容缺乏生活感，難以與真實情境產生共鳴，學習動機難以維持。
+    身邊很多人學英文的方式是看 Netflix、YouTube。每天看懂的英文不算少，但真的要開口的時候，在影集裡看過十種稱讚別人的說法，自己擠得出來的還是只有一句 “Good!”。
+  </p>
+  <p>
+    我想解的不是「英文看得不夠多」，而是<strong class="text-zinc-200">看過的英文沒有變成自己的</strong>。LingoDrop 從這個觀察出發：把每天遇到的英文，從「看過就忘」變成「可收藏、可理解、可複習、說得出口」的個人語言庫。
   </p>
 
-  <SectionTitle title="產品理念" />
+  <SectionTitle title="拆解問題：卡在三個斷點" />
   <p>
-    LingoDrop 的誕生源於一個核心理念：「最好的教材，源自你自己的生活。」在追美劇、聽 Podcast 或瀏覽社群媒體時，常遇到「這個字好實用」的瞬間，才是學習動機最強烈的時刻，卻因缺乏便捷的記錄方式而讓這些素材白白流失。LingoDrop 讓使用者從被動的接收者轉變為主動的建構者，透過建立屬於自己的「情境字典」，將零散的語言輸入凝聚成高價值的個人化學習資產。
+    我把「看懂」到「會用」之間的距離拆成三段，每一段對應一個現有工具沒處理好的缺口，後面的功能設計也都是依這三段來排。
+  </p>
+  <div class="grid 2xl:grid-cols-3 gap-3">
+    {gaps.map((g) => (
+      <div class="border border-zinc-800 rounded-lg p-4 flex flex-col gap-2">
+        <span class="text-[11px] tracking-widest uppercase text-zinc-500">{g.en}</span>
+        <h3 class="text-zinc-100 font-medium leading-snug">{g.title}</h3>
+        <p class="text-sm">{g.body}</p>
+        <p class="text-xs text-zinc-500 mt-auto pt-2 border-t border-zinc-800">結果：{g.result}</p>
+      </div>
+    ))}
+  </div>
+  <p>
+    整理完之後，我用一句 Job to be Done 收斂產品要完成的任務：
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    「當我遇到一個實用的英文表達時，我想要快速理解它、收藏它，知道它可以怎麼自然使用，並在之後透過複習與情境對話，真正把它變成自己的英文能力。」
   </p>
 
-  <SectionTitle title="核心功能" />
-  <ul class="list-disc pl-5 space-y-2">
-    <li>支援 Email/Password 與 Google OAuth 登入，並隔離每位使用者的卡片、資料夾與 AI 對話紀錄。</li>
-    <li>可收藏英文單字、片語或句子，整合字典查詢與 AI 智能解析，自動保存翻譯、定義、音標、發音、情境例句與標籤。</li>
-    <li>提供資料夾分類、搜尋、編輯、刪除與批次加入資料夾，方便整理個人詞彙庫。</li>
-    <li>透過隨機翻卡、每日新增目標與連續學習天數追蹤，讓收藏內容能持續被複習。</li>
-    <li>可根據已收藏詞彙生成 AI 英文情境對話，並保存生成結果，讓單字回到實際使用情境中。</li>
+  <SectionTitle title="競品掃描：每個工具都只解一段" />
+  <p>
+    市場上不缺英文工具，所以我先把可能的替代方案分成六類，逐一看它們解決了什麼、又留下哪裡沒做。
+  </p>
+  <div class="overflow-x-auto -mx-1">
+    <table class="w-full min-w-[560px] text-sm border-collapse">
+      <thead>
+        <tr class="text-left text-zinc-500 text-xs tracking-wider">
+          <th class="font-normal py-2 pr-3 border-b border-zinc-800">類型</th>
+          <th class="font-normal py-2 pr-3 border-b border-zinc-800">代表工具</th>
+          <th class="font-normal py-2 pr-3 border-b border-zinc-800">解決什麼</th>
+          <th class="font-normal py-2 border-b border-zinc-800">尚未解決的缺口</th>
+        </tr>
+      </thead>
+      <tbody>
+        {competitors.map((c) => (
+          <tr class="align-top">
+            <td class="py-2 pr-3 border-b border-zinc-800/60 text-zinc-200 whitespace-nowrap">{c.type}</td>
+            <td class="py-2 pr-3 border-b border-zinc-800/60">{c.tools}</td>
+            <td class="py-2 pr-3 border-b border-zinc-800/60">{c.solves}</td>
+            <td class="py-2 border-b border-zinc-800/60">{c.gap}</td>
+          </tr>
+        ))}
+        <tr class="align-top bg-zinc-800/40">
+          <td class="py-2 px-2 text-zinc-100 font-medium whitespace-nowrap">LingoDrop</td>
+          <td class="py-2 pr-3 text-zinc-300" colspan="2">把真實生活與娛樂中遇到的英文，轉成個人語言庫</td>
+          <td class="py-2 pr-2 text-zinc-100">補上 Capture → Context → Retention 的完整閉環</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    最接近的是 Language Reactor：它原名 Language Learning with Netflix，證明「看影集學英文」是真實存在的行為。但它處理的是觀看<strong class="text-zinc-200">當下</strong>，看完之後的保存、整理、複習與使用沒有人接手。ChatGPT 能解釋得很好，可是答案留在對話紀錄裡，不會變成一個能回頭複習的個人庫。LingoDrop 的位置就在這些工具中間：不重做它們已經做好的事，而是把斷掉的環節接起來。
+  </p>
+
+  <SectionTitle title="產品定位：先講清楚它不是什麼" />
+  <p>
+    為了不和既有工具撞在一起，我用四個「不是」定義 LingoDrop 的邊界：<strong class="text-zinc-200">不是傳統字典</strong>，重視個人收藏與長期複習；<strong class="text-zinc-200">不是純 AI 聊天</strong>，把回答結構化保存成個人庫；<strong class="text-zinc-200">不是考試單字 App</strong>，以真實語境為中心；<strong class="text-zinc-200">也不是純筆記</strong>，記下來的內容會透過翻卡與 AI 對話被再次使用。
+  </p>
+
+  <SectionTitle title="學習閉環與核心功能" />
+  <p>
+    功能不是一項一項往上加，而是沿著一條閉環排列，每一步都對應前面拆出來的某個斷點：
+  </p>
+  <div class="flex flex-wrap items-center gap-2 text-sm">
+    {loop.map((step, i) => (
+      <>
+        <span class="px-3 py-1 rounded-full border border-zinc-700 text-zinc-200">{step}</span>
+        {i < loop.length - 1 && <span class="text-zinc-600">→</span>}
+      </>
+    ))}
+  </div>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">一、收藏與解析：補上 Capture Gap</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">收藏單字、片語、句子</strong>：輸入後系統自動判斷類型，建立一張學習卡片，收藏的門檻要低到看影集時順手就能做。</li>
+    <li><strong class="text-zinc-200">AI 智能解析</strong>：結合字典查詢與 AI，自動產生繁體中文解釋、翻譯、定義、音標、發音與例句，降低中階學習者的理解成本。</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">二、理解怎麼用：補上 Context Gap</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">不自然用法修正</strong>：遇到中式英文或不道地的表達時，提供更自然的替代說法。</li>
+    <li><strong class="text-zinc-200">資料夾與情境標籤</strong>：用「職場、旅遊、口語、影片台詞」這類場景化標籤管理內容，並支援搜尋、編輯與批次加入資料夾。</li>
+  </ul>
+
+  <h3 class="text-lg font-medium text-zinc-200 mt-6 mb-2">三、複習與使用：補上 Retention Gap</h3>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">隨機翻卡複習</strong>：用翻卡快速測試記憶，適合通勤這類零碎時間。</li>
+    <li><strong class="text-zinc-200">AI 情境對話生成</strong>：選擇已收藏的詞彙，讓 AI 生成日常、商務或旅遊場景的對話，把單字放回真實的使用情境。</li>
+    <li><strong class="text-zinc-200">保存對話</strong>：生成的對話可以存成複習材料，從「單點詞彙」延伸到「完整語境」。</li>
+    <li><strong class="text-zinc-200">每日目標與連續學習</strong>：用輕量的指標顯示今日進度與連續天數，幫助建立學習節奏。</li>
+  </ul>
+
+  <SectionTitle title="使用者旅程" />
+  <p>
+    完整流程是：遇到不熟的英文 → 輸入 LingoDrop → AI 解析 → 收藏並加上標籤 → 翻卡複習 → AI 情境對話 → 真正會用。設計重點在把「查詢」轉成「整理」，再轉成「複習」與「使用」：查詢當下就拿到解釋、例句與發音，結果直接進資料夾而不是散落在截圖裡，複習完再用情境對話把詞彙放回句子。
+  </p>
+
+  <SectionTitle title="技術實作" />
+  <p>產品從規劃、介面到前後端都由我獨立完成，目前已部署上線：</p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">帳號與資料隔離</strong>：支援 Email / Password 與 Google OAuth 登入，每位使用者的卡片、資料夾與 AI 對話紀錄彼此隔離。</li>
+    <li><strong class="text-zinc-200">字典 + AI 的解析流程</strong>：先查字典取得基本釋義與發音，再由 AI 補上翻譯、情境例句、用法說明與標籤，結構化存成一張卡片。</li>
+    <li><strong class="text-zinc-200">對話生成與保存</strong>：以使用者選取的收藏詞彙為輸入生成情境對話，並把結果存回個人庫，讓 AI 的回答不會像聊天紀錄一樣散失。</li>
+  </ul>
+
+  <SectionTitle title="早期驗證：「欸，這個 App 叫什麼名字？」" />
+  <p>
+    我問過一位英文比較弱的同學平常怎麼學英文，他說會看 Netflix。我追問他怎麼用影集學，接著跟他說我發現一個 App 可以把看到的語句快速記下來。他立刻說「想下載」，我才告訴他，這是我做的，還沒上架。
+  </p>
+  <p class="border-l-2 border-zinc-500 pl-4 text-zinc-300 italic">
+    這只是一次對話，不能當成大規模的驗證。但它說明這個痛點能在一句話內被理解：使用者不需要被說服「為什麼要學英文」，他們需要的是「把遇到的記下來」。
+  </p>
+
+  <SectionTitle title="提案後的反思與下一步" />
+  <p>
+    做完提案之後，我發現最大的問題不在 AI 解析做得好不好，而是<strong class="text-zinc-200">從擷取到存進資料庫的摩擦還是太大</strong>：看到一句台詞，要先截圖、切出 App、再輸入一次，很多人在這一步就放棄了。另一個需要回答的問題是：既然 ChatGPT 也能解釋單字，LingoDrop 的差異要更明確地落在「個人化」與「為你訂製的學習資料」上。接下來的方向因此是：
+  </p>
+  <ul class="list-disc ml-6 space-y-2">
+    <li><strong class="text-zinc-200">降低紀錄摩擦</strong>：讓收藏更快（例如瀏覽器擴充功能），並適度提供被動學習材料，維持學習節奏。</li>
+    <li><strong class="text-zinc-200">讓複習更貼近生活</strong>：重新設計複習方式，讓使用者更知道怎麼靈活地把詞彙用出來，而不只是翻卡背誦。</li>
+    <li><strong class="text-zinc-200">建立語料資料庫以控制成本</strong>：常用語句先透過開放資料庫翻譯與整理，只在需要時呼叫 AI，降低 token 消耗。</li>
+    <li><strong class="text-zinc-200">依學習階段規劃付費功能</strong>：先釐清使用者所處的語言學習階段，再決定哪些功能免費、哪些值得收費。</li>
   </ul>
 </ProjectLayout>
